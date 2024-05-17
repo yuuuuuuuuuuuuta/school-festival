@@ -13,28 +13,23 @@ import type { Booth } from '@/lib/definitions'
 export default function BoothDialog({ booth }: { booth: Booth }) {
   return (
     <Dialog>
-      <DialogTrigger className="w-20">
+      <DialogTrigger className="aspect-square w-20">
         <Image
-          className="image"
-          src={`/images/${booth.id}/icon.webp`}
+          className="image aspect-square w-20"
+          src={`/images/booths/${booth.id}/icon.webp`}
           alt={booth.name}
           fill
         />
       </DialogTrigger>
-      <DialogContent className="w-5/6">
+      <DialogContent className="w-11/12 rounded-md">
         <DialogHeader>
-          <DialogDescription>
-            <p>{booth.name}</p>
-            <p>{booth.x}</p>
-            <p>{booth.y}</p>
-            <div>
-              <Image
-                className="image"
-                src={`/images/${booth.id}/image.webp`}
-                alt=""
-                fill
-              />
-            </div>
+          <DialogDescription className="mx-auto">
+            <Image
+              className="image"
+              src={`/images/booths/${booth.id}/image.webp`}
+              alt=""
+              fill
+            />
           </DialogDescription>
         </DialogHeader>
       </DialogContent>
