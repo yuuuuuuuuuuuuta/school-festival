@@ -10,13 +10,51 @@ const buildings: Building[] = [
         id: 'building-1-floor-1',
         name: '1階',
         number: 1,
-        booths: [],
+        booths: [
+          {
+            id: '1-1_doumanashiku2a',
+            name: '1-A',
+            x: 0,
+            y: 0,
+          },
+          {
+            id: 'building-1-floor-1-booth-2',
+            name: '1-B',
+            x: 0,
+            y: 0,
+          },
+          {
+            id: 'building-1-floor-1-booth-3',
+            name: '1-C',
+            x: 0,
+            y: 0,
+          },
+        ],
       },
       {
         id: 'building-1-floor-2',
         name: '2階',
         number: 2,
-        booths: [],
+        booths: [
+          {
+            id: 'building-1-floor-2-booth-1',
+            name: '2-A',
+            x: 0,
+            y: 0,
+          },
+          {
+            id: 'building-1-floor-2-booth-2',
+            name: '2-B',
+            x: 0,
+            y: 0,
+          },
+          {
+            id: 'building-1-floor-2-booth-3',
+            name: '2-C',
+            x: 0,
+            y: 0,
+          },
+        ],
       },
     ],
   },
