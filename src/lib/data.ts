@@ -60,6 +60,13 @@ const buildings: Building[] = [
   },
 ]
 
-export function getBuildings(): Building[] {
-  return buildings
+export function getBuildings(): Omit<Building, 'floors'>[] {
+  return buildings.map((building) => {
+    const { floors, ...rest } = building
+    return rest
+  })
+}
+
+export function getBuilding(id: string): Building | undefined {
+  return buildings.find((building) => building.id === id)
 }
