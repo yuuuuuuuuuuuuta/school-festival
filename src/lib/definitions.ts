@@ -15,6 +15,8 @@ export type Floor = {
 export type Booth = {
   id: string
   name: string
-  x: number
-  y: number
+  position: {
+    x: number
+    y: number
+  }
 }
