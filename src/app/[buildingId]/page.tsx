@@ -8,10 +8,10 @@ export default function BuildingPage({
   params: { buildingId: string }
 }) {
   const building = getBuilding(params.buildingId)
-
   if (!building) {
     return <div>Building not found</div>
   }
+  building.floors.sort((a, b) => b.number - a.number)
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-10 p-24">
