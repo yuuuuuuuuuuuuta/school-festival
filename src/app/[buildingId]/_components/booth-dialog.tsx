@@ -27,7 +27,7 @@ export default function BoothDialog({ booth }: { booth: Booth }) {
             <Image
               className="!relative !h-60dvh !w-auto object-contain"
               src={`/images/booths/${booth.id}/image.webp`}
-              alt=""
+              alt={booth.name}
               fill
             />
           </DialogDescription>

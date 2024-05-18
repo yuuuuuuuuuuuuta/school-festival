@@ -19,6 +19,14 @@ const buildings: Building[] = [
               y: 0,
             },
           },
+          {
+            id: '1-1_suipro2',
+            name: '水プロ2',
+            position: {
+              x: 0,
+              y: 0,
+            },
+          },
         ],
       },
       {
@@ -35,6 +43,22 @@ const buildings: Building[] = [
           {
             id: '133_dolphin2b',
             name: 'ドルフィン2B',
+            position: {
+              x: 0,
+              y: 0,
+            },
+          },
+          {
+            id: '131.132_safaritoor',
+            name: 'サファリツアー',
+            position: {
+              x: 0,
+              y: 0,
+            },
+          },
+          {
+            id: '131.132_tomokiriki',
+            name: 'ともきりき',
             position: {
               x: 0,
               y: 0,
