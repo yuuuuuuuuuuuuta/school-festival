@@ -10,20 +10,39 @@ import {
 } from '@/components/ui/dialog'
 import type { Booth } from '@/lib/definitions'
 
-export default function BoothDialog({ booth }: { booth: Booth }) {
+export default function BoothDialog({
+  booth,
+  color,
+}: {
+  booth: Booth
+  color: string
+}) {
   return (
     <Dialog>
       <DialogTrigger>
-        <Image
-          className="!relative aspect-square !w-20 object-contain"
-          src={`/images/booths/${booth.id}/icon.webp`}
-          alt={booth.name}
-          fill
-        />
+        <div
+          className="absolute inline-block !w-14 overflow-hidden rounded-full md:!w-20"
+          style={{
+            top: `${booth.position.top}%`,
+            left: `${booth.position.left}%`,
+          }}
+        >
+          <Image
+            className="!relative aspect-square !w-14 object-contain md:!w-20"
+            src={`/images/booths/${booth.id}/icon.webp`}
+            alt={booth.name}
+            fill
+          />
+        </div>
       </DialogTrigger>
-      <DialogContent className="max-w-[90vw] rounded-md">
+      <DialogContent
+        className="w-[90vw] rounded-md border-2 md:w-auto md:max-w-lg"
+        style={{
+          borderColor: color,
+        }}
+      >
         <DialogHeader>
-          <DialogDescription className="mx-auto">
+          <DialogDescription className="mx-auto pt-1.5">
             <Image
               className="!relative !h-60dvh !w-auto object-contain"
               src={`/images/booths/${booth.id}/image.webp`}

@@ -1,6 +1,8 @@
-import { getBuilding } from '@/lib/data'
+import Link from 'next/link'
 
-import BoothDialog from './_components/booth-dialog'
+import { getBuilding, getBuildings } from '@/lib/data'
+
+import FloorList from './_components/floor-list'
 
 export default function BuildingPage({
   params,
@@ -8,29 +10,26 @@ export default function BuildingPage({
   params: { buildingId: string }
 }) {
   const building = getBuilding(params.buildingId)
+  const buildings = getBuildings()
   if (!building) {
     return <div>Building not found</div>
   }
-  building.floors.sort((a, b) => b.number - a.number)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-10 p-24">
-      <h1>{building.name}</h1>
-      <div className="flex flex-col gap-5">
-        {building.floors.map((floor) => (
-          <div key={floor.id}>
-            <h2 className="mb-3">{floor.name}</h2>
-            <div className="">
-              {floor.booths &&
-                floor.booths.map((booth) => (
-                  <div key={booth.id} className="mb-2">
-                    <BoothDialog booth={booth} />
-                  </div>
-                ))}
-            </div>
-          </div>
+    <main className="flex min-h-screen flex-col items-center justify-center gap-10 px-1">
+      <h1>フロアマップ</h1>
+      <div className="flex" style={{ backgroundColor: building.themeColor }}>
+        {buildings.map((b) => (
+          <Link
+            href={b.id}
+            key={b.id}
+            className={`${building.id != b.id && 'bg-white'} p-1`}
+          >
+            <h2>{b.name}</h2>
+          </Link>
         ))}
       </div>
+      <FloorList buildingId={building.id} />
     </main>
   )
 }
