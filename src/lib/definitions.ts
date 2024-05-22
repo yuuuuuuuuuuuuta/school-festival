@@ -2,6 +2,8 @@ export type Building = {
   id: string
   name: string
   index: number
+  themeColor: string
+  accentColor: string
   floors: Floor[]
 }
 
@@ -16,7 +18,7 @@ export type Booth = {
   id: string
   name: string
   position: {
-    x: number
-    y: number
+    top: string
+    left: string
   }
 }

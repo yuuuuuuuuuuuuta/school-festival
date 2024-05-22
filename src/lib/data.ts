@@ -5,163 +5,165 @@ const buildings: Building[] = [
     id: 'first',
     name: '第一校舎',
     index: 1,
+    themeColor: '#6FBA2D',
+    accentColor: '#2C893A',
     floors: [
       {
         id: 'building-1-floor-1',
-        name: '1階',
+        name: '1F',
         number: 1,
         booths: [
           {
             id: '1-1_doumanashiku2a',
             name: '動マネ飼育2A',
             position: {
-              x: 0,
-              y: 0,
+              top: '32',
+              left: '23',
             },
           },
           {
             id: '1-1_suipro2',
             name: '水プロ2',
             position: {
-              x: 0,
-              y: 0,
+              top: '52',
+              left: '63',
             },
           },
         ],
       },
       {
         id: 'building-1-floor-2',
-        name: '2階',
+        name: '2F',
         number: 2,
         booths: [],
       },
       {
         id: 'building-1-floor-3',
-        name: '3階',
+        name: '3F',
         number: 3,
         booths: [
           {
             id: '133_dolphin2b',
             name: 'ドルフィン2B',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '131.132_safaritoor',
             name: 'サファリツアー',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '131.132_tomokiriki',
             name: 'ともきりき',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-1-floor-4',
-        name: '4階',
+        name: '4F',
         number: 4,
         booths: [
           {
             id: '1-4_maindesk',
             name: '本部',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-1-floor-5',
-        name: '5階',
+        name: '5F',
         number: 5,
         booths: [
           {
             id: '151_dolphin2a',
             name: 'ドルフィン2A',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '152_suipro3',
             name: '水プロ3',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '153_aqua2a',
             name: 'アクア2A',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '154_aqua2b',
             name: 'アクア2B',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-1-floor-6',
-        name: '6階',
+        name: '6F',
         number: 6,
         booths: [
           {
             id: '161_shiku2b',
             name: '飼育2B',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '162_doumane3',
             name: '動マネ3',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-1-floor-7',
-        name: '7階',
+        name: '7F',
         number: 7,
         booths: [
           {
             id: '171_ekizo',
             name: 'エキゾ',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '171_yasei',
             name: '野生',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
@@ -172,84 +174,86 @@ const buildings: Building[] = [
     id: 'second',
     name: '第二校舎',
     index: 2,
+    themeColor: '#F3858E',
+    accentColor: '#B81649',
     floors: [
       {
         id: 'building-2-floor-1',
-        name: '1階',
+        name: '1F',
         number: 1,
         booths: [
           {
             id: '211_petbusiness',
             name: 'ペットビジネス',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-2-floor-2',
-        name: '2階',
+        name: '2F',
         number: 2,
         booths: [
           {
             id: '221.222_trimmer',
             name: 'トリマー',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-2-floor-3',
-        name: '3階',
+        name: '3F',
         number: 3,
         booths: [],
       },
       {
         id: 'building-2-floor-4',
-        name: '4階',
+        name: '4F',
         number: 4,
         booths: [
           {
             id: '241.242_dog',
             name: 'ドッグ',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-2-floor-5',
-        name: '5階',
+        name: '5F',
         number: 5,
         booths: [
           {
             id: '251_nursingscience2',
             name: '看護理学2',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
           {
             id: '252_nursingscience3',
             name: '看護理学3',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-2-floor-6',
-        name: '6階',
+        name: '6F',
         number: 6,
         booths: [],
       },
@@ -259,46 +263,48 @@ const buildings: Building[] = [
     id: 'third',
     name: '第三校舎',
     index: 3,
+    themeColor: '#965045',
+    accentColor: '#954D2B',
     floors: [
       {
         id: 'building-3-floor-b1',
-        name: '地下1階',
+        name: 'BF',
         number: -1,
         booths: [
           {
             id: '3-b1_dinosaur',
             name: '恐竜',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-3-floor-1',
-        name: '1階',
+        name: '1F',
         number: 1,
         booths: [
           {
             id: '311_dousuitech',
             name: '動水テク',
             position: {
-              x: 0,
-              y: 0,
+              top: '10',
+              left: '10',
             },
           },
         ],
       },
       {
         id: 'building-3-floor-2',
-        name: '2階',
+        name: '2F',
         number: 2,
         booths: [],
       },
       {
         id: 'building-3-floor-3',
-        name: '3階',
+        name: '3F',
         number: 3,
         booths: [],
       },
