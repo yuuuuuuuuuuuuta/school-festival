@@ -16,7 +16,7 @@ export default function BuildingPage({
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-10 px-1">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-10">
       <h1>フロアマップ</h1>
       <div className="flex" style={{ backgroundColor: building.themeColor }}>
         {buildings.map((b) => (
