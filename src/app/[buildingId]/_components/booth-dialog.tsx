@@ -44,8 +44,10 @@ export default function BoothDialog({
         <DialogHeader>
           <DialogDescription className="mx-auto pt-1.5">
             <Image
-              className="!relative !h-60dvh !w-auto object-contain"
+              className="!relative !h-60dvh !w-auto min-w-[350px] object-contain"
               src={`/images/booths/${booth.id}/image.webp`}
+              placeholder="blur"
+              blurDataURL={`/images/booths/${booth.id}/image.webp`}
               alt={booth.name}
               fill
             />
