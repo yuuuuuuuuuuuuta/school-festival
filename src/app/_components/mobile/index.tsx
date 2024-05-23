@@ -16,13 +16,15 @@ export default function MobileHomePage({
     <>
       <Header />
       <main className="md:hidden">
-        <Image
-          src={'/images/key-visual.png'}
-          alt="TCA ECO 学園祭"
-          width={1920}
-          height={1080}
-          className="fixed left-0 top-6 -z-10 h-screen object-contain p-6"
-        />
+        <div className="fixed left-0 top-0 -z-10 h-screen pt-6">
+          <Image
+            src={'/images/key-visual.png'}
+            alt="TCA ECO 学園祭"
+            width={1920}
+            height={1080}
+            className="max-h-full object-contain p-6"
+          />
+        </div>
         <div className="h-screen"></div>
         <div className="flex flex-col gap-16 bg-white/90 p-14">
           <SectionWithTitle title="アクセスマップ">
