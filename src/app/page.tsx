@@ -1,21 +1,18 @@
-import Link from 'next/link'
-
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { getBuildings } from '@/lib/data'
+
+import MobileHomePage from './_components/mobile'
+import PcHomePage from './_components/pc'
 
 export default function Home() {
   const buildings = getBuildings()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-10 p-24">
-      <p>キービジュアル</p>
-      <p>パンフレット画像</p>
-      <div className="flex flex-col gap-5">
-        {buildings.map((building) => (
-          <Link href={building.id} key={building.id}>
-            {building.name}
-          </Link>
-        ))}
-      </div>
-    </main>
+    <article>
+      <ScrollArea className="h-dvh">
+        <MobileHomePage buildings={buildings} />
+        <PcHomePage />
+      </ScrollArea>
+    </article>
   )
 }
