@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center gap-6 bg-[#BBD31E] py-6 text-white">
+    <footer className="flex flex-col items-center gap-6 bg-theme py-6 text-white">
       <Image
         src={'/images/tcaeco-logo2.png'}
         alt="TCA ECO 学園祭"

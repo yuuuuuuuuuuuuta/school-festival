@@ -1,8 +1,21 @@
 import Image from 'next/image'
 
-export default function Header({ color }: { color?: string }) {
+import { cn } from '@/lib/utils'
+
+export default function Header({
+  color,
+  className,
+}: {
+  color?: string
+  className?: string
+}) {
   return (
-    <header className="fixed top-0 z-30 flex h-11 w-full items-center bg-[#BBD31E] px-3">
+    <header
+      className={cn(
+        'fixed top-0 z-30 flex w-full items-center bg-theme p-3',
+        className,
+      )}
+    >
       <Image
         src={'/images/tcaeco-logo.png'}
         alt="TCA ECO 学園祭"

@@ -8,11 +8,9 @@ export default function Home() {
   const buildings = getBuildings()
 
   return (
-    <article>
-      <ScrollArea className="h-dvh">
-        <MobileHomePage buildings={buildings} />
-        <PcHomePage />
-      </ScrollArea>
-    </article>
+    <ScrollArea className="h-dvh">
+      <MobileHomePage buildings={buildings} />
+      <PcHomePage buildings={buildings} />
+    </ScrollArea>
   )
 }

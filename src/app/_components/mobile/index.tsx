@@ -13,10 +13,10 @@ export default function MobileHomePage({
   buildings: Omit<Building, 'floors'>[]
 }) {
   return (
-    <>
+    <article className="md:hidden">
       <Header />
-      <main className="md:hidden">
-        <div className="fixed left-0 top-0 -z-10 h-screen pt-6">
+      <main>
+        <div className="fixed left-0 top-0 -z-10 h-screen pt-10">
           <Image
             src={'/images/key-visual.png'}
             alt="TCA ECO 学園祭"
@@ -41,6 +41,6 @@ export default function MobileHomePage({
         </div>
         <Footer />
       </main>
-    </>
+    </article>
   )
 }

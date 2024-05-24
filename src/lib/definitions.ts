@@ -12,6 +12,7 @@ export type Floor = {
   name: string
   number: number
   booths?: Booth[]
+  infos?: Info[]
 }
 
 export type Booth = {
@@ -21,4 +22,9 @@ export type Booth = {
     top: string
     left: string
   }
+}
+
+export type Info = {
+  id: string
+  title: string
 }
