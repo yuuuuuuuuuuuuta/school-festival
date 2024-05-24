@@ -19,6 +19,7 @@ const config = {
     },
     extend: {
       colors: {
+        theme: 'hsl(68, 75%, 47%)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -55,6 +56,8 @@ const config = {
       },
       height: {
         '60dvh': '60dvh',
+        pcContent: 'calc(100dvh - 200px)',
+        pcContentWithTitle: 'calc(100dvh - 300px)',
       },
       borderRadius: {
         lg: 'var(--radius)',
