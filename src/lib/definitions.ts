@@ -27,4 +27,10 @@ export type Booth = {
 export type Info = {
   id: string
   title: string
+  fill: boolean
+  border: boolean
+  position: {
+    top: string
+    left: string
+  }
 }

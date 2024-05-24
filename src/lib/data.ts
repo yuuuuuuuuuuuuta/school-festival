@@ -36,6 +36,28 @@ const buildings: Building[] = [
         name: '2F',
         number: 2,
         booths: [],
+        infos: [
+          {
+            id: '2-1',
+            title: '開会式・閉会式',
+            fill: true,
+            border: false,
+            position: {
+              top: '10',
+              left: '10',
+            },
+          },
+          {
+            id: '2-2',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
+            position: {
+              top: '50',
+              left: '10',
+            },
+          },
+        ],
       },
       {
         id: 'building-1-floor-3',
@@ -67,6 +89,18 @@ const buildings: Building[] = [
             },
           },
         ],
+        infos: [
+          {
+            id: '3-1',
+            title: '業界交流ブース\n卒業アルバム展示\nパネル展示',
+            fill: false,
+            border: false,
+            position: {
+              top: '30',
+              left: '10',
+            },
+          },
+        ],
       },
       {
         id: 'building-1-floor-4',
@@ -76,6 +110,28 @@ const buildings: Building[] = [
           {
             id: '1-4_maindesk',
             name: '本部',
+            position: {
+              top: '10',
+              left: '10',
+            },
+          },
+        ],
+        infos: [
+          {
+            id: '4-1',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
+            position: {
+              top: '30',
+              left: '10',
+            },
+          },
+          {
+            id: '4-2',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
             position: {
               top: '10',
               left: '10',
@@ -144,6 +200,18 @@ const buildings: Building[] = [
             },
           },
         ],
+        infos: [
+          {
+            id: '6-1',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
+            position: {
+              top: '30',
+              left: '10',
+            },
+          },
+        ],
       },
       {
         id: 'building-1-floor-7',
@@ -163,6 +231,18 @@ const buildings: Building[] = [
             name: '野生',
             position: {
               top: '10',
+              left: '10',
+            },
+          },
+        ],
+        infos: [
+          {
+            id: '7-1',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
+            position: {
+              top: '30',
               left: '10',
             },
           },
@@ -256,6 +336,18 @@ const buildings: Building[] = [
         name: '6F',
         number: 6,
         booths: [],
+        infos: [
+          {
+            id: '6-1',
+            title: 'STAFF ONLY',
+            fill: false,
+            border: true,
+            position: {
+              top: '30',
+              left: '10',
+            },
+          },
+        ],
       },
     ],
   },

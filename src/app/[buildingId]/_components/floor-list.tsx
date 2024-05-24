@@ -2,7 +2,8 @@ import Image from 'next/image'
 
 import { getBuilding } from '@/lib/data'
 
-import BoothDialog from './booth-dialog'
+import BoothItems from './booth-items'
+import InfoItems from './info-items'
 
 export default function FloorList({ buildingId }: { buildingId: string }) {
   const building = getBuilding(buildingId)
@@ -34,14 +35,12 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
           >
             {floor.name}
           </h3>
-          <div className="">
-            {floor.booths &&
-              floor.booths.map((booth) => (
-                <div key={booth.id}>
-                  <BoothDialog booth={booth} color={building.themeColor} />
-                </div>
-              ))}
-          </div>
+          <InfoItems
+            infos={floor.infos}
+            themeColor={building.themeColor}
+            accentColor={building.accentColor}
+          />
+          <BoothItems booths={floor.booths} themeColor={building.themeColor} />
         </div>
       ))}
     </div>
