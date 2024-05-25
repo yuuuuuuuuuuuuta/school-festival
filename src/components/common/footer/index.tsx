@@ -1,8 +1,26 @@
 import Image from 'next/image'
 
-export default function Footer() {
+import { cn } from '@/lib/utils'
+
+import SocialIcons from './social-icons'
+
+export default function Footer({
+  color,
+  className,
+}: {
+  color?: string
+  className?: string
+}) {
   return (
-    <footer className="flex flex-col items-center gap-6 bg-theme py-6 text-white">
+    <footer
+      className={cn(
+        'flex flex-col items-center gap-6 bg-theme py-6 text-white',
+        className,
+      )}
+      style={{
+        backgroundColor: `${color}ba`,
+      }}
+    >
       <Image
         src={'/images/tcaeco-logo2.png'}
         alt="TCA ECO 学園祭"
@@ -14,7 +32,7 @@ export default function Footer() {
         <br />
         Mail:info@tcaeco.ac.jp フリーダイヤル:0120-545-556
       </p>
-      <div className="">icons</div>
+      <SocialIcons />
     </footer>
   )
 }
