@@ -43,9 +43,9 @@ export default function BoothDialog({
         }}
       >
         <DialogHeader>
-          <DialogDescription className="mx-auto gap-1 pt-1.5">
+          <DialogDescription className="mx-auto">
             <DialogTitle
-              className="mb-2 w-fit px-3 py-1.5 text-left text-sm text-white"
+              className="w-fit px-3 py-1.5 text-left text-sm text-white"
               style={{
                 backgroundColor: color,
               }}
@@ -54,7 +54,7 @@ export default function BoothDialog({
             </DialogTitle>
             <ScrollArea className={`${booth.image && 'h-[calc(60dvh+70px)]'}`}>
               <Image
-                className="!relative mb-2 !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
                 src={`/images/booths/${booth.id}/image.webp`}
                 placeholder="blur"
                 blurDataURL={`/images/booths/${booth.id}/image.webp`}
@@ -63,7 +63,7 @@ export default function BoothDialog({
               />
               {booth.image && (
                 <Image
-                  className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                  className="!relative mt-3 !h-60dvh !w-auto object-contain md:min-w-[350px]"
                   src={`/images/booths/${booth.id}/image2.webp`}
                   placeholder="blur"
                   blurDataURL={`/images/booths/${booth.id}/image.webp`}
