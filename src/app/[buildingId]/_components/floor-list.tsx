@@ -16,7 +16,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
         <div
           key={floor.id}
           className="relative aspect-[16/12] w-full border-b first-of-type:border-t"
-          style={{ borderColor: building.themeColor }}
+          style={{ borderColor: building.accentColor }}
         >
           <div className="absolute right-0 top-1/2 w-full -translate-y-1/2">
             <Image
@@ -27,9 +27,9 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             />
           </div>
           <h3
-            className="absolute left-6 top-6 flex h-11 w-11 items-center justify-center rounded-full text-xl font-bold text-white"
+            className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white"
             style={{
-              backgroundColor: building.themeColor,
+              backgroundColor: building.accentColor,
             }}
           >
             {floor.name}
