@@ -4,7 +4,7 @@ import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 import type { Building } from '@/lib/definitions'
 
-import PcHomeFloorList from './_components/floor-list'
+import PcHomeFloorList from './floor-list'
 
 export default function PcHomePage({
   buildings,
@@ -14,10 +14,10 @@ export default function PcHomePage({
   return (
     <article className="hidden h-dvh overflow-hidden md:block">
       <main className="flex h-dvh">
-        <div className="flex flex-col justify-between">
-          <Header className="static" />
+        <div className="mx-auto flex min-w-[400px] flex-col justify-between">
+          <Header className="static justify-center" />
           <div className="flex w-full gap-3">
-            <div className="flex h-pcContent items-start">
+            <div className="mx-auto flex h-pcContent items-start">
               <Image
                 src={'/images/key-visual.png'}
                 alt="TCA ECO 学園祭"
@@ -25,23 +25,32 @@ export default function PcHomePage({
                 fill
               />
             </div>
-            <div className="relative flex h-pcContent flex-col items-start justify-center p-3">
-              <div className="flex w-full">
-                <h2 className="bg-theme px-5 py-1 text-lg font-semibold text-white">
-                  アクセスマップ
-                </h2>
-              </div>
-              <Image
-                className="!relative mt-6 !h-pcContentWithTitle !w-full object-contain"
-                src={'/images/access-map.png'}
-                alt="TCA ECO 学園祭"
-                fill
-              />
-            </div>
           </div>
-          <Footer />
+          <div className="flex h-32 items-center justify-center bg-theme">
+            <p className="text-white">sns icons</p>
+          </div>
         </div>
         <PcHomeFloorList buildings={buildings} />
+        <div className="flex min-w-[400px] flex-col justify-between">
+          <div className="flex h-[36px] items-center justify-center bg-theme">
+            <p className="font-medium text-white">アクセスマップ</p>
+          </div>
+          <div className="mx-auto flex h-pcContent items-start overflow-hidden">
+            <Image
+              src={'/images/access-map.png'}
+              alt="TCA ECO 学園祭"
+              className="!relative max-h-full !w-full scale-105 object-contain"
+              fill
+            />
+          </div>
+          <div className="flex h-32 items-center justify-center bg-theme">
+            <p className="text-center text-xs leading-7 text-white">
+              〒134-0088 東京都江戸川区西葛西6-29-9
+              <br />
+              Mail:info@tcaeco.ac.jp フリーダイヤル:0120-545-556
+            </p>
+          </div>
+        </div>
       </main>
     </article>
   )

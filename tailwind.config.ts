@@ -56,8 +56,8 @@ const config = {
       },
       height: {
         '60dvh': '60dvh',
-        pcContent: 'calc(100dvh - 200px)',
-        pcContentWithTitle: 'calc(100dvh - 300px)',
+        '70dvh': '70dvh',
+        pcContent: 'calc(100dvh - 165px)',
       },
       borderRadius: {
         lg: 'var(--radius)',

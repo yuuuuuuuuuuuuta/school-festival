@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import type { Booth } from '@/lib/definitions'
 
 export default function BoothDialog({
@@ -42,15 +43,38 @@ export default function BoothDialog({
         }}
       >
         <DialogHeader>
-          <DialogDescription className="mx-auto pt-1.5">
-            <Image
-              className="!relative !h-60dvh !w-auto min-w-[350px] object-contain"
-              src={`/images/booths/${booth.id}/image.webp`}
-              placeholder="blur"
-              blurDataURL={`/images/booths/${booth.id}/image.webp`}
-              alt={booth.name}
-              fill
-            />
+          <DialogDescription className="mx-auto gap-1 pt-1.5">
+            <DialogTitle
+              className="mb-2 w-fit px-3 py-1.5 text-left text-sm text-white"
+              style={{
+                backgroundColor: color,
+              }}
+            >
+              {booth.place}
+            </DialogTitle>
+            <ScrollArea className={`${booth.image && 'h-[calc(60dvh+70px)]'}`}>
+              <Image
+                className="!relative mb-2 !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                src={`/images/booths/${booth.id}/image.webp`}
+                placeholder="blur"
+                blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                alt={booth.name}
+                fill
+              />
+              {booth.image && (
+                <Image
+                  className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                  src={`/images/booths/${booth.id}/image2.webp`}
+                  placeholder="blur"
+                  blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                  alt={booth.name}
+                  fill
+                />
+              )}
+              {booth.image && (
+                <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
+              )}
+            </ScrollArea>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

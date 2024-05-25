@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { getBuilding } from '@/lib/data'
 
 import BoothItems from './booth-items'
-import InfoItems from './info-items'
 
 export default function FloorList({ buildingId }: { buildingId: string }) {
   const building = getBuilding(buildingId)
@@ -35,11 +34,6 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
           >
             {floor.name}
           </h3>
-          <InfoItems
-            infos={floor.infos}
-            themeColor={building.themeColor}
-            accentColor={building.accentColor}
-          />
           <BoothItems booths={floor.booths} themeColor={building.themeColor} />
         </div>
       ))}

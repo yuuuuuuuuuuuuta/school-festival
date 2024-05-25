@@ -28,7 +28,7 @@ export default function PcHomeFloorList({
             </div>
           ))}
         </div>
-        <div className="h-[161.5px] border-t border-theme bg-[#EDF4D9]/80"></div>
+        <div className="h-32 border-t border-theme bg-[#EDF4D9]/80"></div>
       </ScrollArea>
     </section>
   )

@@ -12,23 +12,13 @@ export type Floor = {
   name: string
   number: number
   booths?: Booth[]
-  infos?: Info[]
 }
 
 export type Booth = {
   id: string
   name: string
-  position: {
-    top: string
-    left: string
-  }
-}
-
-export type Info = {
-  id: string
-  title: string
-  fill: boolean
-  border: boolean
+  place: string
+  image?: boolean
   position: {
     top: string
     left: string

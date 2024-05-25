@@ -5,7 +5,7 @@ import Header from '@/components/common/header'
 import SectionWithTitle from '@/components/common/section/with-title'
 import type { Building } from '@/lib/definitions'
 
-import FloorLinkList from './_components/floor-link-list'
+import FloorLinkList from './floor-link-list'
 
 export default function MobileHomePage({
   buildings,
