@@ -16,7 +16,7 @@ export default function Header({
         className,
       )}
       style={{
-        backgroundColor: `${color}ba`,
+        backgroundColor: `${color}`,
       }}
     >
       <Image

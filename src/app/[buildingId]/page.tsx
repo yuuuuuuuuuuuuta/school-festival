@@ -19,14 +19,14 @@ export default function BuildingPage({
 
   return (
     <article>
-      <Header color={building.themeColor} className="backdrop-blur" />
-      <ScrollArea className="h-dvh">
+      <Header color={building.themeColor} />
+      <ScrollArea className="h-dvh px-4">
         <main className="flex flex-col items-center justify-center gap-10 py-20">
           <div>
             <h1 className="mb-4 text-center text-2xl font-bold">
               フロアマップ
             </h1>
-            <p className="text-sm">
+            <p className="text-balance text-center text-sm">
               マップに表示されているアイコンをクリックすると詳細情報が出ます
             </p>
           </div>

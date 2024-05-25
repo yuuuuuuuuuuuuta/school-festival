@@ -22,7 +22,7 @@ export default function BoothDialog({
     <Dialog>
       <DialogTrigger>
         <div
-          className="absolute inline-block !w-14 overflow-hidden rounded-full md:!w-20"
+          className="absolute inline-block !w-14 animate-bounce overflow-hidden rounded-full md:!w-20"
           style={{
             top: `${booth.position.top}%`,
             left: `${booth.position.left}%`,
@@ -45,7 +45,7 @@ export default function BoothDialog({
         <DialogHeader>
           <DialogDescription className="mx-auto">
             <DialogTitle
-              className="w-fit px-3 py-1.5 text-left text-sm text-white"
+              className="mb-1.5 w-fit px-3 py-1.5 text-left text-sm text-white"
               style={{
                 backgroundColor: color,
               }}
