@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import Footer from '@/components/common/footer'
+import SocialIcons from '@/components/common/footer/social-icons'
 import Header from '@/components/common/header'
 import type { Building } from '@/lib/definitions'
 
@@ -27,7 +27,7 @@ export default function PcHomePage({
             </div>
           </div>
           <div className="flex h-32 items-center justify-center bg-theme">
-            <p className="text-white">sns icons</p>
+            <SocialIcons />
           </div>
         </div>
         <PcHomeFloorList buildings={buildings} />

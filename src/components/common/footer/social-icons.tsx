@@ -7,10 +7,10 @@ import TikTokImage from './assets/tiktok.png'
 import XImage from './assets/x.png'
 
 const socialIcons = [
+  { name: 'X', image: XImage, link: '' },
   { name: 'Instagram', image: InstagramImage, link: '' },
   { name: 'TikTok', image: TikTokImage, link: '' },
   { name: 'Logo', image: LogoImage, link: '' },
-  { name: 'X', image: XImage, link: '' },
 ]
 
 export default function SocialIcons() {
