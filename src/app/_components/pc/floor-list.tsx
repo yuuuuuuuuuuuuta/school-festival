@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import FloorList from '@/app/[buildingId]/_components/floor-list'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import type { Building } from '@/lib/definitions'
@@ -17,18 +19,20 @@ export default function PcHomeFloorList({
           {buildings.map((building) => (
             <div key={building.id} className="pb-16 pt-8">
               <div className="flex justify-center py-10">
-                <h2
-                  className="px-10 py-2 font-bold text-white"
-                  style={{ backgroundColor: building.themeColor }}
-                >
-                  {building.name}
-                </h2>
+                <Link href={`/${building.id}`}>
+                  <h2
+                    className="px-10 py-2 font-bold text-white"
+                    style={{ backgroundColor: building.themeColor }}
+                  >
+                    {building.name}
+                  </h2>
+                </Link>
               </div>
               <FloorList buildingId={building.id} />
             </div>
           ))}
         </div>
-        <div className="h-32 border-t border-theme bg-[#EDF4D9]/80"></div>
+        <div className="h-[127px] border-y border-theme bg-[#EDF4D9]/80"></div>
       </ScrollArea>
     </section>
   )
