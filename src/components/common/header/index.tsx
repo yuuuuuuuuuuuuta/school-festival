@@ -15,6 +15,9 @@ export default function Header({
         'fixed top-0 z-30 flex w-full items-center bg-theme p-3',
         className,
       )}
+      style={{
+        backgroundColor: `${color}ba`,
+      }}
     >
       <Image
         src={'/images/tcaeco-logo.png'}
