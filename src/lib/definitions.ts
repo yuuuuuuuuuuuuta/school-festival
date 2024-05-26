@@ -18,7 +18,7 @@ export type Booth = {
   id: string
   name: string
   place: string
-  image?: boolean
+  image?: string[]
   position: {
     top: string
     left: string

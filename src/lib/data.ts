@@ -18,7 +18,7 @@ const buildings: Building[] = [
             name: '動マネ飼育2A',
             place: '第一校舎 1階 動物飼育室',
             position: {
-              top: '32',
+              top: '28',
               left: '23',
             },
           },
@@ -27,7 +27,7 @@ const buildings: Building[] = [
             name: '水プロ2',
             place: '第一校舎 1階 アクアルーム',
             position: {
-              top: '52',
+              top: '48',
               left: '63',
             },
           },
@@ -49,18 +49,18 @@ const buildings: Building[] = [
             name: 'ドルフィン2B',
             place: '第一校舎 3階 133教室',
             position: {
-              top: '10',
-              left: '10',
+              top: '35',
+              left: '78',
             },
           },
           {
             id: '131.132_specialevent',
             name: 'スペシャルイベント',
             place: '第一校舎 3階 131,132教室',
-            image: true,
+            image: ['tomokiriki', 'yukaonsafari', 'animalshow'],
             position: {
-              top: '10',
-              left: '20',
+              top: '20',
+              left: '30',
             },
           },
         ],
@@ -75,8 +75,8 @@ const buildings: Building[] = [
             name: '本部',
             place: '第一校舎 4階 図書室（キャリアセンター）',
             position: {
-              top: '10',
-              left: '10',
+              top: '53',
+              left: '65',
             },
           },
         ],
@@ -91,8 +91,8 @@ const buildings: Building[] = [
             name: 'ドルフィン2A',
             place: '第一校舎 5階 151教室',
             position: {
-              top: '10',
-              left: '10',
+              top: '20',
+              left: '20',
             },
           },
           {
@@ -100,8 +100,8 @@ const buildings: Building[] = [
             name: '水プロ3',
             place: '第一校舎 5階 152教室',
             position: {
-              top: '10',
-              left: '20',
+              top: '27',
+              left: '38',
             },
           },
           {
@@ -109,8 +109,8 @@ const buildings: Building[] = [
             name: 'アクア2A',
             place: '第一校舎 5階 153教室',
             position: {
-              top: '10',
-              left: '30',
+              top: '35',
+              left: '78',
             },
           },
           {
@@ -118,8 +118,8 @@ const buildings: Building[] = [
             name: 'アクア2B',
             place: '第一校舎 5階 154教室',
             position: {
-              top: '10',
-              left: '40',
+              top: '53',
+              left: '65',
             },
           },
         ],
@@ -134,8 +134,8 @@ const buildings: Building[] = [
             name: '飼育2B',
             place: '第一校舎 6階 161教室',
             position: {
-              top: '10',
-              left: '10',
+              top: '27',
+              left: '38',
             },
           },
           {
@@ -143,8 +143,8 @@ const buildings: Building[] = [
             name: '動マネ3',
             place: '第一校舎 6階 162教室',
             position: {
-              top: '10',
-              left: '20',
+              top: '35',
+              left: '78',
             },
           },
         ],
@@ -159,8 +159,8 @@ const buildings: Building[] = [
             name: 'エキゾ',
             place: '第一校舎 7階 171教室',
             position: {
-              top: '10',
-              left: '10',
+              top: '35',
+              left: '62',
             },
           },
           {
@@ -168,8 +168,8 @@ const buildings: Building[] = [
             name: '野生',
             place: '第一校舎 7階 171教室',
             position: {
-              top: '10',
-              left: '20',
+              top: '35',
+              left: '80',
             },
           },
         ],
@@ -193,8 +193,8 @@ const buildings: Building[] = [
             name: 'ペットビジネス',
             place: '第二校舎 1階 211教室（カフェ室）',
             position: {
-              top: '10',
-              left: '10',
+              top: '30',
+              left: '28',
             },
           },
         ],
@@ -209,8 +209,8 @@ const buildings: Building[] = [
             name: 'トリマー',
             place: '第二校舎 2階 221,222教室（トリミングルーム）',
             position: {
-              top: '10',
-              left: '10',
+              top: '35',
+              left: '35',
             },
           },
         ],
@@ -231,8 +231,8 @@ const buildings: Building[] = [
             name: 'ドッグ',
             place: '第二校舎 4階 241,242教室（トレーニングルーム）',
             position: {
-              top: '10',
-              left: '10',
+              top: '35',
+              left: '35',
             },
           },
         ],
@@ -247,8 +247,8 @@ const buildings: Building[] = [
             name: '看護理学2',
             place: '第二校舎 5階 251教室（動物看護室）',
             position: {
-              top: '10',
-              left: '10',
+              top: '40',
+              left: '20',
             },
           },
           {
@@ -256,8 +256,8 @@ const buildings: Building[] = [
             name: '看護理学3',
             place: '第二校舎 5階 252教室（動物理学療法室）',
             position: {
-              top: '10',
-              left: '20',
+              top: '32',
+              left: '50',
             },
           },
         ],
@@ -278,7 +278,7 @@ const buildings: Building[] = [
     accentColor: '#954D2B',
     floors: [
       {
-        id: 'building-3-floor-b1',
+        id: 'building-3-floor-0',
         name: 'BF',
         number: -1,
         booths: [
@@ -287,8 +287,8 @@ const buildings: Building[] = [
             name: '恐竜',
             place: '第三校舎 地下',
             position: {
-              top: '10',
-              left: '10',
+              top: '35',
+              left: '40',
             },
           },
         ],
@@ -303,8 +303,8 @@ const buildings: Building[] = [
             name: '動水テク',
             place: '第三校舎 1階 311教室',
             position: {
-              top: '10',
-              left: '10',
+              top: '50',
+              left: '15',
             },
           },
         ],

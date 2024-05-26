@@ -22,15 +22,15 @@ export default function BoothDialog({
     <Dialog>
       <DialogTrigger>
         <div
-          className="absolute inline-block !w-14 overflow-hidden rounded-full md:!w-20"
+          className="absolute inline-block !w-14 overflow-hidden rounded-full lg:!w-20"
           style={{
             top: `${booth.position.top}%`,
             left: `${booth.position.left}%`,
           }}
         >
           <Image
-            className="!relative aspect-square !w-14 object-contain md:!w-20"
-            src={`/images/booths/${booth.id}/icon.png`}
+            className="!relative aspect-square !w-14 object-contain lg:!w-20"
+            src={`/images/booths/${booth.id}/icon.webp`}
             alt={booth.name}
             fill
           />
@@ -53,18 +53,22 @@ export default function BoothDialog({
               {booth.place}
             </DialogTitle>
             <ScrollArea className={`${booth.image && 'h-[calc(60dvh+70px)]'}`}>
-              <Image
-                className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
-                src={`/images/booths/${booth.id}/image.webp`}
-                placeholder="blur"
-                blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                alt={booth.name}
-                fill
-              />
-              {booth.image && (
+              {booth.image ? (
+                booth.image.map((image, index) => (
+                  <Image
+                    key={index}
+                    className="!relative mb-3 !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                    src={`/images/booths/${booth.id}/${image}.webp`}
+                    placeholder="blur"
+                    blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                    alt={booth.name}
+                    fill
+                  />
+                ))
+              ) : (
                 <Image
-                  className="!relative mt-3 !h-60dvh !w-auto object-contain md:min-w-[350px]"
-                  src={`/images/booths/${booth.id}/image2.webp`}
+                  className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                  src={`/images/booths/${booth.id}/image.webp`}
                   placeholder="blur"
                   blurDataURL={`/images/booths/${booth.id}/image.webp`}
                   alt={booth.name}
