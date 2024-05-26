@@ -21,7 +21,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
           <div className="absolute right-0 top-1/2 w-full -translate-y-1/2">
             <Image
               className="!relative w-full object-contain"
-              src={`/images/floors/${floor.id}.png`}
+              src={`/images/floors/${floor.id}.svg`}
               alt={floor.name}
               fill
             />

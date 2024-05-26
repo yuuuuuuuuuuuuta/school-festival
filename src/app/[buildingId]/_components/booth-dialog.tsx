@@ -30,7 +30,7 @@ export default function BoothDialog({
         >
           <Image
             className="!relative aspect-square !w-14 object-contain md:!w-20"
-            src={`/images/booths/${booth.id}/icon.webp`}
+            src={`/images/booths/${booth.id}/icon.png`}
             alt={booth.name}
             fill
           />
