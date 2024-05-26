@@ -1,16 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import InstagramImage from './assets/instagram.png'
-import LogoImage from './assets/logo.png'
-import TikTokImage from './assets/tiktok.png'
-import XImage from './assets/x.png'
+import InstagramImage from './assets/instagram.svg'
+import TCAECOImage from './assets/tcaeco.svg'
+import TikTokImage from './assets/tiktok.svg'
+import XImage from './assets/x.svg'
 
 const socialIcons = [
   { name: 'X', image: XImage, link: '' },
   { name: 'Instagram', image: InstagramImage, link: '' },
   { name: 'TikTok', image: TikTokImage, link: '' },
-  { name: 'Logo', image: LogoImage, link: '' },
+  { name: 'TCA ECO', image: TCAECOImage, link: '' },
 ]
 
 export default function SocialIcons() {

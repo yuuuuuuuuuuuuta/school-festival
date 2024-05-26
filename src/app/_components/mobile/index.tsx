@@ -18,7 +18,7 @@ export default function MobileHomePage({
       <main>
         <div className="fixed left-0 top-0 -z-10 h-screen pt-10">
           <Image
-            src={'/images/key-visual.png'}
+            src={'/images/hiro.webp'}
             alt="TCA ECO 学園祭"
             width={1920}
             height={1080}
@@ -30,7 +30,7 @@ export default function MobileHomePage({
           <SectionWithTitle title="アクセスマップ">
             <Image
               className="!relative !w-full object-contain"
-              src={'/images/access-map.png'}
+              src={'/images/map.webp'}
               alt="TCA ECO 学園祭"
               fill
             />

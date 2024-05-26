@@ -19,7 +19,7 @@ export default function PcHomePage({
           <div className="flex w-full gap-3">
             <div className="mx-auto flex h-pcContent items-start">
               <Image
-                src={'/images/key-visual.png'}
+                src={'/images/hiro.webp'}
                 alt="TCA ECO 学園祭"
                 className="!relative max-h-full !w-full object-contain"
                 fill
@@ -37,7 +37,7 @@ export default function PcHomePage({
           </div>
           <div className="mx-auto flex h-pcContent items-start overflow-hidden">
             <Image
-              src={'/images/access-map.png'}
+              src={'/images/map.webp'}
               alt="TCA ECO 学園祭"
               className="!relative max-h-full !w-full scale-105 object-contain"
               fill
