@@ -11,7 +11,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
   }
 
   return (
-    <div className="mx-auto flex w-full flex-col gap-5 md:max-w-xl">
+    <div className="mx-auto flex w-full flex-col gap-5 px-4 md:max-w-xl">
       {building.floors.map((floor) => (
         <div
           key={floor.id}

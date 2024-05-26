@@ -20,9 +20,9 @@ export default function BuildingPage({
   return (
     <article>
       <Header color={building.themeColor} />
-      <ScrollArea className="h-dvh px-4">
+      <ScrollArea className="h-dvh">
         <main className="flex flex-col items-center justify-center gap-10 py-20">
-          <div>
+          <div className="px-4">
             <h1 className="mb-4 text-center text-2xl font-bold">
               フロアマップ
             </h1>
