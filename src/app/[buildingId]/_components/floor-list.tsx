@@ -27,7 +27,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             />
           </div>
           <h3
-            className="absolute left-6 top-10 flex h-14 w-14 items-center justify-center rounded-full text-xl font-bold text-white"
+            className="absolute left-4 top-6 flex size-11 items-center justify-center rounded-full text-xl font-bold text-white sm:left-6 sm:top-10 sm:size-14"
             style={{
               backgroundColor: building.accentColor,
             }}
