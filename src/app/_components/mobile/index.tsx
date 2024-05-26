@@ -6,6 +6,7 @@ import SectionWithTitle from '@/components/common/section/with-title'
 import type { Building } from '@/lib/definitions'
 
 import FloorLinkList from './floor-link-list'
+import ScrollDown from './scroll-down'
 
 export default function MobileHomePage({
   buildings,
@@ -16,7 +17,7 @@ export default function MobileHomePage({
     <article className="md:hidden">
       <Header />
       <main>
-        <div className="fixed left-0 top-0 -z-10 h-screen pt-10">
+        <div className="fixed left-0 top-10 -z-10 h-screen">
           <Image
             src={'/images/hiro.webp'}
             alt="TCA ECO 学園祭"
@@ -24,9 +25,10 @@ export default function MobileHomePage({
             height={1080}
             className="max-h-full object-contain p-6"
           />
+          <ScrollDown />
         </div>
         <div className="h-screen"></div>
-        <div className="flex flex-col gap-16 bg-white/90 p-14">
+        <div id="main" className="flex flex-col gap-16 bg-white/90 p-14">
           <SectionWithTitle title="アクセスマップ">
             <Image
               className="!relative !w-full object-contain"
