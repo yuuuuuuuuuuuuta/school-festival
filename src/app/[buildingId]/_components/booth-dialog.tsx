@@ -22,14 +22,14 @@ export default function BoothDialog({
     <Dialog>
       <DialogTrigger>
         <div
-          className="absolute inline-block !w-14 animate-bounce overflow-hidden rounded-full lg:!w-20"
+          className="absolute inline-block !w-16 overflow-hidden rounded-full lg:!w-20"
           style={{
             top: `${booth.position.top}%`,
             left: `${booth.position.left}%`,
           }}
         >
           <Image
-            className="!relative aspect-square !w-14 object-contain lg:!w-20"
+            className="!relative aspect-square !w-16 object-contain lg:!w-20"
             src={`/images/booths/${booth.id}/icon.webp`}
             alt={booth.name}
             fill
