@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
@@ -19,12 +20,14 @@ export default function Header({
         backgroundColor: `${color}`,
       }}
     >
-      <Image
-        src={'/images/tcaeco-logo.png'}
-        alt="TCA ECO 学園祭"
-        width={200}
-        height={13}
-      />
+      <Link href="/">
+        <Image
+          src={'/images/tcaeco-logo.png'}
+          alt="TCA ECO 学園祭"
+          width={200}
+          height={13}
+        />
+      </Link>
     </header>
   )
 }
