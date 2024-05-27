@@ -25,8 +25,8 @@ export default function MobileHomePage({
             height={1080}
             className="max-h-full object-contain p-6"
           />
-          <ScrollDown />
         </div>
+        <ScrollDown />
         <div className="h-screen"></div>
         <div id="main" className="flex flex-col gap-16 bg-white/90 p-14">
           <SectionWithTitle title="アクセスマップ">
