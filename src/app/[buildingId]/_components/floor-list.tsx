@@ -35,6 +35,19 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             {floor.name}
           </h3>
           <BoothItems booths={floor.booths} themeColor={building.themeColor} />
+          <div className="absolute bottom-2 right-1 flex flex-col gap-1">
+            {floor.icons?.map((icon) => (
+              <div key={icon.id} className="flex items-center gap-1 text-xs">
+                <Image
+                  className="!relative !h-5 !w-5"
+                  src={`/images/floors/icons/${icon.image}.svg`}
+                  alt={icon.name}
+                  fill
+                />
+                <p>{icon.name}</p>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>

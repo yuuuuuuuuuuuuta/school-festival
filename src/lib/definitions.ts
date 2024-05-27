@@ -11,6 +11,7 @@ export type Floor = {
   id: string
   name: string
   number: number
+  icons?: Icon[]
   booths?: Booth[]
 }
 
@@ -23,4 +24,10 @@ export type Booth = {
     top: string
     left: string
   }
+}
+
+export type Icon = {
+  id: string
+  name: string
+  image: 'elevator' | 'restroom_men' | 'restroom_share' | 'restroom_women'
 }
