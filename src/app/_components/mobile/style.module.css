@@ -5,11 +5,12 @@
   bottom:30px;
   right:50%;
   animation: arrowmove 1s ease-in-out infinite;
+  transform: translate(0, -50%);
 }
 
 .scroll_down a{
   position: absolute;
-  left: -24px;
+  left: -19px;
   bottom: 30px;
   color: #333;
   font-size: 14px;
