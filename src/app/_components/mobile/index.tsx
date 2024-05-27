@@ -5,8 +5,8 @@ import Header from '@/components/common/header'
 import SectionWithTitle from '@/components/common/section/with-title'
 import type { Building } from '@/lib/definitions'
 
+import ScrollDown from '../../../components/common/scroll-down'
 import FloorLinkList from './floor-link-list'
-import ScrollDown from './scroll-down'
 
 export default function MobileHomePage({
   buildings,

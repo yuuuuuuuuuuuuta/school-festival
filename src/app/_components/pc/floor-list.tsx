@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import FloorList from '@/app/[buildingId]/_components/floor-list'
+import ScrollDown from '@/components/common/scroll-down'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import type { Building } from '@/lib/definitions'
 
@@ -34,6 +35,7 @@ export default function PcHomeFloorList({
         </div>
         <div className="h-[127px] border-y border-theme bg-[#EDF4D9]/80"></div>
       </ScrollArea>
+      <ScrollDown textHidden={true} />
     </section>
   )
 }
