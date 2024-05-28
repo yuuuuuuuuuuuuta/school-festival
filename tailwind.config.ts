@@ -59,6 +59,9 @@ const config = {
         '70dvh': '70dvh',
         pcContent: 'calc(100dvh - 165px)',
       },
+      minHeight: {
+        '60dvh': '60dvh',
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

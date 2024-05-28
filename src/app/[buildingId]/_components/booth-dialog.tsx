@@ -42,46 +42,46 @@ export default function BoothDialog({
           borderColor: color,
         }}
       >
-        <DialogHeader>
-          <DialogDescription className="mx-auto">
-            <DialogTitle
-              className="mb-1.5 w-fit px-3 py-1.5 text-left text-sm text-white"
-              style={{
-                backgroundColor: color,
-              }}
-            >
-              {booth.place}
-            </DialogTitle>
-            <ScrollArea className={`${booth.image && 'h-[calc(60dvh+70px)]'}`}>
-              {booth.image ? (
-                booth.image.map((image, index) => (
-                  <Image
-                    key={index}
-                    className="!relative mx-auto mt-4 !h-60dvh !w-auto border-b-2 object-contain pb-4 last-of-type:border-b-0 last-of-type:pb-0 md:min-w-[350px]"
-                    src={`/images/booths/${booth.id}/${image}.webp`}
-                    placeholder="blur"
-                    blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                    alt={booth.name}
-                    style={{ borderBottomColor: color }}
-                    fill
-                  />
-                ))
-              ) : (
+        <DialogDescription className="mx-auto w-full">
+          <DialogTitle
+            className="mb-2 w-fit px-3 py-1.5 text-left text-sm text-white"
+            style={{
+              backgroundColor: color,
+            }}
+          >
+            {booth.place}
+          </DialogTitle>
+          <ScrollArea
+            className={`${booth.image && 'h-[calc(60dvh+70px)] w-full'}`}
+          >
+            {booth.image ? (
+              booth.image.map((image, index) => (
                 <Image
-                  className="!relative mx-auto !h-60dvh !w-auto object-contain md:min-w-[350px]"
-                  src={`/images/booths/${booth.id}/image.webp`}
+                  key={index}
+                  className="!relative mx-auto mt-4 !min-h-60dvh !w-full border-b-2 object-contain pb-4 last-of-type:border-b-0 last-of-type:pb-0 md:min-w-[350px]"
+                  src={`/images/booths/${booth.id}/${image}.webp`}
                   placeholder="blur"
                   blurDataURL={`/images/booths/${booth.id}/image.webp`}
                   alt={booth.name}
+                  style={{ borderBottomColor: color }}
                   fill
                 />
-              )}
-              {booth.image && (
-                <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
-              )}
-            </ScrollArea>
-          </DialogDescription>
-        </DialogHeader>
+              ))
+            ) : (
+              <Image
+                className="!relative mx-auto !min-h-60dvh !w-full object-contain md:min-w-[350px]"
+                src={`/images/booths/${booth.id}/image.webp`}
+                placeholder="blur"
+                blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                alt={booth.name}
+                fill
+              />
+            )}
+            {booth.image && (
+              <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
+            )}
+          </ScrollArea>
+        </DialogDescription>
       </DialogContent>
     </Dialog>
   )
