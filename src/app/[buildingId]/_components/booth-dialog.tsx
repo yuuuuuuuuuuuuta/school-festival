@@ -57,17 +57,18 @@ export default function BoothDialog({
                 booth.image.map((image, index) => (
                   <Image
                     key={index}
-                    className="!relative mb-3 !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                    className="!relative mx-auto mt-4 !h-60dvh !w-auto border-b-2 object-contain pb-4 last-of-type:border-b-0 last-of-type:pb-0 md:min-w-[350px]"
                     src={`/images/booths/${booth.id}/${image}.webp`}
                     placeholder="blur"
                     blurDataURL={`/images/booths/${booth.id}/image.webp`}
                     alt={booth.name}
+                    style={{ borderBottomColor: color }}
                     fill
                   />
                 ))
               ) : (
                 <Image
-                  className="!relative !h-60dvh !w-auto object-contain md:min-w-[350px]"
+                  className="!relative mx-auto !h-60dvh !w-auto object-contain md:min-w-[350px]"
                   src={`/images/booths/${booth.id}/image.webp`}
                   placeholder="blur"
                   blurDataURL={`/images/booths/${booth.id}/image.webp`}
