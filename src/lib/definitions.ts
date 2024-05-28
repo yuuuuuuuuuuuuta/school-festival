@@ -5,13 +5,13 @@ export type Building = {
   themeColor: string
   accentColor: string
   floors: Floor[]
+  icons?: Icon[]
 }
 
 export type Floor = {
   id: string
   name: string
   number: number
-  icons?: Icon[]
   booths?: Booth[]
 }
 

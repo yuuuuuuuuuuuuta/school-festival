@@ -7,23 +7,33 @@ const buildings: Building[] = [
     index: 1,
     themeColor: '#6FBA2D',
     accentColor: '#2C893A',
+    icons: [
+      {
+        id: 'restroom',
+        name: '多目的トイレ',
+        image: 'restroom_share',
+      },
+      {
+        id: 'restroom',
+        name: '男子トイレ',
+        image: 'restroom_men',
+      },
+      {
+        id: 'restroom',
+        name: '女子トイレ',
+        image: 'restroom_women',
+      },
+      {
+        id: 'elevator',
+        name: 'エレベーター',
+        image: 'elevator',
+      },
+    ],
     floors: [
       {
         id: 'building-1-floor-1',
         name: '1F',
         number: 1,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男女共用トイレ・多目的トイレ',
-            image: 'restroom_share',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '1-1_doumanashiku2a',
@@ -49,36 +59,12 @@ const buildings: Building[] = [
         id: 'building-1-floor-2',
         name: '2F',
         number: 2,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男子トイレ・女子トイレ',
-            image: 'restroom_share',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [],
       },
       {
         id: 'building-1-floor-3',
         name: '3F',
         number: 3,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男子トイレ',
-            image: 'restroom_men',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '133_dolphin2b',
@@ -105,18 +91,6 @@ const buildings: Building[] = [
         id: 'building-1-floor-4',
         name: '4F',
         number: 4,
-        icons: [
-          {
-            id: 'restroom',
-            name: '女子トイレ',
-            image: 'restroom_women',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '1-4_maindesk',
@@ -133,18 +107,6 @@ const buildings: Building[] = [
         id: 'building-1-floor-5',
         name: '5F',
         number: 5,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男子トイレ',
-            image: 'restroom_men',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '151_dolphin2a',
@@ -188,18 +150,6 @@ const buildings: Building[] = [
         id: 'building-1-floor-6',
         name: '6F',
         number: 6,
-        icons: [
-          {
-            id: 'restroom',
-            name: '女子トイレ',
-            image: 'restroom_women',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '161_shiku2b',
@@ -225,13 +175,6 @@ const buildings: Building[] = [
         id: 'building-1-floor-7',
         name: '7F',
         number: 7,
-        icons: [
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '171_ekizo',
@@ -261,23 +204,33 @@ const buildings: Building[] = [
     index: 2,
     themeColor: '#F3858E',
     accentColor: '#B81649',
+    icons: [
+      {
+        id: 'restroom',
+        name: '多目的トイレ',
+        image: 'restroom_share',
+      },
+      {
+        id: 'restroom',
+        name: '男子トイレ',
+        image: 'restroom_men',
+      },
+      {
+        id: 'restroom',
+        name: '女子トイレ',
+        image: 'restroom_women',
+      },
+      {
+        id: 'elevator',
+        name: 'エレベーター',
+        image: 'elevator',
+      },
+    ],
     floors: [
       {
         id: 'building-2-floor-1',
         name: '1F',
         number: 1,
-        icons: [
-          {
-            id: 'restroom',
-            name: '多目的トイレ',
-            image: 'restroom_share',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '211_petbusiness',
@@ -294,13 +247,6 @@ const buildings: Building[] = [
         id: 'building-2-floor-2',
         name: '2F',
         number: 2,
-        icons: [
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '221.222_trimmer',
@@ -317,36 +263,12 @@ const buildings: Building[] = [
         id: 'building-2-floor-3',
         name: '3F',
         number: 3,
-        icons: [
-          {
-            id: 'restroom',
-            name: '女子トイレ',
-            image: 'restroom_women',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [],
       },
       {
         id: 'building-2-floor-4',
         name: '4F',
         number: 4,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男子トイレ',
-            image: 'restroom_men',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '241.242_dog',
@@ -363,18 +285,6 @@ const buildings: Building[] = [
         id: 'building-2-floor-5',
         name: '5F',
         number: 5,
-        icons: [
-          {
-            id: 'restroom',
-            name: '女子トイレ',
-            image: 'restroom_women',
-          },
-          {
-            id: 'elevator',
-            name: 'エレベーター',
-            image: 'elevator',
-          },
-        ],
         booths: [
           {
             id: '251_nursingscience2',
@@ -410,6 +320,18 @@ const buildings: Building[] = [
     index: 3,
     themeColor: '#965045',
     accentColor: '#954D2B',
+    icons: [
+      {
+        id: 'restroom',
+        name: '男子トイレ',
+        image: 'restroom_men',
+      },
+      {
+        id: 'restroom',
+        name: '女子トイレ',
+        image: 'restroom_women',
+      },
+    ],
     floors: [
       {
         id: 'building-3-floor-0',
@@ -447,26 +369,12 @@ const buildings: Building[] = [
         id: 'building-3-floor-2',
         name: '2F',
         number: 2,
-        icons: [
-          {
-            id: 'restroom',
-            name: '女子トイレ',
-            image: 'restroom_women',
-          },
-        ],
         booths: [],
       },
       {
         id: 'building-3-floor-3',
         name: '3F',
         number: 3,
-        icons: [
-          {
-            id: 'restroom',
-            name: '男子トイレ',
-            image: 'restroom_men',
-          },
-        ],
         booths: [],
       },
     ],

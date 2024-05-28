@@ -12,6 +12,19 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
 
   return (
     <div className="mx-auto flex w-full flex-col gap-5 px-4 md:max-w-xl">
+      <div className="flex flex-wrap gap-1.5">
+        {building.icons?.map((icon) => (
+          <div key={icon.id} className="flex items-center gap-1">
+            <Image
+              className="!relative !h-4 !w-4"
+              src={`/images/floors/icons/${icon.image}.svg`}
+              alt={icon.name}
+              fill
+            />
+            <span className="text-xs">{icon.name}</span>
+          </div>
+        ))}
+      </div>
       {building.floors.map((floor) => (
         <div
           key={floor.id}
@@ -35,19 +48,6 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             {floor.name}
           </h3>
           <BoothItems booths={floor.booths} themeColor={building.themeColor} />
-          <div className="absolute bottom-2 right-1 flex flex-col gap-1">
-            {floor.icons?.map((icon) => (
-              <div key={icon.id} className="flex items-center gap-1 text-xs">
-                <Image
-                  className="!relative !h-5 !w-5"
-                  src={`/images/floors/icons/${icon.image}.svg`}
-                  alt={icon.name}
-                  fill
-                />
-                <p>{icon.name}</p>
-              </div>
-            ))}
-          </div>
         </div>
       ))}
     </div>
