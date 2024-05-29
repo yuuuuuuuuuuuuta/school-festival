@@ -98,7 +98,7 @@ const buildings: Building[] = [
             place: '第一校舎 4階 図書室（キャリアセンター）',
             position: {
               top: '53',
-              left: '65',
+              left: '70',
             },
           },
         ],
