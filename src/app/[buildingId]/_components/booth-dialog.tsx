@@ -13,21 +13,31 @@ import type { Booth } from '@/lib/definitions'
 
 export default function BoothDialog({
   booth,
-  color,
+  themeColor,
+  accentColor,
 }: {
   booth: Booth
-  color: string
+  themeColor: string
+  accentColor: string
 }) {
   return (
     <Dialog>
       <DialogTrigger>
         <div
-          className="absolute inline-block !w-16 overflow-hidden rounded-full focus:outline-0 lg:!w-20"
+          className="absolute flex flex-col items-center justify-center gap-1 overflow-hidden focus:outline-0"
           style={{
             top: `${booth.position.top}%`,
             left: `${booth.position.left}%`,
           }}
         >
+          <span
+            className="whitespace-pre-wrap rounded border-2 bg-white/20 px-3 py-1 text-[7px] shadow backdrop-blur-sm"
+            style={{
+              borderColor: accentColor,
+            }}
+          >
+            {booth.name}
+          </span>
           <Image
             className="!relative aspect-square !w-16 object-contain lg:!w-20"
             src={`/images/booths/${booth.id}/icon.webp`}
@@ -39,14 +49,14 @@ export default function BoothDialog({
       <DialogContent
         className="w-[90vw] rounded-md border-2 md:w-auto md:max-w-lg"
         style={{
-          borderColor: color,
+          borderColor: themeColor,
         }}
       >
         <DialogDescription className="mx-auto w-full">
           <DialogTitle
             className="mb-2 w-fit px-3 py-1.5 text-left text-sm text-white"
             style={{
-              backgroundColor: color,
+              backgroundColor: themeColor,
             }}
           >
             {booth.place}
@@ -63,7 +73,7 @@ export default function BoothDialog({
                   placeholder="blur"
                   blurDataURL={`/images/booths/${booth.id}/image.webp`}
                   alt={booth.name}
-                  style={{ borderBottomColor: color }}
+                  style={{ borderBottomColor: themeColor }}
                   fill
                 />
               ))

@@ -47,7 +47,11 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
           >
             {floor.name}
           </h3>
-          <BoothItems booths={floor.booths} themeColor={building.themeColor} />
+          <BoothItems
+            booths={floor.booths}
+            themeColor={building.themeColor}
+            accentColor={building.accentColor}
+          />
         </div>
       ))}
     </div>

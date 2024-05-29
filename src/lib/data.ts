@@ -37,20 +37,20 @@ const buildings: Building[] = [
         booths: [
           {
             id: '1-1_doumanashiku2a',
-            name: '動マネ飼育2A',
+            name: '動物園マネジメント専攻\n動物園・動物飼育専攻\n2年A',
             place: '第一校舎 1階 動物飼育室',
             position: {
-              top: '28',
-              left: '23',
+              top: '17',
+              left: '17',
             },
           },
           {
             id: '1-1_suipro2',
-            name: '水プロ2',
+            name: '水族館プロデュース専攻\n2年',
             place: '第一校舎 1階 アクアルーム',
             position: {
-              top: '48',
-              left: '63',
+              top: '40',
+              left: '62',
             },
           },
         ],
@@ -68,11 +68,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '133_dolphin2b',
-            name: 'ドルフィン2B',
+            name: 'ドルフィントレーナー専攻\n2年B',
             place: '第一校舎 3階 133教室',
             position: {
-              top: '35',
-              left: '78',
+              top: '25',
+              left: '68',
             },
           },
           {
@@ -81,8 +81,8 @@ const buildings: Building[] = [
             place: '第一校舎 3階 131,132教室',
             image: ['tomokiriki', 'yukaonsafari', 'animalshow'],
             position: {
-              top: '20',
-              left: '30',
+              top: '18',
+              left: '28',
             },
           },
         ],
@@ -110,38 +110,38 @@ const buildings: Building[] = [
         booths: [
           {
             id: '151_dolphin2a',
-            name: 'ドルフィン2A',
+            name: 'ドルフィントレーナー専攻\n2年A',
             place: '第一校舎 5階 151教室',
             position: {
-              top: '20',
-              left: '20',
+              top: '8',
+              left: '16',
             },
           },
           {
             id: '152_suipro3',
-            name: '水プロ3',
+            name: '水族館プロデュース専攻\n3年',
             place: '第一校舎 5階 152教室',
             position: {
-              top: '27',
-              left: '38',
+              top: '15',
+              left: '35',
             },
           },
           {
             id: '153_aqua2a',
-            name: 'アクア2A',
+            name: '水族館・アクアリスト専攻\n2年A',
             place: '第一校舎 5階 153教室',
             position: {
-              top: '35',
-              left: '78',
+              top: '23',
+              left: '75',
             },
           },
           {
             id: '154_aqua2b',
-            name: 'アクア2B',
+            name: '水族館・アクアリスト専攻\n2年B',
             place: '第一校舎 5階 154教室',
             position: {
-              top: '53',
-              left: '65',
+              top: '55',
+              left: '62',
             },
           },
         ],
@@ -153,20 +153,20 @@ const buildings: Building[] = [
         booths: [
           {
             id: '161_shiku2b',
-            name: '飼育2B',
+            name: '動物園・動物飼育専攻\n2年B',
             place: '第一校舎 6階 161教室',
             position: {
-              top: '27',
-              left: '38',
+              top: '15',
+              left: '35',
             },
           },
           {
             id: '162_doumane3',
-            name: '動マネ3',
+            name: '動物園マネジメント専攻\n3年',
             place: '第一校舎 6階 162教室',
             position: {
-              top: '35',
-              left: '78',
+              top: '25',
+              left: '75',
             },
           },
         ],
@@ -178,20 +178,20 @@ const buildings: Building[] = [
         booths: [
           {
             id: '171_ekizo',
-            name: 'エキゾ',
+            name: 'エキゾチックアニマル＆プランツ専攻\n2年',
             place: '第一校舎 7階 171教室',
             position: {
-              top: '35',
-              left: '62',
+              top: '25',
+              left: '75',
             },
           },
           {
             id: '171_yasei',
-            name: '野生',
+            name: '野生動物保護専攻\n2年',
             place: '第一校舎 7階 171教室',
             position: {
-              top: '35',
-              left: '80',
+              top: '25',
+              left: '55',
             },
           },
         ],
@@ -234,11 +234,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '211_petbusiness',
-            name: 'ペットビジネス',
+            name: 'ペットビジネス専攻\n3年',
             place: '第二校舎 1階 211教室（カフェ室）',
             position: {
-              top: '30',
-              left: '28',
+              top: '20',
+              left: '25',
             },
           },
         ],
@@ -250,11 +250,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '221.222_trimmer',
-            name: 'トリマー',
+            name: 'ペットトリマー＆エステティシャン専攻\n2年',
             place: '第二校舎 2階 221,222教室（トリミングルーム）',
             position: {
-              top: '35',
-              left: '35',
+              top: '25',
+              left: '25',
             },
           },
         ],
@@ -272,11 +272,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '241.242_dog',
-            name: 'ドッグ',
+            name: 'ドッグトレーナー専攻\n2年',
             place: '第二校舎 4階 241,242教室（トレーニングルーム）',
             position: {
-              top: '35',
-              left: '35',
+              top: '25',
+              left: '25',
             },
           },
         ],
@@ -288,20 +288,20 @@ const buildings: Building[] = [
         booths: [
           {
             id: '251_nursingscience2',
-            name: '看護理学2',
+            name: '動物看護＆福祉理学療法専攻\n3年',
             place: '第二校舎 5階 251教室（動物看護室）',
             position: {
-              top: '40',
-              left: '20',
+              top: '30',
+              left: '10',
             },
           },
           {
             id: '252_nursingscience3',
-            name: '看護理学3',
+            name: '愛玩動物看護師＆高度医療専攻\n2年',
             place: '第二校舎 5階 252教室（動物理学療法室）',
             position: {
-              top: '32',
-              left: '50',
+              top: '25',
+              left: '45',
             },
           },
         ],
@@ -340,11 +340,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '3-b1_dinosaur',
-            name: '恐竜',
+            name: '恐竜・自然史博物専攻\n3年',
             place: '第三校舎 地下',
             position: {
-              top: '35',
-              left: '40',
+              top: '30',
+              left: '30',
             },
           },
         ],
@@ -356,11 +356,11 @@ const buildings: Building[] = [
         booths: [
           {
             id: '311_dousuitech',
-            name: '動水テク',
+            name: '動物園・水族館＆テクノロジー専攻\n2年',
             place: '第三校舎 1階 311教室',
             position: {
-              top: '50',
-              left: '15',
+              top: '40',
+              left: '10',
             },
           },
         ],
