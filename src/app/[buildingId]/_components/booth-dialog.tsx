@@ -31,7 +31,7 @@ export default function BoothDialog({
           }}
         >
           <span
-            className="whitespace-pre-wrap rounded border-2 bg-white/20 px-3 py-1 text-[7px] shadow backdrop-blur-sm"
+            className="whitespace-pre-wrap rounded border-2 bg-white/70 px-3 py-1 text-[7px] shadow backdrop-blur-sm"
             style={{
               borderColor: accentColor,
             }}
