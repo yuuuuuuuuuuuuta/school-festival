@@ -20,6 +20,7 @@ export type Booth = {
   name: string
   place: string
   image?: string[]
+  labelPosition?: string
   position: {
     top: string
     left: string

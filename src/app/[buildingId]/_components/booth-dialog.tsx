@@ -10,6 +10,9 @@ import {
 } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import type { Booth } from '@/lib/definitions'
+import { cn } from '@/lib/utils'
+
+import styles from './style.module.css'
 
 export default function BoothDialog({
   booth,
@@ -23,27 +26,37 @@ export default function BoothDialog({
   return (
     <Dialog>
       <DialogTrigger>
-        <div
-          className="absolute flex flex-col items-center justify-center gap-1 overflow-hidden focus:outline-0"
-          style={{
-            top: `${booth.position.top}%`,
-            left: `${booth.position.left}%`,
-          }}
-        >
-          <span
-            className="whitespace-pre-wrap rounded border-2 bg-white/70 px-3 py-1 text-[7px] shadow backdrop-blur-sm"
-            style={{
-              borderColor: accentColor,
-            }}
+        <div>
+          <div
+            className="absolute flex flex-col items-center justify-center gap-1 focus:outline-0"
+            style={
+              {
+                top: `${booth.position.top}%`,
+                left: `${booth.position.left}%`,
+              } as React.CSSProperties
+            }
+            data-name={booth.name}
           >
-            {booth.name}
-          </span>
-          <Image
-            className="!relative aspect-square !w-16 object-contain lg:!w-20"
-            src={`/images/booths/${booth.id}/icon.webp`}
-            alt={booth.name}
-            fill
-          />
+            <div className="relative">
+              <span
+                className={cn(styles.boothContainer)}
+                style={
+                  {
+                    '--accent-color': themeColor,
+                    '--position':
+                      booth.labelPosition === 'bottom' ? '165%' : '0%',
+                  } as React.CSSProperties
+                }
+                data-name={booth.name}
+              ></span>
+              <Image
+                className="!relative aspect-square !w-16 object-contain"
+                src={`/images/booths/${booth.id}/icon.webp`}
+                alt={booth.name}
+                fill
+              />
+            </div>
+          </div>
         </div>
       </DialogTrigger>
       <DialogContent

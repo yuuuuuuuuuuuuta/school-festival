@@ -1,0 +1,16 @@
+.boothContainer::after {
+  width: max-content;
+  position: absolute;
+  content: attr(data-name);
+  display: block;
+  white-space: pre-wrap;
+  border: 2px solid var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 3px 10px;
+  font-size: 8px;
+  text-align: center;
+  top: var(--position);
+  left: 50%;
+  border-radius: 3px;
+  transform: translateX(-50%) translateY(-110%);
+}
