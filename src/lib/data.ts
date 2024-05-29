@@ -166,7 +166,7 @@ const buildings: Building[] = [
             name: '動物園マネジメント専攻\n3年',
             place: '第一校舎 6階 162教室',
             position: {
-              top: '25',
+              top: '40',
               left: '75',
             },
           },
@@ -290,7 +290,7 @@ const buildings: Building[] = [
         booths: [
           {
             id: '251_nursingscience2',
-            name: '動物看護＆福祉理学療法専攻\n3年',
+            name: '愛玩動物看護師＆高度医療専攻\n2年',
             place: '第二校舎 5階 251教室（動物看護室）',
             position: {
               top: '40',
@@ -299,7 +299,7 @@ const buildings: Building[] = [
           },
           {
             id: '252_nursingscience3',
-            name: '愛玩動物看護師＆高度医療専攻\n2年',
+            name: '動物看護＆福祉理学療法専攻\n3年',
             place: '第二校舎 5階 252教室（動物理学療法室）',
             position: {
               top: '30',
