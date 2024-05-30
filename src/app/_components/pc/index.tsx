@@ -35,7 +35,7 @@ export default function PcHomePage({
           <div className="flex h-[36px] items-center justify-center bg-theme">
             <p className="font-medium text-white">アクセスマップ</p>
           </div>
-          <div className="mx-auto flex h-pcContent items-start overflow-hidden">
+          <div className="mx-auto flex h-pcContent items-start overflow-hidden px-2.5">
             <Image
               src={'/images/map.webp'}
               alt="TCA ECO 学園祭"
