@@ -38,17 +38,19 @@ export default function BoothDialog({
             data-name={booth.name}
           >
             <div className="relative">
-              <span
-                className={cn(styles.boothContainer)}
-                style={
-                  {
-                    '--accent-color': themeColor,
-                    '--position':
-                      booth.labelPosition === 'bottom' ? '165%' : '0%',
-                  } as React.CSSProperties
-                }
-                data-name={booth.name}
-              ></span>
+              {!booth.label?.isHidden && (
+                <span
+                  className={cn(styles.boothContainer)}
+                  style={
+                    {
+                      '--accent-color': themeColor,
+                      '--position':
+                        booth.label?.position === 'bottom' ? '165%' : '0%',
+                    } as React.CSSProperties
+                  }
+                  data-name={booth.name}
+                ></span>
+              )}
               <Image
                 className="!relative aspect-square !w-16 object-contain"
                 src={`/images/booths/${booth.id}/icon.webp`}

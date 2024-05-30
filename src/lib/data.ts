@@ -96,6 +96,9 @@ const buildings: Building[] = [
             id: '1-4_maindesk',
             name: '本部',
             place: '第一校舎 4階 図書室（キャリアセンター）',
+            label: {
+              isHidden: true,
+            },
             position: {
               top: '53',
               left: '70',
@@ -139,7 +142,9 @@ const buildings: Building[] = [
             id: '154_aqua2b',
             name: '水族館・アクアリスト専攻\n2年B',
             place: '第一校舎 5階 154教室',
-            labelPosition: 'bottom',
+            label: {
+              position: 'bottom',
+            },
             position: {
               top: '55',
               left: '65',
@@ -181,7 +186,9 @@ const buildings: Building[] = [
             id: '171_ekizo',
             name: 'エキゾチックアニマル\n＆プランツ専攻\n2年',
             place: '第一校舎 7階 171教室',
-            labelPosition: 'bottom',
+            label: {
+              position: 'bottom',
+            },
             position: {
               top: '35',
               left: '77',
