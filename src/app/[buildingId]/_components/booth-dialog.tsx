@@ -4,15 +4,11 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import type { Booth } from '@/lib/definitions'
-import { cn } from '@/lib/utils'
-
-import styles from './style.module.css'
 
 export default function BoothDialog({
   booth,
@@ -29,27 +25,28 @@ export default function BoothDialog({
         <div>
           <div
             className="absolute flex flex-col items-center justify-center gap-1 focus:outline-0"
-            style={
-              {
-                top: `${booth.position.top}%`,
-                left: `${booth.position.left}%`,
-              } as React.CSSProperties
-            }
-            data-name={booth.name}
+            style={{
+              top: `${booth.position.top}%`,
+              left: `${booth.position.left}%`,
+            }}
           >
             <div className="relative">
               {!booth.label?.isHidden && (
-                <span
-                  className={cn(styles.boothContainer)}
-                  style={
-                    {
-                      '--accent-color': themeColor,
-                      '--position':
-                        booth.label?.position === 'bottom' ? '165%' : '0%',
-                    } as React.CSSProperties
-                  }
-                  data-name={booth.name}
-                ></span>
+                <div
+                  className="absolute right-1/2 w-max whitespace-pre-wrap rounded border-2 bg-white/80 px-3 py-1.5"
+                  style={{
+                    borderColor: accentColor,
+                    transform:
+                      booth.label?.position === 'bottom'
+                        ? 'translateY(68px) translateX(50%)'
+                        : 'translateY(-110%) translateX(50%)',
+                  }}
+                >
+                  <p className="text-[8px] text-zinc-700">
+                    {booth.description}
+                  </p>
+                  <p className="text-[10px]">{booth.title}</p>
+                </div>
               )}
               <Image
                 className="!relative aspect-square !w-16 object-contain"

@@ -18,6 +18,8 @@ export type Floor = {
 export type Booth = {
   id: string
   name: string
+  title: string
+  description: string
   place: string
   image?: string[]
   label?: {
