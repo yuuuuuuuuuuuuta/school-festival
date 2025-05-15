@@ -14,15 +14,15 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
     <div className="mx-auto flex w-full flex-col gap-5 px-4 md:max-w-xl">
       <div className="flex flex-wrap gap-1.5">
         {building.icons?.map((icon) => {
-          const isMale = icon.image.includes('men')
-          const isFemale = icon.image.includes('women')
-          const isShared = icon.image.includes('share')
+          const isMen = icon.image.includes('men')
+          const isWomen = icon.image.includes('women')
+          const isShare = icon.image.includes('share')
 
-          const iconColor = isMale
+          const iconColor = isMen
             ? 'text-blue-500'
-            : isFemale
+            : isWomen
               ? 'text-pink-500'
-              : 'text-neutral-500' // shared or default
+              : 'text-neutral-600'
 
           return (
             <div key={icon.id} className="flex items-center gap-1">
