@@ -16,21 +16,17 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
         {building.icons?.map((icon) => (
           <div key={icon.id} className="flex items-center gap-1">
             <Image
-              className={`
-                relative h-4 w-4
-                ${
-                  icon.image.includes('men')
-                    ? 'text-blue-500'
-                    : icon.image.includes('women')
-                      ? 'text-pink-500'
-                      : icon.image.includes('share')
-                        ? 'text-green-500'
-                        : ''
-                }
-              `}
               src={`/images/floors/icons/${icon.image}.svg`}
               alt={icon.name}
-              fill
+              width={16}
+              height={16}
+              className={
+                icon.image.includes('men')
+                  ? 'text-blue-500'
+                  : icon.image.includes('women')
+                    ? 'text-red-500'
+                    : 'text-gray-500'
+              }
             />
             <span className="text-xs">{icon.name}</span>
           </div>
