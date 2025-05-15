@@ -18,17 +18,10 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
           const isWomen = icon.image.includes('women')
           const isShare = icon.image.includes('share')
 
-          const iconColor = isMen
-            ? 'text-blue-500'
-            : isWomen
-              ? 'text-pink-500'
-              : 'text-neutral-600'
-
           return (
             <div key={icon.id} className="flex items-center gap-1">
               <img
                 src={`/images/floors/icons/${icon.image}.svg`}
-                className={`h-4 w-4 ${iconColor}`}
                 alt={icon.name}
               />
               <span className="text-xs">{icon.name}</span>
