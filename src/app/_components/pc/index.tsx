@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import SocialIcons from '@/components/common/footer/social-icons'
 import Header from '@/components/common/header'
+import MajorsTree from '@/components/MajorsTree'
 import type { Building } from '@/lib/definitions'
 
 import PcHomeFloorList from './floor-list'
@@ -42,6 +43,12 @@ export default function PcHomePage({
               className="!relative max-h-full !w-full scale-105 object-contain"
               fill
             />
+          </div>
+          <div className="mt-10 flex flex-col gap-5">
+            <h2 className="text-center text-2xl font-bold text-white">
+              専攻紹介
+            </h2>
+            <MajorsTree />
           </div>
           <div className="flex h-32 items-center justify-center bg-theme">
             <p className="text-center text-xs leading-7 text-white">

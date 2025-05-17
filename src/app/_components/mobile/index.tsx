@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 import SectionWithTitle from '@/components/common/section/with-title'
+import MajorsTree from '@/components/MajorsTree'
 import type { Building } from '@/lib/definitions'
 
 import ScrollDown from '../../../components/common/scroll-down'
@@ -40,6 +41,7 @@ export default function MobileHomePage({
           <SectionWithTitle title="フロアマップ">
             <FloorLinkList buildings={buildings} />
           </SectionWithTitle>
+          <MajorsTree />
         </div>
         <Footer />
       </main>
