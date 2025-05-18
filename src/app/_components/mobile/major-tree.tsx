@@ -1,4 +1,6 @@
 'use client'
+import { useState } from 'react'
+
 import styles from './major-tree.module.css'
 
 const majorData = [
@@ -9,7 +11,7 @@ const majorData = [
   },
   {
     world: '海洋ワールド',
-    color: '#1D4ED8',
+    color: '#2F70B7',
     majors: [
       '水族館アクアリスト専攻',
       '水族館プロデュース専攻',
@@ -18,7 +20,7 @@ const majorData = [
   },
   {
     world: '自然環境ワールド',
-    color: '#D97706',
+    color: '#B2722D',
     majors: [
       '博物館・恐竜自然史専攻',
       'ECO自然環境クリエーター専攻',
@@ -37,21 +39,29 @@ const majorData = [
   },
 ]
 
-export default function MajorTreeCollapsible() {
+export default function MajorTree() {
+  const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
+
+  const toggle = (world: string) => {
+    setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.verticalLine} />
-      {majorData.map((group, index) => (
+      {majorData.map((group) => (
         <div key={group.world} className={styles.node}>
           <div className={styles.connector} />
           <div className={styles.circle} />
           <div
             className={styles.box}
+            onClick={() => toggle(group.world)}
             style={{ color: group.color, borderColor: group.color }}
           >
             {group.world}
           </div>
-          {group.majors.length > 0 && (
+
+          {openMap[group.world] && group.majors.length > 0 && (
             <div className={styles.majorList}>
               {group.majors.map((major) => (
                 <div key={major} className={styles.majorItem}>

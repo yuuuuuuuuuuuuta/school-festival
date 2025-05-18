@@ -44,6 +44,12 @@
   border: 2px solid;
   border-radius: 0.5rem;
   margin-left: 2.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.box:hover {
+  background-color: #f0f0f0;
 }
 
 .majorList {
