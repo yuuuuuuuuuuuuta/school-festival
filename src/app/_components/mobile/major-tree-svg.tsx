@@ -38,92 +38,144 @@ const majorData = [
 
 export default function MajorTreeSVG() {
   const svgRef = useRef<SVGSVGElement>(null)
+  const nodeHeight = 60
+  const verticalSpacing = 90
+  const paddingTop = 40
+  const startX = 50
 
-  const totalHeight = majorData.reduce(
-    (sum, group) => sum + group.majors.length * 60,
-    majorData.length * 60,
-  )
+  const svgHeight =
+    majorData.reduce(
+      (acc, group) => acc + Math.max(1, group.majors.length) * verticalSpacing,
+      0,
+    ) +
+    paddingTop * 2
 
   return (
     <div className="w-full overflow-x-auto py-10">
       <svg
         ref={svgRef}
         width="900"
-        height={totalHeight}
-        viewBox={`0 0 900 ${totalHeight}`}
+        height={svgHeight}
         className="mx-auto block"
       >
+        {/* 幹線 */}
+        <line
+          x1={startX}
+          y1={paddingTop}
+          x2={startX}
+          y2={svgHeight - paddingTop}
+          stroke="#22c55e"
+          strokeWidth={6}
+        />
+
         {
           majorData.reduce(
-            (acc, group) => {
-              const groupTopY = acc.currentY + 30
-              const worldCenterY =
-                groupTopY + (group.majors.length * 60 - 20) / 2
+            (acc, group, i) => {
+              const groupY =
+                acc.offset +
+                (Math.max(group.majors.length, 1) * verticalSpacing -
+                  nodeHeight) /
+                  2
 
-              acc.elements.push(
-                <g key={group.world}>
-                  {/* 縦の幹 */}
+              const branchX = startX + 30
+              const boxX = branchX + 20
+              const boxY = groupY
+
+              // ノード位置（ワールド名枠の中央と接続）
+              const nodeCenterY = boxY + nodeHeight / 2
+
+              const lines = (
+                <>
+                  {/* 幹から枝 */}
                   <line
-                    x1={100}
-                    y1={groupTopY - 10}
-                    x2={100}
-                    y2={groupTopY + group.majors.length * 60 - 10}
-                    stroke={group.color}
-                    strokeWidth="4"
+                    x1={startX}
+                    y1={nodeCenterY}
+                    x2={branchX}
+                    y2={nodeCenterY}
+                    stroke="#22c55e"
+                    strokeWidth={4}
                   />
+                  {/* ● 分岐点 */}
+                  <circle cx={startX} cy={nodeCenterY} r={6} fill="#D97706" />
+                </>
+              )
 
-                  {/* ワールドノード */}
+              const worldNode = (
+                <>
                   <rect
-                    x={120}
-                    y={worldCenterY - 20}
-                    width="160"
-                    height="40"
-                    rx="6"
+                    x={boxX}
+                    y={boxY}
+                    width="200"
+                    height={nodeHeight}
+                    rx={8}
                     fill="white"
                     stroke={group.color}
-                    strokeWidth="3"
+                    strokeWidth={3}
                   />
                   <text
-                    x={200}
-                    y={worldCenterY + 5}
-                    textAnchor="middle"
-                    fontSize="16"
-                    fill={group.color}
+                    x={boxX + 100}
+                    y={boxY + 38}
+                    fontSize="18"
                     fontWeight="bold"
+                    fill={group.color}
+                    textAnchor="middle"
                   >
                     {group.world}
                   </text>
-                </g>,
+                </>
               )
 
-              group.majors.forEach((major, idx) => {
-                const y = groupTopY + idx * 60
+              const majors = group.majors.map((major, j) => {
+                const childX = boxX + 220
+                const childY = acc.offset + j * verticalSpacing
 
-                acc.elements.push(
+                return (
                   <g key={major}>
-                    {/* 横枝 */}
                     <line
-                      x1={100}
-                      y1={y + 20}
-                      x2={290}
-                      y2={y + 20}
-                      stroke={group.color}
-                      strokeWidth="2"
+                      x1={boxX + 200}
+                      y1={nodeCenterY}
+                      x2={childX}
+                      y2={childY + nodeHeight / 2}
+                      stroke="#888"
+                      strokeWidth={2}
                     />
-
-                    {/* 専攻ラベル */}
-                    <text x={300} y={y + 25} fontSize="14" fill="#1E293B">
+                    <rect
+                      x={childX}
+                      y={childY}
+                      width="260"
+                      height={nodeHeight}
+                      rx={6}
+                      fill="#F1F5F9"
+                    />
+                    <text
+                      x={childX + 130}
+                      y={childY + 38}
+                      fontSize="14"
+                      fill="#1E293B"
+                      textAnchor="middle"
+                    >
                       {major}
                     </text>
-                  </g>,
+                  </g>
                 )
               })
 
-              acc.currentY += group.majors.length * 60 + 20
-              return acc
+              return {
+                offset:
+                  acc.offset +
+                  Math.max(1, group.majors.length) * verticalSpacing,
+                nodes: [
+                  ...acc.nodes,
+                  <g key={group.world}>
+                    {lines}
+                    {worldNode}
+                    {majors}
+                  </g>,
+                ],
+              }
             },
-            { currentY: 0, elements: [] as JSX.Element[] },
-          ).elements
+            { offset: paddingTop, nodes: [] as JSX.Element[] },
+          ).nodes
         }
       </svg>
     </div>
