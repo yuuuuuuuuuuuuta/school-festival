@@ -62,20 +62,34 @@ export default function MajorTreeSVG() {
 
               acc.elements.push(
                 <g key={group.world}>
+                  {/* 縦の幹 */}
+                  <line
+                    x1={100}
+                    y1={groupTopY - 10}
+                    x2={100}
+                    y2={groupTopY + group.majors.length * 60 - 10}
+                    stroke={group.color}
+                    strokeWidth="4"
+                  />
+
+                  {/* ワールドノード */}
                   <rect
-                    x={50}
+                    x={120}
                     y={worldCenterY - 20}
                     width="160"
                     height="40"
                     rx="6"
-                    fill={group.color}
+                    fill="white"
+                    stroke={group.color}
+                    strokeWidth="3"
                   />
                   <text
-                    x={130}
+                    x={200}
                     y={worldCenterY + 5}
                     textAnchor="middle"
-                    fontSize="14"
-                    fill="white"
+                    fontSize="16"
+                    fill={group.color}
+                    fontWeight="bold"
                   >
                     {group.world}
                   </text>
@@ -84,40 +98,28 @@ export default function MajorTreeSVG() {
 
               group.majors.forEach((major, idx) => {
                 const y = groupTopY + idx * 60
-                const childX = 300
 
                 acc.elements.push(
                   <g key={major}>
+                    {/* 横枝 */}
                     <line
-                      x1={210}
-                      y1={worldCenterY}
-                      x2={childX}
+                      x1={100}
+                      y1={y + 20}
+                      x2={290}
                       y2={y + 20}
-                      stroke="#888"
+                      stroke={group.color}
                       strokeWidth="2"
                     />
-                    <rect
-                      x={childX}
-                      y={y}
-                      width="250"
-                      height="40"
-                      rx="6"
-                      fill="#F1F5F9"
-                    />
-                    <text
-                      x={childX + 125}
-                      y={y + 25}
-                      textAnchor="middle"
-                      fontSize="13"
-                      fill="#1E293B"
-                    >
+
+                    {/* 専攻ラベル */}
+                    <text x={300} y={y + 25} fontSize="14" fill="#1E293B">
                       {major}
                     </text>
                   </g>,
                 )
               })
 
-              acc.currentY += group.majors.length * 60 + 60
+              acc.currentY += group.majors.length * 60 + 20
               return acc
             },
             { currentY: 0, elements: [] as JSX.Element[] },
