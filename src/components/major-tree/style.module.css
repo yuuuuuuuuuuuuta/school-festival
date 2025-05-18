@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 2rem;
+  margin-left: 2rem;
+}
+
+.node {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.connector {
+  position: absolute;
+  top: 0.75rem;
+  left: -2rem;
+  width: 2rem;
+  height: 1px;
+  background-color: #2c9c45; /* 線の色 */
+}
+
+.verticalLine {
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  width: 1px;
+  height: 100%;
+  background-color: #2c9c45;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  background-color: #d17d1e;
+  border-radius: 50%;
+  position: absolute;
+  left: -1.1rem;
+  top: 0.35rem;
+}
+
+.box {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  display: inline-block;
+  border: 2px solid currentColor;
+}
+
+.majorList {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.majorItem {
+  position: relative;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid #2c9c45;
+  margin-top: 0.25rem;
+  color: #2c9c45;
+  font-weight: 500;
+}
