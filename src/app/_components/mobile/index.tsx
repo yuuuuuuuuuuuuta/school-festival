@@ -68,9 +68,6 @@ export default function MobileHomePage({
           <SectionWithTitle title="専攻紹介">
             <MajorTree />
           </SectionWithTitle>
-          <SectionWithTitle title="専攻紹介">
-            <MajorTreeSVG />
-          </SectionWithTitle>
         </div>
 
         {/* フッター表示 */}

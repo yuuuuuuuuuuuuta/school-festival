@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 const majorData = [
   {
@@ -39,64 +39,66 @@ const majorData = [
 export default function MajorTreeSVG() {
   const svgRef = useRef<SVGSVGElement>(null)
 
-  // アニメーション表示（フェードイン）を入れるならCSSで制御可能
+  const totalHeight = majorData.reduce(
+    (sum, group) => sum + group.majors.length * 60,
+    majorData.length * 60,
+  )
 
   return (
     <div className="w-full overflow-x-auto py-10">
       <svg
         ref={svgRef}
         width="800"
-        height={majorData.length * 160}
-        viewBox={`0 0 800 ${majorData.length * 160}`}
+        height={totalHeight}
+        viewBox={`0 0 800 ${totalHeight}`}
         className="mx-auto block"
       >
-        {majorData.map((group, groupIndex) => {
-          const startX = 150
-          const startY = groupIndex * 160 + 40
+        {
+          majorData.reduce(
+            (acc, group) => {
+              const groupTopY = acc.currentY + 30
+              const worldCenterY =
+                groupTopY + (group.majors.length * 60 - 20) / 2
 
-          return (
-            <g key={group.world}>
-              {/* ワールド名ノード */}
-              <rect
-                x={startX}
-                y={startY}
-                width="160"
-                height="40"
-                rx="6"
-                fill={group.color}
-              />
-              <text
-                x={startX + 80}
-                y={startY + 25}
-                textAnchor="middle"
-                fontSize="14"
-                fill="white"
-              >
-                {group.world}
-              </text>
+              acc.elements.push(
+                <g key={group.world}>
+                  <rect
+                    x={150}
+                    y={worldCenterY - 20}
+                    width="160"
+                    height="40"
+                    rx="6"
+                    fill={group.color}
+                  />
+                  <text
+                    x={230}
+                    y={worldCenterY + 5}
+                    textAnchor="middle"
+                    fontSize="14"
+                    fill="white"
+                  >
+                    {group.world}
+                  </text>
+                </g>,
+              )
 
-              {/* 線と専攻ノード */}
-              {group.majors.map((major, idx) => {
+              group.majors.forEach((major, idx) => {
+                const y = groupTopY + idx * 60
                 const childX = 450
-                const spacing = 40
-                const childY = startY + idx * spacing
 
-                return (
+                acc.elements.push(
                   <g key={major}>
-                    {/* 線 */}
                     <line
-                      x1={startX + 160}
-                      y1={startY + 20}
+                      x1={310}
+                      y1={worldCenterY}
                       x2={childX}
-                      y2={childY + 20}
+                      y2={y + 20}
                       stroke="#888"
                       strokeWidth="2"
                     />
-
-                    {/* 専攻ノード */}
                     <rect
                       x={childX}
-                      y={childY}
+                      y={y}
                       width="250"
                       height="40"
                       rx="6"
@@ -104,19 +106,23 @@ export default function MajorTreeSVG() {
                     />
                     <text
                       x={childX + 125}
-                      y={childY + 25}
+                      y={y + 25}
                       textAnchor="middle"
                       fontSize="13"
                       fill="#1E293B"
                     >
                       {major}
                     </text>
-                  </g>
+                  </g>,
                 )
-              })}
-            </g>
-          )
-        })}
+              })
+
+              acc.currentY += group.majors.length * 60 + 60
+              return acc
+            },
+            { currentY: 0, elements: [] as JSX.Element[] },
+          ).elements
+        }
       </svg>
     </div>
   )
