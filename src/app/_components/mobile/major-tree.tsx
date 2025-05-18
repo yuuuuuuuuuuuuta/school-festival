@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useEffect,useRef, useState } from 'react'
 
 import styles from './major-tree.module.css'
 
@@ -21,58 +21,91 @@ const majorData = [
   {
     world: '自然環境ワールド',
     color: '#B2722D',
-    majors: [
-      '博物館・恐竜自然史専攻',
-      'ECO自然環境クリエーター専攻',
-      '動物園・水族館＆テクノロジー専攻',
-    ],
+    majors: ['博物館・恐竜自然史専攻'],
   },
   {
     world: 'ペットワールド',
     color: '#9333EA',
-    majors: [
-      'ドッグトレーナー専攻',
-      'ペットワールドトリマー＆ヘルスケア専攻',
-      '動物看護士・高度医療専攻',
-      '理学・高度医療専攻',
-    ],
+    majors: ['ドッグトレーナー専攻', '猫専攻', '動物福祉専攻'],
   },
 ]
 
 export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
+  const boxRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [lines, setLines] = useState<{ y: number }[]>([])
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
   }
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.verticalLine} />
-      {majorData.map((group) => (
-        <div key={group.world} className={styles.node}>
-          <div className={styles.connector} />
-          <div className={styles.circle} />
-          <div
-            className={styles.box}
-            onClick={() => toggle(group.world)}
-            style={{ color: group.color, borderColor: group.color }}
-          >
-            {group.world}
-          </div>
+  useEffect(() => {
+    const positions = boxRefs.current.map((ref) =>
+      ref ? ref.offsetTop + ref.offsetHeight / 2 : null,
+    )
+    const filtered = positions.filter((y): y is number => y !== null)
+    setLines(filtered.map((y) => ({ y })))
+  }, [openMap])
 
-          {openMap[group.world] && group.majors.length > 0 && (
-            <div className={styles.majorList}>
-              {group.majors.map((major) => (
-                <div key={major} className={styles.majorItem}>
-                  <div className={styles.branchLine} />
-                  {major}
-                </div>
-              ))}
+  return (
+    <div className={styles.wrapper}>
+      <svg className={styles.svg}>
+        {lines.length > 0 && (
+          <>
+            <line
+              x1="20"
+              y1={lines[0].y}
+              x2="20"
+              y2={lines[lines.length - 1].y}
+              stroke="#2c9c45"
+              strokeWidth="2"
+            />
+            {lines.map((line, i) => (
+              <g key={`line-${i}`}>
+                <line
+                  x1="20"
+                  y1={line.y}
+                  x2="50"
+                  y2={line.y}
+                  stroke="#2c9c45"
+                  strokeWidth="2"
+                />
+                <circle cx="50" cy={line.y} r="5" fill="#d17d1e" />
+              </g>
+            ))}
+          </>
+        )}
+      </svg>
+
+      <div className={styles.content}>
+        {majorData.map((group, i) => (
+          <div
+            key={group.world}
+            className={styles.node}
+            ref={(el: HTMLDivElement | null) => {
+              boxRefs.current[i] = el
+            }}
+          >
+            <div
+              className={styles.box}
+              onClick={() => toggle(group.world)}
+              style={{ color: group.color, borderColor: group.color }}
+            >
+              {group.world}
             </div>
-          )}
-        </div>
-      ))}
+
+            {openMap[group.world] && (
+              <div className={styles.majorList}>
+                {group.majors.map((m) => (
+                  <div key={m} className={styles.majorItem}>
+                    {m}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
