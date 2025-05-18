@@ -33,30 +33,44 @@ const majorData = [
 export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
   const [lines, setLines] = useState<{ y: number }[]>([])
+  const [lineStartY, setLineStartY] = useState(0)
+  const [lineEndY, setLineEndY] = useState(0)
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
   }
 
   useEffect(() => {
-    const positions = boxRefs.current.map((ref) =>
+    const refs = boxRefs.current
+    const positions = refs.map((ref) =>
       ref ? ref.offsetTop + ref.offsetHeight / 2 : null,
     )
     const filtered = positions.filter((y): y is number => y !== null)
     setLines(filtered.map((y) => ({ y })))
+
+    if (refs[0] && refs[refs.length - 1]) {
+      const startY = refs[0].offsetTop
+      const last = refs[refs.length - 1]
+      if (last) {
+        const endY = last.offsetTop + last.offsetHeight
+        setLineStartY(startY)
+        setLineEndY(endY)
+      }
+    }
   }, [openMap])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} ref={wrapperRef}>
       <svg className={styles.svg}>
-        {lines.length > 0 && (
+        {lineEndY > lineStartY && (
           <>
             <line
               x1="20"
-              y1={lines[0].y}
+              y1={lineStartY}
               x2="20"
-              y2={lines[lines.length - 1].y}
+              y2={lineEndY}
               stroke="#2c9c45"
               strokeWidth="2"
             />
