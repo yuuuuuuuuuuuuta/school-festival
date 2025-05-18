@@ -54,6 +54,8 @@ export default function MajorTreeSVG() {
 
   return (
     <div className="w-full overflow-x-auto py-10">
+      <p style={{ color: 'red' }}>✅ MajorTreeSVG 実行されました</p>{' '}
+      {/* ← テスト確認用！ */}
       <svg
         ref={svgRef}
         width="900"
