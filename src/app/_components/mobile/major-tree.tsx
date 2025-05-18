@@ -33,62 +33,64 @@ const majorData = [
 export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
-  const wrapperRef = useRef<HTMLDivElement | null>(null)
-  const [lines, setLines] = useState<{ y: number }[]>([])
-  const [lineStartY, setLineStartY] = useState(0)
-  const [lineEndY, setLineEndY] = useState(0)
+  const svgRef = useRef<SVGSVGElement | null>(null)
+  const [linePoints, setLinePoints] = useState<{ midY: number; cy: number }[]>(
+    [],
+  )
+  const [topY, setTopY] = useState(0)
+  const [bottomY, setBottomY] = useState(0)
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
   }
 
   useEffect(() => {
-    const refs = boxRefs.current
-    const positions = refs.map((ref) =>
-      ref ? ref.offsetTop + ref.offsetHeight / 2 : null,
-    )
-    const filtered = positions.filter((y): y is number => y !== null)
-    setLines(filtered.map((y) => ({ y })))
+    const positions: { cy: number; midY: number }[] = []
+    const boxes = boxRefs.current
 
-    if (refs[0] && refs[refs.length - 1]) {
-      const startY = refs[0].offsetTop
-      const last = refs[refs.length - 1]
-      if (last) {
-        const endY = last.offsetTop + last.offsetHeight
-        setLineStartY(startY)
-        setLineEndY(endY)
-      }
+    const svgTop = svgRef.current?.getBoundingClientRect().top || 0
+
+    boxes.forEach((el) => {
+      if (!el) return
+      const box = el.getBoundingClientRect()
+      const cy = box.top + box.height / 2 - svgTop
+      const midY = box.top - svgTop
+      positions.push({ midY, cy })
+    })
+
+    if (positions.length > 0) {
+      setTopY(positions[0].midY)
+      setBottomY(positions[positions.length - 1].midY + 40)
     }
+
+    setLinePoints(positions)
   }, [openMap])
 
   return (
-    <div className={styles.wrapper} ref={wrapperRef}>
-      <svg className={styles.svg}>
-        {lineEndY > lineStartY && (
-          <>
+    <div className={styles.wrapper}>
+      <svg className={styles.svg} ref={svgRef}>
+        {/* 幹：斜め線 → 垂直線 */}
+        <polyline
+          points={`0,${topY} 20,${topY + 20} 20,${bottomY}`}
+          stroke="#2c9c45"
+          strokeWidth="2"
+          fill="none"
+        />
+
+        {/* 枝：左→右の横線 & 円 */}
+        {linePoints.map((p, i) => (
+          <g key={i}>
             <line
               x1="20"
-              y1={lineStartY}
-              x2="20"
-              y2={lineEndY}
+              y1={p.cy}
+              x2="50"
+              y2={p.cy}
               stroke="#2c9c45"
               strokeWidth="2"
             />
-            {lines.map((line, i) => (
-              <g key={`line-${i}`}>
-                <line
-                  x1="20"
-                  y1={line.y}
-                  x2="50"
-                  y2={line.y}
-                  stroke="#2c9c45"
-                  strokeWidth="2"
-                />
-                <circle cx="50" cy={line.y} r="5" fill="#d17d1e" />
-              </g>
-            ))}
-          </>
-        )}
+            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
+          </g>
+        ))}
       </svg>
 
       <div className={styles.content}>
