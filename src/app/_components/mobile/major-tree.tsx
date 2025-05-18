@@ -43,9 +43,7 @@ export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<{ midY: number; cy: number }[]>(
-    [],
-  )
+  const [linePoints, setLinePoints] = useState<{ cy: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
 
@@ -54,31 +52,30 @@ export default function MajorTree() {
   }
 
   useEffect(() => {
-    const positions: { cy: number; midY: number }[] = []
     const boxes = boxRefs.current
-
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
 
-    boxes.forEach((el) => {
-      if (!el) return
-      const box = el.getBoundingClientRect()
-      const cy = box.top + box.height / 2 - svgTop
-      const midY = box.top - svgTop
-      positions.push({ midY, cy })
-    })
+    const positions: { cy: number }[] = boxes
+      .map((el) => {
+        if (!el) return null
+        const box = el.getBoundingClientRect()
+        const cy = box.top + box.height / 2 - svgTop
+        return { cy }
+      })
+      .filter((p): p is { cy: number } => p !== null)
 
     if (positions.length > 0) {
-      setTopY(positions[0].midY)
-      setBottomY(positions[positions.length - 1].midY + 40)
+      setTopY(positions[0].cy - 20)
+      setBottomY(positions[positions.length - 1].cy + 20)
     }
 
     setLinePoints(positions)
-  }, [openMap])
+  }, []) // openMap依存から外して固定
 
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹：斜め線 → 垂直線 */}
+        {/* 幹：斜め→垂直線 */}
         <polyline
           points={`0,${topY} 20,${topY + 20} 20,${bottomY}`}
           stroke="#2c9c45"
@@ -86,7 +83,7 @@ export default function MajorTree() {
           fill="none"
         />
 
-        {/* 枝：左→右の横線 & 円 */}
+        {/* 枝と丸 */}
         {linePoints.map((p, i) => (
           <g key={i}>
             <line
@@ -107,7 +104,7 @@ export default function MajorTree() {
           <div
             key={group.world}
             className={styles.node}
-            ref={(el: HTMLDivElement | null) => {
+            ref={(el) => {
               boxRefs.current[i] = el
             }}
           >
