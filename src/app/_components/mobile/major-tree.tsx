@@ -70,19 +70,23 @@ export default function MajorTree() {
     }
 
     setLinePoints(positions)
-  }, [openMap])
+  }, [openMap]) // 展開に応じて位置を再計算
 
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
+        {/* 幹線（斜め→直角に折れて縦線） */}
         <polyline
           points={`0,${topY} 20,${topY + 20} 20,${bottomY}`}
           stroke="#2c9c45"
           strokeWidth="2"
           fill="none"
         />
+
+        {/* 各ボタンへ向かう横枝＋丸 */}
         {linePoints.map((p, i) => (
           <g key={i}>
+            {/* 横枝線 */}
             <line
               x1="20"
               y1={p.cy}
@@ -91,7 +95,8 @@ export default function MajorTree() {
               stroke="#2c9c45"
               strokeWidth="2"
             />
-            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
+            {/* 丸（幹の上） */}
+            <circle cx="20" cy={p.cy} r="5" fill="#d17d1e" />
           </g>
         ))}
       </svg>
