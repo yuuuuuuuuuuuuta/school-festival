@@ -70,20 +70,17 @@ export default function MajorTree() {
     }
 
     setLinePoints(positions)
-  }, [openMap]) // ← 展開に合わせて再計算する
+  }, [openMap])
 
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹：斜め→垂直線 */}
         <polyline
           points={`0,${topY} 20,${topY + 20} 20,${bottomY}`}
           stroke="#2c9c45"
           strokeWidth="2"
           fill="none"
         />
-
-        {/* 枝と丸 */}
         {linePoints.map((p, i) => (
           <g key={i}>
             <line
@@ -101,15 +98,12 @@ export default function MajorTree() {
 
       <div className={styles.content}>
         {majorData.map((group, i) => (
-          <div
-            key={group.world}
-            className={styles.node}
-            ref={(el) => {
-              boxRefs.current[i] = el
-            }}
-          >
+          <div key={group.world} className={styles.node}>
             <div
               className={styles.box}
+              ref={(el) => {
+                boxRefs.current[i] = el
+              }}
               onClick={() => toggle(group.world)}
               style={{ color: group.color, borderColor: group.color }}
             >
