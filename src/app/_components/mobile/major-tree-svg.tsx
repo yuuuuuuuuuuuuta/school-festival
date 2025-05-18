@@ -37,6 +37,8 @@ const majorData = [
 ]
 
 export default function MajorTreeSVG() {
+  console.log('✅ MajorTreeSVG 実行されました') // テスト確認用
+
   const svgRef = useRef<SVGSVGElement>(null)
   const nodeHeight = 60
   const verticalSpacing = 90
