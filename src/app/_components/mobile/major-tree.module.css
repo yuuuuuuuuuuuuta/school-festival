@@ -1,6 +1,20 @@
 .container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding-left: 2.5rem;
+  /* min-height: 100vh; */
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #2c9c45;
+  z-index: 0;
 }
 
 .verticalLine {
@@ -14,6 +28,7 @@
 
 .node {
   position: relative;
+  z-index: 1;
   margin-bottom: 2.5rem;
 }
 
@@ -56,10 +71,6 @@
   width: 1.5rem;
   height: 2px;
   background-color: #2c9c45;
-}
-
-.box:hover {
-  background-color: #f0f0f0;
 }
 
 .majorList {
