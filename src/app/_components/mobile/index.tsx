@@ -13,6 +13,9 @@ import type { Building } from '@/lib/definitions'
 import ScrollDown from '../../../components/common/scroll-down'
 // 各建物のリンクリスト（ボタン形式など）
 import FloorLinkList from './floor-link-list'
+// MajorTreeのインポートを追加
+import MajorTree from './major-tree'
+import MajorTreeSVG from './major-tree-svg'
 
 // props: 建物一覧（floorsなし）
 export default function MobileHomePage({
@@ -59,6 +62,14 @@ export default function MobileHomePage({
           {/* フロアマップ（建物一覧） */}
           <SectionWithTitle title="フロアマップ">
             <FloorLinkList buildings={buildings} />
+          </SectionWithTitle>
+
+          {/* 専攻紹介(系統樹モデル) */}
+          <SectionWithTitle title="専攻紹介">
+            <MajorTree />
+          </SectionWithTitle>
+          <SectionWithTitle title="専攻紹介">
+            <MajorTreeSVG />
           </SectionWithTitle>
         </div>
 
