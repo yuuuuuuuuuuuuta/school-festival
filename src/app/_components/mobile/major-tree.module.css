@@ -37,6 +37,7 @@
 }
 
 .box {
+  position: relative;
   display: inline-block;
   padding: 0.5rem 1rem;
   font-weight: bold;
@@ -45,7 +46,16 @@
   border-radius: 0.5rem;
   margin-left: 2.5rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.75rem;
+  width: 1.5rem;
+  height: 2px;
+  background-color: #2c9c45;
 }
 
 .box:hover {
@@ -53,8 +63,18 @@
 }
 
 .majorList {
+  position: relative;
   margin-top: 0.5rem;
   margin-left: 4rem;
+}
+
+.majorList::before {
+  content: '';
+  position: absolute;
+  top: 0.6rem;
+  left: -1rem;
+  bottom: 0;
+  border-left: 2px solid #2c9c45;
 }
 
 .majorItem {
