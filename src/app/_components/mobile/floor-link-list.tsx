@@ -1,3 +1,5 @@
+// 建物一覧をモバイル画面にリンクリスト形式で表示する
+
 import Link from 'next/link'
 
 import type { Building } from '@/lib/definitions'
@@ -5,10 +7,11 @@ import type { Building } from '@/lib/definitions'
 export default function FloorLinkList({
   buildings,
 }: {
-  buildings: Omit<Building, 'floors'>[]
+  buildings: Omit<Building, 'floors'>[] // フロア情報なし建物データ
 }) {
   return (
     <ul className="flex flex-col gap-5">
+      {/* 各建物ごとのリスト要素を表示 */}
       {buildings.map((building) => (
         <li
           key={building.id}
@@ -17,6 +20,7 @@ export default function FloorLinkList({
             borderColor: building.themeColor,
           }}
         >
+          {/* 建物詳細ページへ遷移するリンク */}
           <Link
             href={building.id}
             className="flex h-full w-full items-center justify-between p-3 text-center text-lg font-medium
@@ -25,9 +29,10 @@ export default function FloorLinkList({
               color: building.themeColor,
             }}
           >
-            <span></span>
-            <p>{building.name}</p>
+            <span></span> {/* 左端のスペース（レイアウト調整用） */}
+            <p>{building.name}</p> {/* 校舎名（例：第一校舎） */}
             <span>
+              {/* 右向きの矢印アイコン（SVG） */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="11"

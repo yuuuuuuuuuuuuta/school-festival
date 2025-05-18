@@ -1,8 +1,11 @@
-import Image from 'next/image'
-import Link from 'next/link'
+// 全ページ共通の固定ヘッダーコンポーネント
 
-import { cn } from '@/lib/utils'
+import Image from 'next/image' // Next.js の最適化画像
+import Link from 'next/link' // クライアントサイド遷移リンク
 
+import { cn } from '@/lib/utils' // Tailwindクラスを合成する補助関数
+
+// props: 背景色（color）とクラス名（className）を外部から指定可能
 export default function Header({
   color,
   className,
@@ -20,6 +23,7 @@ export default function Header({
         backgroundColor: `${color}`,
       }}
     >
+      {/* ロゴをクリックするとホームに戻る */}
       <Link href="/">
         <Image
           src={'/images/tcaeco-logo.png'}

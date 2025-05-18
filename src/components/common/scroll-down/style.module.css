@@ -1,13 +1,16 @@
+/* Google Fonts の読み込み（やや軽量な装飾フォント） */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap');
 
+/* 外枠の位置決めと全体アニメーション */
 .scroll_down{
   position: absolute;
-  bottom:30px;
-  right:50%;
-  animation: arrowmove 1s ease-in-out infinite;
-  transform: translate(0, -50%);
+  bottom:30px;              /* 画面下からの距離 */
+  right:50%;                /* 水平方向中央に近づける */
+  animation: arrowmove 1s ease-in-out infinite; /* 全体アニメーション（未定義？） */
+  transform: translate(0, -50%); /* Y方向中央合わせ（若干浮かせる） */
 }
 
+/* a要素全体（矢印＋テキストのコンテナ） */
 .scroll_down a{
   position: absolute;
   left: -12px;
@@ -22,6 +25,7 @@
   text-decoration: none;
 }
 
+/* 「Scroll」テキストのスタイル */
 .text {
   display: block;
   margin-top: 65px;
@@ -33,15 +37,17 @@
   letter-spacing: 2px;
 }
 
+/* ▼ アニメーションする下向き矢印1本分の見た目と動作 */
 .arrow {
   position: absolute;
   width: 28px;
   height: 5px;
   opacity: 0;
-  transform: scale3d(0.5, 0.5, 0.5);
+  transform: scale3d(0.5, 0.5, 0.5); /* 初期状態で縮小 */
   animation: move 3s ease-out infinite;
 }
 
+/* 矢印の個別タイミング設定 */
 .arrow:first-child {
   animation: move 3s ease-out 1s infinite;
 }
@@ -50,33 +56,32 @@
   animation: move 3s ease-out 2s infinite;
 }
 
+/* 矢印の左斜め線・右斜め線の見た目定義 */
 .arrow:before,
 .arrow:after {
   content: ' ';
   position: absolute;
   top: 0;
   height: 100%;
-  width: 51%;
+  width: 51%; /* 少し重なるように */
   background: #333;
 }
 
 .arrow:before {
   left: 0;
-  transform: skew(0deg, 30deg);
+  transform: skew(0deg, 30deg); /* ↘ の左線 */
 }
 
 .arrow:after {
   right: 0;
   width: 50%;
-  transform: skew(0deg, -30deg);
+  transform: skew(0deg, -30deg); /* ↙ の右線 */
 }
 
+/* アニメーション：矢印が下方向に落ちて消える動き */
 @keyframes move {
   25% { opacity: 1; }
   33% { opacity: 1; transform: translateY(30px); }
   67% { opacity: 1; transform: translateY(40px); }
   100% { opacity: 0; transform: translateY(55px) scale3d(0.5, 0.5, 0.5); }
 }
-
-
-

@@ -1,17 +1,19 @@
-'use client'
+'use client' // クライアントサイドで動作させる指示（Next.js App Router環境）
 
+// Radix UI のダイアログ関連要素をインポート
 import * as DialogPrimitive from '@radix-ui/react-dialog'
+// 閉じるボタンのアイコン（X）
 import { X } from 'lucide-react'
+// React本体
 import * as React from 'react'
 
+// Tailwindクラスを合成するユーティリティ関数
 import { cn } from '@/lib/utils'
 
+// ===== ベース構成の再エクスポート（分割コンポーネントとして） =====
 const Dialog = DialogPrimitive.Root
-
 const DialogTrigger = DialogPrimitive.Trigger
-
 const DialogPortal = DialogPrimitive.Portal
-
 const DialogClose = DialogPrimitive.Close
 
 const DialogOverlay = React.forwardRef<

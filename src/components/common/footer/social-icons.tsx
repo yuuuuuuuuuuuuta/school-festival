@@ -1,11 +1,15 @@
-import Image from 'next/image'
-import Link from 'next/link'
+// SNSリンクアイコンを並べて表示するコンポーネント
 
+import Image from 'next/image' // 最適化画像コンポーネント
+import Link from 'next/link' // クライアントサイド遷移可能なリンク
+
+// 各種SNSのアイコン画像（SVG）
 import InstagramImage from './assets/instagram.svg'
 import TCAECOImage from './assets/tcaeco.svg'
 import TikTokImage from './assets/tiktok.svg'
 import XImage from './assets/x.svg'
 
+// SNSアイコンのデータ定義（画像・リンク・名前）
 const socialIcons = [
   { name: 'X', image: XImage, link: 'https://x.com/TCA_ECO' },
   {
@@ -25,6 +29,7 @@ const socialIcons = [
   },
 ]
 
+// 出力：SNSアイコン横並び
 export default function SocialIcons() {
   return (
     <div className="flex">
