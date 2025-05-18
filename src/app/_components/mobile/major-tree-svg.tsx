@@ -48,9 +48,9 @@ export default function MajorTreeSVG() {
     <div className="w-full overflow-x-auto py-10">
       <svg
         ref={svgRef}
-        width="800"
+        width="900"
         height={totalHeight}
-        viewBox={`0 0 800 ${totalHeight}`}
+        viewBox={`0 0 900 ${totalHeight}`}
         className="mx-auto block"
       >
         {
@@ -63,7 +63,7 @@ export default function MajorTreeSVG() {
               acc.elements.push(
                 <g key={group.world}>
                   <rect
-                    x={150}
+                    x={50}
                     y={worldCenterY - 20}
                     width="160"
                     height="40"
@@ -71,7 +71,7 @@ export default function MajorTreeSVG() {
                     fill={group.color}
                   />
                   <text
-                    x={230}
+                    x={130}
                     y={worldCenterY + 5}
                     textAnchor="middle"
                     fontSize="14"
@@ -84,12 +84,12 @@ export default function MajorTreeSVG() {
 
               group.majors.forEach((major, idx) => {
                 const y = groupTopY + idx * 60
-                const childX = 450
+                const childX = 300
 
                 acc.elements.push(
                   <g key={major}>
                     <line
-                      x1={310}
+                      x1={210}
                       y1={worldCenterY}
                       x2={childX}
                       y2={y + 20}
