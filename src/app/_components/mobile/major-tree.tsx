@@ -1,5 +1,5 @@
 'use client'
-import { useEffect,useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import styles from './major-tree.module.css'
 
@@ -21,12 +21,21 @@ const majorData = [
   {
     world: '自然環境ワールド',
     color: '#B2722D',
-    majors: ['博物館・恐竜自然史専攻'],
+    majors: [
+      '博物館・恐竜自然史専攻',
+      'ECO自然環境クリエーター専攻',
+      '動物園・水族館＆テクノロジー専攻',
+    ],
   },
   {
     world: 'ペットワールド',
     color: '#9333EA',
-    majors: ['ドッグトレーナー専攻', '猫専攻', '動物福祉専攻'],
+    majors: [
+      'ドッグトレーナー専攻',
+      'ペットワールドトリマー＆ヘルスケア専攻',
+      '動物看護士・高度医療専攻',
+      '理学・高度医療専攻',
+    ],
   },
 ]
 
