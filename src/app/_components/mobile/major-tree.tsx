@@ -70,7 +70,7 @@ export default function MajorTree() {
     }
 
     setLinePoints(positions)
-  }, []) // openMap依存から外して固定
+  }, [openMap]) // ← 展開に合わせて再計算する
 
   return (
     <div className={styles.wrapper}>
