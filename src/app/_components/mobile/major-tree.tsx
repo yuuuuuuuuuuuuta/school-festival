@@ -123,6 +123,7 @@ export default function MajorTree() {
                 cy={yBase}
                 r="5"
                 fill="#d17d1e"
+                className={styles.circle}
               />
             </g>
           )

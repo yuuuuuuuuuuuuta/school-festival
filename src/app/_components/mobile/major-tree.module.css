@@ -47,6 +47,7 @@
 }
 
 /* SVG線が上に被らないように調整する場合 */
-circle {
-  z-index: 2; /* ただし CSS では SVG 内要素への z-index の効き方が限定されるため、positionも必要な場合があります */
+.circle {
+  z-index: 2;
+  position: relative;
 }
