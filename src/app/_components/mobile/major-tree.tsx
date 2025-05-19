@@ -76,7 +76,7 @@ export default function MajorTree() {
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
         <polyline
-          points={`0,${topY} 20,${topY + 20} 20,${bottomY}`}
+          points={`0,${topY} 20,${topY + 20} 20,${linePoints[linePoints.length - 1]?.cy || bottomY}`}
           stroke="#2c9c45"
           strokeWidth="2"
           fill="none"
