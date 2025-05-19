@@ -75,29 +75,25 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線（左端から斜めに） */}
-        <line
-          x1="0"
-          y1={topY}
-          x2="20"
-          y2={linePoints[linePoints.length - 1]?.cy ?? bottomY}
+        {/* 幹 + 枝を一本の path で描く */}
+        <path
+          d={(() => {
+            if (linePoints.length === 0) return ''
+            let d = `M 0 ${topY} L 20 ${linePoints[0].cy}`
+            for (let i = 0; i < linePoints.length; i++) {
+              d += ` L 20 ${linePoints[i].cy} L 50 ${linePoints[i].cy}`
+            }
+            return d
+          })()}
+          fill="none"
           stroke="#2c9c45"
           strokeWidth="2"
+          strokeLinecap="round"
         />
 
-        {/* 横線とその右端に● */}
+        {/* ●だけ別途描画 */}
         {linePoints.map((p, i) => (
-          <g key={i}>
-            {/* 横線（枝） */}
-            <path
-              d={`M 20 ${p.cy} L 50 ${p.cy}`}
-              stroke="#2c9c45"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            {/* ●を線の右端（x=50）に配置 */}
-            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
-          </g>
+          <circle key={i} cx="50" cy={p.cy} r="5" fill="#d17d1e" />
         ))}
       </svg>
 
