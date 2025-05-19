@@ -44,13 +44,7 @@ export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<
-    {
-      cy: number
-      cx: number
-      count: number
-    }[]
-  >([])
+  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
 
@@ -64,15 +58,14 @@ export default function MajorTree() {
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
     const positions = boxes
-      .map((el, i) => {
+      .map((el) => {
         if (!el) return null
         const rect = el.getBoundingClientRect()
         const cy = rect.top + rect.height / 2 - svgTop
         const cx = rect.left - svgLeft
-        const count = majorData[i].majors.length
-        return { cy, cx, count }
+        return { cy, cx }
       })
-      .filter((p): p is { cy: number; cx: number; count: number } => p !== null)
+      .filter((p): p is { cy: number; cx: number } => p !== null)
 
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
@@ -100,15 +93,15 @@ export default function MajorTree() {
         )}
 
         {linePoints.map((p, i) => {
+          const group = majorData[i]
           const slopeY = bottomY - topY
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
           const branchLength = p.cx - xBase - 12
-          const majorGap = 20
 
           return (
             <g key={i}>
-              {/* 枝線 */}
+              {/* 横枝線と● */}
               <line
                 x1={xBase}
                 y1={yBase}
@@ -125,19 +118,26 @@ export default function MajorTree() {
                 fill="#d17d1e"
               />
 
-              {/* 専攻への枝分かれ線 */}
-              {openMap[majorData[i].world] &&
-                majorData[i].majors.map((_, j) => (
-                  <line
-                    key={`branch-${i}-${j}`}
-                    x1={xBase + branchLength / 2}
-                    y1={yBase}
-                    x2={xBase + branchLength}
-                    y2={yBase + (j - (p.count - 1) / 2) * majorGap + 28}
-                    stroke={majorData[i].color}
-                    strokeWidth="2"
-                  />
-                ))}
+              {/* サブ専攻への枝分かれ線 */}
+              {openMap[group.world] &&
+                group.majors.map((major, j) => {
+                  const spacing = 20
+                  const endY =
+                    yBase + spacing * (j - (group.majors.length - 1) / 2)
+                  const endX = p.cx + 100
+
+                  return (
+                    <line
+                      key={`branch-${i}-${j}`}
+                      x1={p.cx}
+                      y1={yBase}
+                      x2={endX}
+                      y2={endY}
+                      stroke={group.color}
+                      strokeWidth="2"
+                    />
+                  )
+                })}
             </g>
           )
         })}
