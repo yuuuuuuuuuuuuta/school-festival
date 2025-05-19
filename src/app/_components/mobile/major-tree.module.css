@@ -1,5 +1,3 @@
-/* major-tree.module.css */
-
 .wrapper {
   position: relative;
   padding-left: 80px;
@@ -38,35 +36,17 @@
 .majorList {
   margin-left: 20px;
   margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: relative;
 }
 
 .majorItem {
+  display: flex;
+  align-items: center;
   font-size: 14px;
-  margin-left: 12px;
-  padding-left: 8px;
-  border-left: 2px solid currentColor;
-  position: relative;
-  white-space: nowrap;
+  margin-top: 6px;
+  color: black;
 }
 
-.majorItem::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -8px;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  background-color: currentColor;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-/* SVG circle always on top */
-.branchDot {
-  z-index: 2;
+.majorItem svg {
+  margin-right: 6px;
+  flex-shrink: 0;
 }
