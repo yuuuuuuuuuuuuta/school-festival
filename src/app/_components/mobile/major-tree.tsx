@@ -1,3 +1,4 @@
+// MajorTree.tsx
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
@@ -54,21 +55,21 @@ export default function MajorTree() {
   useEffect(() => {
     const boxes = boxRefs.current
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
+    const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
-    const positions: { cy: number; cx: number }[] = boxes
+    const positions = boxes
       .map((el) => {
         if (!el) return null
-        const box = el.getBoundingClientRect()
-        const cy = box.top + box.height / 2 - svgTop
-        const cx =
-          box.left - (svgRef.current?.getBoundingClientRect().left || 0)
+        const rect = el.getBoundingClientRect()
+        const cy = rect.top + rect.height / 2 - svgTop
+        const cx = rect.left - svgLeft
         return { cy, cx }
       })
       .filter((p): p is { cy: number; cx: number } => p !== null)
 
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
-      setBottomY(positions[positions.length - 1].cy + 20)
+      setBottomY(positions[positions.length - 1].cy)
     }
 
     setLinePoints(positions)
@@ -77,26 +78,26 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹（斜線） */}
-        <line
-          x1={0}
-          y1={topY}
-          x2={20}
-          y2={bottomY}
-          stroke="#2c9c45"
-          strokeWidth="2"
-        />
+        {/* 幹線（斜め） */}
+        {linePoints.length > 0 && (
+          <line
+            x1={0}
+            y1={topY}
+            x2={20}
+            y2={bottomY}
+            stroke="#2c9c45"
+            strokeWidth="2"
+          />
+        )}
 
-        {/* 枝線と● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
-          const branchLength = p.cx - xBase
+          const branchLength = p.cx - xBase - 12
 
           return (
             <g key={i}>
-              {/* 横枝線 */}
               <line
                 x1={xBase}
                 y1={yBase}
@@ -105,13 +106,11 @@ export default function MajorTree() {
                 stroke="#2c9c45"
                 strokeWidth="2"
               />
-              {/* オレンジ● */}
               <circle
-                cx={p.cx}
-                cy={p.cy}
+                cx={xBase + branchLength}
+                cy={yBase}
                 r="5"
                 fill="#d17d1e"
-                style={{ pointerEvents: 'none' }}
               />
             </g>
           )
