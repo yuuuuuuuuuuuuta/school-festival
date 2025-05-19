@@ -106,7 +106,12 @@ export default function MajorTree() {
               />
 
               {/* オレンジの●を"枝線の終端"＝BOX左端に置く */}
-              <circle cx={p.cy} cy={yBase} r="5" fill="#d17d1e" />
+              <circle
+                cx={xBase + branchLength}
+                cy={yBase}
+                r="5"
+                fill="#d17d1e"
+              />
             </g>
           )
         })}
