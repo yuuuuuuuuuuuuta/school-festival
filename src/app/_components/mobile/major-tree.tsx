@@ -1,4 +1,3 @@
-// MajorTree.tsx
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
@@ -43,53 +42,82 @@ const majorData = [
 export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
-  const majorRefs = useRef<(HTMLDivElement | null)[][]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [lines, setLines] = useState<any[]>([])
+  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
+  const [topY, setTopY] = useState(0)
+  const [bottomY, setBottomY] = useState(0)
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
   }
 
   useEffect(() => {
+    const boxes = boxRefs.current
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
-    const newLines: any[] = []
-    majorData.forEach((group, i) => {
-      const box = boxRefs.current[i]?.getBoundingClientRect()
-      if (!box) return
-
-      const x1 = box.left - svgLeft - 10
-      const y1 = box.top + box.height / 2 - svgTop
-
-      group.majors.forEach((_, j) => {
-        const major = majorRefs.current[i]?.[j]?.getBoundingClientRect()
-        if (!major) return
-
-        const midX = x1 - 20
-        const x2 = major.left - svgLeft - 8
-        const y2 = major.top + major.height / 2 - svgTop
-
-        newLines.push({ x1, y1, midX, x2, y2, color: group.color })
+    const positions = boxes
+      .map((el) => {
+        if (!el) return null
+        const rect = el.getBoundingClientRect()
+        const cy = rect.top + rect.height / 2 - svgTop
+        const cx = rect.left - svgLeft
+        return { cy, cx }
       })
-    })
-    setLines(newLines)
+      .filter((p): p is { cy: number; cx: number } => p !== null)
+
+    if (positions.length > 0) {
+      setTopY(positions[0].cy - 20)
+      setBottomY(positions[positions.length - 1].cy)
+    }
+
+    setLinePoints(positions)
   }, [openMap])
 
   return (
     <div className={styles.wrapper}>
-      <svg ref={svgRef} className={styles.svg}>
-        {lines.map((line, i) => (
-          <g key={i}>
-            <polyline
-              points={`${line.x1},${line.y1} ${line.midX},${line.y1} ${line.midX},${line.y2} ${line.x2},${line.y2}`}
-              fill="none"
-              stroke={line.color}
-              strokeWidth={2}
-            />
-          </g>
-        ))}
+      <svg className={styles.svg} ref={svgRef}>
+        {/* 幹線（斜め） */}
+        {linePoints.length > 0 && (
+          <line
+            x1={0}
+            y1={topY}
+            x2={20}
+            y2={bottomY}
+            stroke="#2c9c45"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        )}
+
+        {linePoints.map((p, i) => {
+          const slopeY = bottomY - topY
+          const xBase = (20 * (p.cy - topY)) / slopeY
+          const yBase = p.cy
+          const branchLength = p.cx - xBase - 12
+
+          return (
+            <g key={i}>
+              <line
+                x1={xBase}
+                y1={yBase}
+                x2={xBase + branchLength}
+                y2={yBase}
+                stroke="#2c9c45"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <circle
+                cx={xBase + branchLength}
+                cy={yBase}
+                r="5"
+                fill="#d17d1e"
+              />
+            </g>
+          )
+        })}
       </svg>
 
       <div className={styles.content}>
@@ -97,7 +125,7 @@ export default function MajorTree() {
           <div key={group.world} className={styles.node}>
             <div
               className={styles.box}
-              ref={(el: HTMLDivElement | null) => {
+              ref={(el) => {
                 boxRefs.current[i] = el
               }}
               onClick={() => toggle(group.world)}
@@ -107,16 +135,8 @@ export default function MajorTree() {
             </div>
             {openMap[group.world] && (
               <div className={styles.majorList}>
-                {group.majors.map((m, j) => (
-                  <div
-                    key={m}
-                    className={styles.majorItem}
-                    ref={(el: HTMLDivElement | null) => {
-                      if (!majorRefs.current[i]) majorRefs.current[i] = []
-                      majorRefs.current[i][j] = el
-                    }}
-                    style={{ color: group.color }}
-                  >
+                {group.majors.map((m) => (
+                  <div key={m} className={styles.majorItem}>
                     {m}
                   </div>
                 ))}

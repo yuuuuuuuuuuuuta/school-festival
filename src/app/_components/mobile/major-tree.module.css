@@ -1,5 +1,3 @@
-/* major-tree.module.css */
-
 .wrapper {
   position: relative;
   padding-left: 80px;
@@ -33,7 +31,6 @@
   font-size: 16px;
   z-index: 1;
   position: relative;
-  display: inline-block;
 }
 
 .majorList {
@@ -43,18 +40,5 @@
 
 .majorItem {
   font-size: 14px;
-  margin: 8px 0;
-  position: relative;
-  padding-left: 16px;
-  color: black;
-}
-
-.majorItem::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.9em;
-  width: 10px;
-  height: 2px;
-  background-color: currentColor;
+  margin-top: 4px;
 }
