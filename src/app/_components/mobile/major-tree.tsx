@@ -44,7 +44,13 @@ export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
+  const [linePoints, setLinePoints] = useState<
+    {
+      cy: number
+      cx: number
+      count: number
+    }[]
+  >([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
 
@@ -58,14 +64,15 @@ export default function MajorTree() {
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
     const positions = boxes
-      .map((el) => {
+      .map((el, i) => {
         if (!el) return null
         const rect = el.getBoundingClientRect()
         const cy = rect.top + rect.height / 2 - svgTop
         const cx = rect.left - svgLeft
-        return { cy, cx }
+        const count = majorData[i].majors.length
+        return { cy, cx, count }
       })
-      .filter((p): p is { cy: number; cx: number } => p !== null)
+      .filter((p): p is { cy: number; cx: number; count: number } => p !== null)
 
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
@@ -86,9 +93,9 @@ export default function MajorTree() {
             x2={20}
             y2={bottomY}
             stroke="#2c9c45"
-            strokeWidth="4" // 線の太さ調整
-            strokeLinecap="round" // 丸みを出す
-            strokeLinejoin="round" // 接合部を丸くする
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         )}
 
@@ -97,25 +104,40 @@ export default function MajorTree() {
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
           const branchLength = p.cx - xBase - 12
+          const majorGap = 20
 
           return (
             <g key={i}>
+              {/* 枝線 */}
               <line
                 x1={xBase}
                 y1={yBase}
                 x2={xBase + branchLength}
                 y2={yBase}
                 stroke="#2c9c45"
-                strokeWidth="4" // 線の太さ調整
-                strokeLinecap="round" // 丸みを出す
-                strokeLinejoin="round" // 接合部を丸くする
+                strokeWidth="4"
+                strokeLinecap="round"
               />
               <circle
                 cx={xBase + branchLength}
                 cy={yBase}
-                r="5" // 半径の設定
+                r="5"
                 fill="#d17d1e"
               />
+
+              {/* 専攻への枝分かれ線 */}
+              {openMap[majorData[i].world] &&
+                majorData[i].majors.map((_, j) => (
+                  <line
+                    key={`branch-${i}-${j}`}
+                    x1={xBase + branchLength / 2}
+                    y1={yBase}
+                    x2={xBase + branchLength}
+                    y2={yBase + (j - (p.count - 1) / 2) * majorGap + 28}
+                    stroke={majorData[i].color}
+                    strokeWidth="2"
+                  />
+                ))}
             </g>
           )
         })}
