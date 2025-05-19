@@ -87,6 +87,8 @@ export default function MajorTree() {
             y2={bottomY}
             stroke="#2c9c45"
             strokeWidth="4" // 線の太さ調整
+            strokeLinecap="round" // 丸みを出す
+            strokeLinejoin="round" // 接合部を丸くする
           />
         )}
 
@@ -105,6 +107,8 @@ export default function MajorTree() {
                 y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="4" // 線の太さ調整
+                strokeLinecap="round" // 丸みを出す
+                strokeLinejoin="round" // 接合部を丸くする
               />
               <circle
                 cx={xBase + branchLength}
