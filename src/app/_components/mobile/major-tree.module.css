@@ -67,6 +67,6 @@
 }
 
 /* SVG circle always on top */
-circle {
+.branchDot {
   z-index: 2;
 }

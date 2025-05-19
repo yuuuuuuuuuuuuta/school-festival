@@ -108,6 +108,7 @@ export default function MajorTree() {
                 strokeWidth="4"
               />
               <circle
+                className={styles.branchDot}
                 cx={xBase + branchLength}
                 cy={yBase}
                 r="5"
