@@ -92,7 +92,7 @@ export default function MajorTree() {
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
 
-          const branchLength = 80 // ほんとは30
+          const branchLength = 80
 
           return (
             <g key={i}>
@@ -106,7 +106,7 @@ export default function MajorTree() {
                 strokeWidth="2"
               />
 
-              {/* オレンジの●を"枝線の終端"＝BOX左端に置く */}
+              {/* オレンジの● */}
               <circle cx={p.cx} cy={p.cy} r="5" fill="#d17d1e" />
             </g>
           )
