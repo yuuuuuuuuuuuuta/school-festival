@@ -75,40 +75,45 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線：斜め線 + 垂直線 */}
-        <polyline
-          points={`0,${topY} 20,${linePoints[0]?.cy ?? topY}`}
-          stroke="#2c9c45"
-          strokeWidth="2"
-          fill="none"
-        />
-        <line
-          x1="20"
-          y1={linePoints[0]?.cy ?? topY}
-          x2="20"
-          y2={linePoints[linePoints.length - 1]?.cy ?? bottomY}
-          stroke="#2c9c45"
-          strokeWidth="2"
-        />
+        {/* 幹線：斜めに一筆でつなぐ */}
+        {linePoints.map((p, i) => {
+          const prev = linePoints[i - 1]
+          const startX = i === 0 ? 0 : 20 + (i - 1) * 10
+          const startY = i === 0 ? topY : prev.cy
+          const endX = 20 + i * 10
+          const endY = p.cy
 
-        {/* 幹 → 各ワールドへの横枝線（横線 + 緑点 + オレンジ点） */}
-        {linePoints.map((p, i) => (
-          <g key={i}>
-            {/* 幹上の極小●：接続点 */}
-            <circle cx="20" cy={p.cy} r="2" fill="#2c9c45" />
-            {/* 横線（枝） */}
+          return (
             <line
-              x1="20"
-              y1={p.cy}
-              x2="50"
-              y2={p.cy}
+              key={`stem-${i}`}
+              x1={startX}
+              y1={startY}
+              x2={endX}
+              y2={endY}
               stroke="#2c9c45"
               strokeWidth="2"
             />
-            {/* 横線の右端の●（強調表示） */}
-            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
-          </g>
-        ))}
+          )
+        })}
+
+        {/* 横線とオレンジの● */}
+        {linePoints.map((p, i) => {
+          const stemX = 20 + i * 10
+
+          return (
+            <g key={`branch-${i}`}>
+              <line
+                x1={stemX}
+                y1={p.cy}
+                x2={stemX + 30}
+                y2={p.cy}
+                stroke="#2c9c45"
+                strokeWidth="2"
+              />
+              <circle cx={stemX + 30} cy={p.cy} r="5" fill="#d17d1e" />
+            </g>
+          )
+        })}
       </svg>
 
       <div className={styles.content}>
