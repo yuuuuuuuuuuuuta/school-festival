@@ -43,7 +43,7 @@ export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<{ cy: number }[]>([])
+  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
 
@@ -55,14 +55,15 @@ export default function MajorTree() {
     const boxes = boxRefs.current
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
 
-    const positions: { cy: number }[] = boxes
+    const positions: { cy: number; cx: number }[] = boxes
       .map((el) => {
         if (!el) return null
         const box = el.getBoundingClientRect()
         const cy = box.top + box.height / 2 - svgTop
-        return { cy }
+        const cx = box.left - svgRef.current!.getBoundingClientRect().left
+        return { cy, cx }
       })
-      .filter((p): p is { cy: number } => p !== null)
+      .filter((p): p is { cy: number; cx: number } => p !== null)
 
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
@@ -91,7 +92,7 @@ export default function MajorTree() {
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
 
-          const branchLength = 50
+          const branchLength = 80 // ほんとは30
 
           return (
             <g key={i}>
@@ -106,12 +107,7 @@ export default function MajorTree() {
               />
 
               {/* オレンジの●を"枝線の終端"＝BOX左端に置く */}
-              <circle
-                cx={xBase + branchLength}
-                cy={yBase}
-                r="5"
-                fill="#d17d1e"
-              />
+              <circle cx={p.cx} cy={p.cy} r="5" fill="#d17d1e" />
             </g>
           )
         })}
