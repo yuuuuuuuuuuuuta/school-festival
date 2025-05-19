@@ -75,35 +75,40 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹：斜め線 */}
+        {/* 幹線（斜め線） */}
         <polyline
-          points={linePoints.map((p, i) => `${10 + i * 3},${p.cy}`).join(' ')}
+          points={`0,${topY} 20,${bottomY}`}
           stroke="#2c9c45"
           strokeWidth="2"
           fill="none"
         />
 
-        {/* 枝：幹の先端から→横線と● */}
+        {/* 幹線上の微小●（幹と同色）＋枝線＋末端● */}
         {linePoints.map((p, i) => {
-          const branchX = 10 + i * 3 // 幹上のx座標（適度に右下がり）
-          const branchY = p.cy
+          // 幹線の斜め角度に対応する点を取得
+          const slopeX = 20
+          const slopeY = bottomY - topY
+          const slope = slopeY / slopeX
+          const xBase = (20 * (p.cy - topY)) / slopeY
+          const yBase = p.cy
+
           return (
             <g key={i}>
-              {/* 小さな接続点（見えないほど小さい） */}
-              <circle cx={branchX} cy={branchY} r={0.5} fill="#2c9c45" />
+              {/* 幹と枝の結節点に極小の円（幹と同色） */}
+              <circle cx={xBase} cy={yBase} r="0.5" fill="#2c9c45" />
 
-              {/* 枝（横線） */}
+              {/* 枝線（右へ） */}
               <line
-                x1={branchX}
-                y1={branchY}
-                x2={branchX + 30}
-                y2={branchY}
+                x1={xBase}
+                y1={yBase}
+                x2={xBase + 30}
+                y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="2"
               />
 
-              {/* 右端の● */}
-              <circle cx={branchX + 30} cy={branchY} r={5} fill="#d17d1e" />
+              {/* オレンジの● */}
+              <circle cx={xBase + 30} cy={yBase} r="5" fill="#d17d1e" />
             </g>
           )
         })}
