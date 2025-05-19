@@ -75,12 +75,17 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        <polyline
-          points={`0,${topY} 20,${topY + 20} 20,${linePoints[linePoints.length - 1]?.cy || bottomY}`}
+        {/* 斜め幹線(単線) */}
+        <line
+          x1="0"
+          y1={topY}
+          x2="20"
+          y2={linePoints[linePoints.length - 1]?.cy ?? bottomY}
           stroke="#2c9c45"
           strokeWidth="2"
-          fill="none"
         />
+
+        {/* 各横枝と● */}
         {linePoints.map((p, i) => (
           <g key={i}>
             <line
@@ -91,7 +96,7 @@ export default function MajorTree() {
               stroke="#2c9c45"
               strokeWidth="2"
             />
-            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
+            <circle cx="20" cy={p.cy} r="5" fill="#d17d1e" />
           </g>
         ))}
       </svg>
