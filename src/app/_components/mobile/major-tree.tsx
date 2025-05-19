@@ -43,9 +43,7 @@ export default function MajorTree() {
   const [openMap, setOpenMap] = useState<Record<string, boolean>>({})
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<
-    { cy: number; cx: number; count: number }[]
-  >([])
+  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
 
@@ -58,23 +56,15 @@ export default function MajorTree() {
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
-    let cumulativeCount = 0
-
     const positions = boxes
-      .map((el, i) => {
+      .map((el) => {
         if (!el) return null
         const rect = el.getBoundingClientRect()
         const cy = rect.top + rect.height / 2 - svgTop
         const cx = rect.left - svgLeft
-        const count = majorData[i].majors.length
-        const base = cumulativeCount
-        cumulativeCount += count
-        return { cy, cx, count, base }
+        return { cy, cx }
       })
-      .filter(
-        (p): p is { cy: number; cx: number; count: number; base: number } =>
-          p !== null,
-      )
+      .filter((p): p is { cy: number; cx: number } => p !== null)
 
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
@@ -87,7 +77,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線（斜線） */}
+        {/* 幹線（斜め） */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -109,7 +99,6 @@ export default function MajorTree() {
 
           return (
             <g key={i}>
-              {/* 横線 */}
               <line
                 x1={xBase}
                 y1={yBase}
@@ -117,8 +106,9 @@ export default function MajorTree() {
                 y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              {/* オレンジ丸 */}
               <circle
                 cx={xBase + branchLength}
                 cy={yBase}
@@ -146,18 +136,15 @@ export default function MajorTree() {
 
             {openMap[group.world] && (
               <div className={styles.majorList}>
-                {group.majors.map((m, j) => (
-                  <div key={m} className={styles.majorItem}>
-                    <svg width="20" height="24">
-                      <line
-                        x1="0"
-                        y1="12"
-                        x2="16"
-                        y2="12"
-                        stroke="#2c9c45"
-                        strokeWidth="2"
-                      />
-                    </svg>
+                {group.majors.map((m) => (
+                  <div
+                    key={m}
+                    className={styles.majorItem}
+                    style={{
+                      color: 'black',
+                      ['--branch-color' as any]: group.color,
+                    }}
+                  >
                     {m}
                   </div>
                 ))}

@@ -1,3 +1,5 @@
+/* major-tree.module.css */
+
 .wrapper {
   position: relative;
   padding-left: 80px;
@@ -19,7 +21,7 @@
 }
 
 .node {
-  margin: 24px 0;
+  margin: 32px 0;
 }
 
 .box {
@@ -31,22 +33,28 @@
   font-size: 16px;
   z-index: 1;
   position: relative;
+  display: inline-block;
 }
 
 .majorList {
-  margin-left: 20px;
-  margin-top: 8px;
+  margin-left: 36px;
+  margin-top: 16px;
 }
 
 .majorItem {
-  display: flex;
-  align-items: center;
   font-size: 14px;
-  margin-top: 6px;
-  color: black;
+  margin: 6px 0;
+  position: relative;
+  padding-left: 16px;
 }
 
-.majorItem svg {
-  margin-right: 6px;
-  flex-shrink: 0;
+.majorItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  background-color: currentColor;
+  transform: translateY(-50%);
 }
