@@ -91,7 +91,7 @@ export default function MajorTree() {
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
 
-          const branchLength = 30
+          const branchLength = 50
 
           return (
             <g key={i}>
