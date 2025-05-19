@@ -86,7 +86,7 @@ export default function MajorTree() {
             x2={20}
             y2={bottomY}
             stroke="#2c9c45"
-            strokeWidth="2"
+            strokeWidth="4" // 線の太さ調整
           />
         )}
 
@@ -104,12 +104,12 @@ export default function MajorTree() {
                 x2={xBase + branchLength}
                 y2={yBase}
                 stroke="#2c9c45"
-                strokeWidth="2"
+                strokeWidth="4" // 線の太さ調整
               />
               <circle
                 cx={xBase + branchLength}
                 cy={yBase}
-                r="5"
+                r="5" // 半径の設定
                 fill="#d17d1e"
               />
             </g>
