@@ -90,10 +90,9 @@ export default function MajorTree() {
           <g key={i}>
             {/* 横線（枝） */}
             <path
-              d={`M 20 ${p.cy - 0.5} Q 35 ${p.cy - 2}, 50 ${p.cy}`}
+              d={`M 20 ${p.cy} L 50 ${p.cy}`}
               stroke="#2c9c45"
               strokeWidth="2"
-              fill="none"
               strokeLinecap="round"
             />
             {/* ●を線の右端（x=50）に配置 */}
