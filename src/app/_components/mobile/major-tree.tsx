@@ -75,25 +75,39 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹 + 枝を一本の path で描く */}
-        <path
-          d={(() => {
-            if (linePoints.length === 0) return ''
-            let d = `M 0 ${topY} L 20 ${linePoints[0].cy}`
-            for (let i = 0; i < linePoints.length; i++) {
-              d += ` L 20 ${linePoints[i].cy} L 50 ${linePoints[i].cy}`
-            }
-            return d
-          })()}
-          fill="none"
+        {/* 幹線：斜め線 + 垂直線 */}
+        <polyline
+          points={`0,${topY} 20,${linePoints[0]?.cy ?? topY}`}
           stroke="#2c9c45"
           strokeWidth="2"
-          strokeLinecap="round"
+          fill="none"
+        />
+        <line
+          x1="20"
+          y1={linePoints[0]?.cy ?? topY}
+          x2="20"
+          y2={linePoints[linePoints.length - 1]?.cy ?? bottomY}
+          stroke="#2c9c45"
+          strokeWidth="2"
         />
 
-        {/* ●だけ別途描画 */}
+        {/* 幹 → 各ワールドへの横枝線（横線 + 緑点 + オレンジ点） */}
         {linePoints.map((p, i) => (
-          <circle key={i} cx="50" cy={p.cy} r="5" fill="#d17d1e" />
+          <g key={i}>
+            {/* 幹上の極小●：接続点 */}
+            <circle cx="20" cy={p.cy} r="2" fill="#2c9c45" />
+            {/* 横線（枝） */}
+            <line
+              x1="20"
+              y1={p.cy}
+              x2="50"
+              y2={p.cy}
+              stroke="#2c9c45"
+              strokeWidth="2"
+            />
+            {/* 横線の右端の●（強調表示） */}
+            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
+          </g>
         ))}
       </svg>
 
