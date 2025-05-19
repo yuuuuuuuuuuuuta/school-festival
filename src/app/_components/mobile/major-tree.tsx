@@ -75,7 +75,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 斜め幹線(単線) */}
+        {/* 幹線：左から斜めに下る線 */}
         <line
           x1="0"
           y1={topY}
@@ -85,18 +85,18 @@ export default function MajorTree() {
           strokeWidth="2"
         />
 
-        {/* 各横枝と● */}
+        {/* 枝線と●：ボタン横に固定 */}
         {linePoints.map((p, i) => (
           <g key={i}>
             <line
-              x1="20"
+              x1="50"
               y1={p.cy}
-              x2="50"
+              x2="80"
               y2={p.cy}
               stroke="#2c9c45"
               strokeWidth="2"
             />
-            <circle cx="20" cy={p.cy} r="5" fill="#d17d1e" />
+            <circle cx="50" cy={p.cy} r="5" fill="#d17d1e" />
           </g>
         ))}
       </svg>
