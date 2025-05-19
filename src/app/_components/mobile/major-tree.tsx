@@ -54,14 +54,13 @@ export default function MajorTree() {
   useEffect(() => {
     const boxes = boxRefs.current
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
-    const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
     const positions: { cy: number; cx: number }[] = boxes
       .map((el) => {
         if (!el) return null
         const box = el.getBoundingClientRect()
         const cy = box.top + box.height / 2 - svgTop
-        const cx = box.left - svgLeft
+        const cx = box.left - svgRef.current!.getBoundingClientRect().left
         return { cy, cx }
       })
       .filter((p): p is { cy: number; cx: number } => p !== null)
@@ -85,15 +84,19 @@ export default function MajorTree() {
           fill="none"
         />
 
-        {/* 横枝線 */}
         {linePoints.map((p, i) => {
+          // 斜線との交点
           const slopeY = bottomY - topY
+          const slopeX = 20
+          const slope = slopeY / slopeX
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
-          const branchLength = 80
+
+          const branchLength = 80 // ほんとは30
 
           return (
             <g key={i}>
+              {/* 枝線 */}
               <line
                 x1={xBase}
                 y1={yBase}
@@ -102,24 +105,14 @@ export default function MajorTree() {
                 stroke="#2c9c45"
                 strokeWidth="2"
               />
+
+              {/* オレンジの●を"枝線の終端"＝BOX左端に置く */}
+              <circle cx={p.cx} cy={p.cy} r="5" fill="#d17d1e" />
             </g>
           )
         })}
       </svg>
 
-      {/* オレンジの●をHTMLで上に描画 */}
-      {linePoints.map((p, i) => (
-        <div
-          key={`dot-${i}`}
-          className={styles.dot}
-          style={{
-            top: `${p.cy - 5}px`,
-            left: `${p.cx - 5}px`,
-          }}
-        />
-      ))}
-
-      {/* コンテンツ部分 */}
       <div className={styles.content}>
         {majorData.map((group, i) => (
           <div key={group.world} className={styles.node}>
