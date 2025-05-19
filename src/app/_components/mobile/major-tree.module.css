@@ -38,9 +38,35 @@
 .majorList {
   margin-left: 20px;
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
 }
 
 .majorItem {
   font-size: 14px;
-  margin-top: 4px;
+  margin-left: 12px;
+  padding-left: 8px;
+  border-left: 2px solid currentColor;
+  position: relative;
+  white-space: nowrap;
+}
+
+.majorItem::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: currentColor;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* SVG circle always on top */
+circle {
+  z-index: 2;
 }

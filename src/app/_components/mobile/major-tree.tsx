@@ -1,4 +1,3 @@
-// MajorTree.tsx
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
@@ -78,7 +77,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線（斜め） */}
+        {/* 幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -93,7 +92,6 @@ export default function MajorTree() {
         )}
 
         {linePoints.map((p, i) => {
-          const group = majorData[i]
           const slopeY = bottomY - topY
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
@@ -101,7 +99,6 @@ export default function MajorTree() {
 
           return (
             <g key={i}>
-              {/* 横枝線と● */}
               <line
                 x1={xBase}
                 y1={yBase}
@@ -109,7 +106,6 @@ export default function MajorTree() {
                 y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="4"
-                strokeLinecap="round"
               />
               <circle
                 cx={xBase + branchLength}
@@ -117,27 +113,6 @@ export default function MajorTree() {
                 r="5"
                 fill="#d17d1e"
               />
-
-              {/* サブ専攻への枝分かれ線 */}
-              {openMap[group.world] &&
-                group.majors.map((major, j) => {
-                  const spacing = 20
-                  const endY =
-                    yBase + spacing * (j - (group.majors.length - 1) / 2)
-                  const endX = p.cx + 100
-
-                  return (
-                    <line
-                      key={`branch-${i}-${j}`}
-                      x1={p.cx}
-                      y1={yBase}
-                      x2={endX}
-                      y2={endY}
-                      stroke={group.color}
-                      strokeWidth="2"
-                    />
-                  )
-                })}
             </g>
           )
         })}
@@ -156,10 +131,21 @@ export default function MajorTree() {
             >
               {group.world}
             </div>
+
             {openMap[group.world] && (
               <div className={styles.majorList}>
-                {group.majors.map((m) => (
-                  <div key={m} className={styles.majorItem}>
+                {group.majors.map((m, j) => (
+                  <div key={j} className={styles.majorItem}>
+                    <svg className={styles.subline}>
+                      <line
+                        x1="0"
+                        y1="8"
+                        x2="16"
+                        y2="8"
+                        stroke={group.color}
+                        strokeWidth="2"
+                      />
+                    </svg>
                     {m}
                   </div>
                 ))}
