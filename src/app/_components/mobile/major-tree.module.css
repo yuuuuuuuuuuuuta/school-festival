@@ -1,5 +1,8 @@
 .wrapper {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .svg {
@@ -12,47 +15,32 @@
   pointer-events: none;
 }
 
-.circle {
+.content {
+  margin-left: 60px;
   z-index: 2;
 }
 
-.content {
-  position: relative;
-  padding-left: 3.5rem;
-  z-index: 1;
-}
-
 .node {
-  margin-bottom: 2rem;
+  margin: 24px 0;
 }
 
 .box {
-  display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 8px 16px;
   border: 2px solid;
-  border-radius: 0.5rem;
-  font-weight: bold;
+  border-radius: 8px;
   background-color: white;
-  cursor: pointer;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
 }
 
 .majorList {
-  margin-top: 0.5rem;
-  margin-left: 1rem;
+  margin-left: 16px;
+  margin-top: 8px;
 }
 
 .majorItem {
-  margin-bottom: 0.3rem;
-  padding-left: 1rem;
-  position: relative;
-}
-
-.majorItem::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.7rem;
-  width: 0.8rem;
-  height: 2px;
-  background-color: #2c9c45;
+  padding-left: 1em;
+  line-height: 1.5;
+  color: #222;
 }
