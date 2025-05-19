@@ -1,3 +1,5 @@
+/* major-tree.module.css */
+
 .wrapper {
   position: relative;
   padding-left: 80px;
@@ -29,25 +31,30 @@
   background-color: white;
   font-weight: bold;
   font-size: 16px;
-  position: relative; /* SVG線との整合性のために追加 */
   z-index: 1;
+  position: relative;
+  display: inline-block;
 }
 
 .majorList {
   margin-left: 20px;
   margin-top: 8px;
-  position: relative; /* 専攻線の位置調整に必要 */
 }
 
 .majorItem {
   font-size: 14px;
-  margin-top: 4px;
-  color: black; /* 明示的に黒文字に固定 */
+  margin: 8px 0;
   position: relative;
+  padding-left: 16px;
+  color: black;
 }
 
-/* SVG線が上に被らないように調整する場合 */
-.circle {
-  z-index: 2;
-  position: relative;
+.majorItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9em;
+  width: 10px;
+  height: 2px;
+  background-color: currentColor;
 }

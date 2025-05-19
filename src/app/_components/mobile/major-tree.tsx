@@ -45,12 +45,7 @@ export default function MajorTree() {
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const majorRefs = useRef<(HTMLDivElement | null)[][]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-  const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
-  const [majorPoints, setMajorPoints] = useState<
-    { cy: number; cx: number }[][]
-  >([])
-  const [topY, setTopY] = useState(0)
-  const [bottomY, setBottomY] = useState(0)
+  const [lines, setLines] = useState<any[]>([])
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
@@ -60,88 +55,41 @@ export default function MajorTree() {
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
-    const boxPositions = boxRefs.current.map((el) => {
-      if (!el) return { cx: 0, cy: 0 }
-      const rect = el.getBoundingClientRect()
-      return {
-        cx: rect.left - svgLeft,
-        cy: rect.top + rect.height / 2 - svgTop,
-      }
+    const newLines: any[] = []
+    majorData.forEach((group, i) => {
+      const box = boxRefs.current[i]?.getBoundingClientRect()
+      if (!box) return
+
+      const x1 = box.left - svgLeft - 10
+      const y1 = box.top + box.height / 2 - svgTop
+
+      group.majors.forEach((_, j) => {
+        const major = majorRefs.current[i]?.[j]?.getBoundingClientRect()
+        if (!major) return
+
+        const midX = x1 - 20
+        const x2 = major.left - svgLeft - 8
+        const y2 = major.top + major.height / 2 - svgTop
+
+        newLines.push({ x1, y1, midX, x2, y2, color: group.color })
+      })
     })
-
-    const majorsPositions = majorRefs.current.map((group) =>
-      group.map((el) => {
-        if (!el) return { cx: 0, cy: 0 }
-        const rect = el.getBoundingClientRect()
-        return {
-          cx: rect.left - svgLeft,
-          cy: rect.top + rect.height / 2 - svgTop,
-        }
-      }),
-    )
-
-    setLinePoints(boxPositions)
-    setMajorPoints(majorsPositions)
-    if (boxPositions.length > 0) {
-      setTopY(boxPositions[0].cy - 20)
-      setBottomY(boxPositions[boxPositions.length - 1].cy + 20)
-    }
+    setLines(newLines)
   }, [openMap])
 
   return (
     <div className={styles.wrapper}>
-      <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線 */}
-        <line
-          x1={0}
-          y1={topY}
-          x2={20}
-          y2={bottomY}
-          stroke="#2c9c45"
-          strokeWidth={4}
-          strokeLinecap="round"
-        />
-
-        {linePoints.map((p, i) => {
-          const slopeY = bottomY - topY
-          const xBase = (20 * (p.cy - topY)) / slopeY
-          const yBase = p.cy
-          const branchLength = p.cx - xBase - 12
-
-          return (
-            <g key={`main-${i}`}>
-              <line
-                x1={xBase}
-                y1={yBase}
-                x2={xBase + branchLength}
-                y2={yBase}
-                stroke="#2c9c45"
-                strokeWidth="4"
-              />
-              <circle
-                cx={xBase + branchLength}
-                cy={yBase}
-                r="5"
-                fill="#d17d1e"
-                className={styles.circle}
-              />
-            </g>
-          )
-        })}
-
-        {majorPoints.map((group, i) =>
-          group.map((m, j) => (
-            <line
-              key={`branch-${i}-${j}`}
-              x1={linePoints[i]?.cx || 0}
-              y1={linePoints[i]?.cy || 0}
-              x2={m.cx - 8}
-              y2={m.cy}
-              stroke={majorData[i].color}
+      <svg ref={svgRef} className={styles.svg}>
+        {lines.map((line, i) => (
+          <g key={i}>
+            <polyline
+              points={`${line.x1},${line.y1} ${line.midX},${line.y1} ${line.midX},${line.y2} ${line.x2},${line.y2}`}
+              fill="none"
+              stroke={line.color}
               strokeWidth={2}
             />
-          )),
-        )}
+          </g>
+        ))}
       </svg>
 
       <div className={styles.content}>
@@ -162,11 +110,12 @@ export default function MajorTree() {
                 {group.majors.map((m, j) => (
                   <div
                     key={m}
-                    ref={(el) => {
+                    className={styles.majorItem}
+                    ref={(el: HTMLDivElement | null) => {
                       if (!majorRefs.current[i]) majorRefs.current[i] = []
                       majorRefs.current[i][j] = el
                     }}
-                    className={styles.majorItem}
+                    style={{ color: group.color }}
                   >
                     {m}
                   </div>
