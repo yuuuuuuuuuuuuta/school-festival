@@ -75,7 +75,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線（斜め線） */}
+        {/* 幹線（斜め） */}
         <polyline
           points={`0,${topY} 20,${bottomY}`}
           stroke="#2c9c45"
@@ -83,32 +83,35 @@ export default function MajorTree() {
           fill="none"
         />
 
-        {/* 幹線上の微小●（幹と同色）＋枝線＋末端● */}
         {linePoints.map((p, i) => {
-          // 幹線の斜め角度に対応する点を取得
-          const slopeX = 20
+          // 斜線との交点
           const slopeY = bottomY - topY
+          const slopeX = 20
           const slope = slopeY / slopeX
           const xBase = (20 * (p.cy - topY)) / slopeY
           const yBase = p.cy
 
+          const branchLength = 30
+
           return (
             <g key={i}>
-              {/* 幹と枝の結節点に極小の円（幹と同色） */}
-              <circle cx={xBase} cy={yBase} r="0.5" fill="#2c9c45" />
-
-              {/* 枝線（右へ） */}
+              {/* 枝線 */}
               <line
                 x1={xBase}
                 y1={yBase}
-                x2={xBase + 30}
+                x2={xBase + branchLength}
                 y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="2"
               />
 
-              {/* オレンジの● */}
-              <circle cx={xBase + 30} cy={yBase} r="5" fill="#d17d1e" />
+              {/* オレンジの●を"枝線の終端"＝BOX左端に置く */}
+              <circle
+                cx={xBase + branchLength}
+                cy={yBase}
+                r="5"
+                fill="#d17d1e"
+              />
             </g>
           )
         })}
