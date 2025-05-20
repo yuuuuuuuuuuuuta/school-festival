@@ -103,7 +103,7 @@ export default function MajorTree() {
           const slopeX = 30
           const y = p.cy
           const x1 = ((y - topY) * slopeX) / slopeY
-          const x2 = p.cx - 24
+          const x2 = p.cx - 28
           return (
             <g key={i}>
               <line
@@ -181,7 +181,11 @@ export default function MajorTree() {
                 boxRefs.current[i] = el
               }}
               onClick={() => toggle(group.world)}
-              style={{ color: group.color, borderColor: group.color }}
+              style={{
+                color: group.color,
+                borderColor: group.color,
+                marginLeft: '-12px',
+              }}
             >
               {group.world}
             </div>
