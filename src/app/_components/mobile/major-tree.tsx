@@ -103,7 +103,7 @@ export default function MajorTree() {
           const slopeX = 30
           const y = p.cy
           const x1 = ((y - topY) * slopeX) / slopeY
-          const x2 = p.cx - 24
+          const x2 = p.cx - 16
           return (
             <g key={i}>
               <line
