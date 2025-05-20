@@ -80,7 +80,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線 */}
+        {/* ワールド用幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -93,7 +93,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 水平枝＋● */}
+        {/* ワールド用枝線＋● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -102,7 +102,7 @@ export default function MajorTree() {
           const x2 = p.cx - 16
 
           return (
-            <g key={i}>
+            <g key={`world-line-${i}`}>
               <line
                 x1={x1}
                 y1={yBase}
@@ -116,7 +116,7 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 専攻線 */}
+        {/* 新規：専攻線 */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
           const majors = majorRefs.current[i].filter(
@@ -128,34 +128,35 @@ export default function MajorTree() {
           const boxX = boxRect.left - svgOffset.current.left
           const boxCy = boxRect.top + boxRect.height / 2 - svgOffset.current.top
 
-          const lastMajor = majors[majors.length - 1]
-          const lastMajorRect = lastMajor.getBoundingClientRect()
-          const fixedY =
+          const lastMajorRect =
+            majors[majors.length - 1]!.getBoundingClientRect()
+          const lastY =
             lastMajorRect.top + lastMajorRect.height / 2 - svgOffset.current.top
+
+          const stemX1 = boxX
           const stemX2 = boxX + 20
 
           return (
             <g key={`major-stem-${i}`}>
               <line
-                x1={boxX}
+                x1={stemX1}
                 y1={boxCy}
                 x2={stemX2}
-                y2={fixedY}
+                y2={lastY}
                 stroke={majorData[i].color}
                 strokeWidth="3"
               />
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
-                const targetY =
-                  rect.top + rect.height / 2 - svgOffset.current.top
-                const targetX = rect.left - svgOffset.current.left - 10
+                const y = rect.top + rect.height / 2 - svgOffset.current.top
+                const x2 = rect.left - svgOffset.current.left - 10
                 return (
                   <line
                     key={`major-branch-${i}-${j}`}
                     x1={stemX2}
-                    y1={targetY}
-                    x2={targetX}
-                    y2={targetY}
+                    y1={y}
+                    x2={x2}
+                    y2={y}
                     stroke={majorData[i].color}
                     strokeWidth="3"
                   />
