@@ -111,7 +111,7 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 新規：専攻用 幹＋枝 */}
+        {/* 新規：専攻用 幹＋枝（↘方向に修正済） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
 
@@ -131,21 +131,20 @@ export default function MajorTree() {
           const lastMajorRect = lastMajor.getBoundingClientRect()
           const fixedY = lastMajorRect.top + lastMajorRect.height / 2 - svgTop
 
-          const stemX2 = boxX - 20
-          const stemY2 = fixedY
+          const stemX2 = boxX + 20 // 修正：↘方向へ
 
           return (
             <g key={`stem-group-${i}`}>
-              {/* 幹線（斜線） */}
+              {/* 幹線（↘） */}
               <line
                 x1={boxX}
                 y1={boxCy}
                 x2={stemX2}
-                y2={stemY2}
+                y2={fixedY}
                 stroke={majorData[i].color}
                 strokeWidth="3"
               />
-              {/* 枝線（水平） */}
+              {/* 各専攻への水平枝線 */}
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
                 const targetY = rect.top + rect.height / 2 - svgTop
