@@ -7,13 +7,13 @@ const majorData = [
   {
     world: '動物ワールド',
     color: '#3B873E',
-    indent: 32,
+    indent: 40,
     majors: ['動物飼育専攻', '動物園マネジメント専攻'],
   },
   {
     world: '海洋ワールド',
     color: '#2F70B7',
-    indent: 32,
+    indent: 40,
     majors: [
       '水族館アクアリスト専攻',
       '水族館プロデュース専攻',
@@ -23,7 +23,7 @@ const majorData = [
   {
     world: '自然環境ワールド',
     color: '#B2722D',
-    indent: 32,
+    indent: 40,
     majors: [
       '博物館・恐竜自然史専攻',
       'ECO自然環境クリエーター専攻',
@@ -33,7 +33,7 @@ const majorData = [
   {
     world: 'ペットワールド',
     color: '#9333EA',
-    indent: 32,
+    indent: 40,
     majors: [
       'ドッグトレーナー専攻',
       'ペットワールドトリマー＆ヘルスケア専攻',
