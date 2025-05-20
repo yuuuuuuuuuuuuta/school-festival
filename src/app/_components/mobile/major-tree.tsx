@@ -128,8 +128,9 @@ export default function MajorTree() {
           if (majors.length === 0) return null
 
           const boxRect = boxEl.getBoundingClientRect()
-          const boxX = boxRect.left - svgOffset.current.left
-          const boxCy = boxRect.top + boxRect.height / 2 - svgOffset.current.top
+          const boxX =
+            boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
+          const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
           const lastY =
             majors[majors.length - 1]!.getBoundingClientRect().top +
             majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
