@@ -20,10 +20,11 @@
 
 .node {
   margin: 24px 0;
+  text-align: center;
 }
 
 .box {
-  width: 200px;
+  width: 180px;
   text-align: center;
   padding: 8px 16px;
   border: 2px solid;
