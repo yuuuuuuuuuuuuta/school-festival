@@ -90,30 +90,35 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 既存：枝線 + ● */}
+        {/* 枝線 + オレンジ●（右端に描画） */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
           const yBase = p.cy
-          const xBase = ((yBase - topY) * slopeX) / slopeY
-          const branchEndX = p.cx - 16 // ← 長さ調整済み（BOX左端まで到達）
+          const x1 = ((yBase - topY) * slopeX) / slopeY
+          const x2 = p.cx - 16
 
           return (
             <g key={i}>
               <line
-                x1={xBase}
+                x1={x1}
                 y1={yBase}
-                x2={branchEndX}
+                x2={x2}
                 y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="4"
               />
-              <circle cx={xBase} cy={yBase} r="5" fill="#d17d1e" />
+              <circle
+                cx={x2} // ← ●を右端（BOX手前）に配置
+                cy={yBase}
+                r="5"
+                fill="#d17d1e"
+              />
             </g>
           )
         })}
 
-        {/* 新規：専攻線（幹+枝） */}
+        {/* 専攻線（幹+枝） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
           const majors = majorRefs.current[i].filter(
