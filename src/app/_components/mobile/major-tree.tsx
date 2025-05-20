@@ -90,13 +90,13 @@ export default function MajorTree() {
           />
         )}
 
-        {/* ワールド枝線＋● */}
+        {/* ワールド枝線＋●（短縮） */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
           const yBase = p.cy
           const xBase = ((yBase - topY) * slopeX) / slopeY
-          const branchEndX = p.cx - 30 // ← 枝線を短くした！
+          const branchEndX = p.cx - 30
 
           return (
             <g key={i}>
@@ -111,7 +111,7 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 新規：専攻用 幹＋枝（↘） */}
+        {/* 専攻線（box → ↘ → ──→ major） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
 

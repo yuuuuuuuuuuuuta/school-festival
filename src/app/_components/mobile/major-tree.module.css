@@ -29,8 +29,11 @@
   background-color: white;
   font-weight: bold;
   font-size: 16px;
-  z-index: 1;
   position: relative;
+  z-index: 1;
+
+  width: 200px;           /* ← 自然環境ワールドに合わせて固定 */
+  text-align: center;     /* ← 文字中央寄せ */
 }
 
 .majorList {
