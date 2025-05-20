@@ -1,6 +1,6 @@
 .wrapper {
   position: relative;
-  padding-left: 0; /* 左側スペースの干渉を削除 */
+  padding-left: 80px;
 }
 
 .svg {
@@ -16,11 +16,6 @@
 .content {
   position: relative;
   z-index: 1;
-
-  /* 中央寄せ */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .node {
@@ -28,7 +23,6 @@
 }
 
 .box {
-  width: 170px;
   border: 2px solid;
   padding: 8px 16px;
   border-radius: 8px;
@@ -36,17 +30,16 @@
   font-weight: bold;
   font-size: 16px;
   text-align: center;
-  display: block;
+  min-width: 180px;
   margin: 0 auto;
 }
 
 .majorList {
-  margin-left: 20px;
   margin-top: 8px;
 }
 
 .majorItem {
   font-size: 14px;
   margin-top: 4px;
-  margin-left: 12px;
+  /* 左余白は JSX 側でインライン設定するため不要 */
 }

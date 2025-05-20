@@ -23,7 +23,7 @@ const majorData = [
   {
     world: '自然環境ワールド',
     color: '#B2722D',
-    indent: 24,
+    indent: 32,
     majors: [
       '博物館・恐竜自然史専攻',
       'ECO自然環境クリエーター専攻',
@@ -33,7 +33,7 @@ const majorData = [
   {
     world: 'ペットワールド',
     color: '#9333EA',
-    indent: 28,
+    indent: 36,
     majors: [
       'ドッグトレーナー専攻',
       'ペットワールドトリマー＆ヘルスケア専攻',
@@ -84,7 +84,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* ワールド用幹線 */}
+        {/* 幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -97,30 +97,29 @@ export default function MajorTree() {
           />
         )}
 
-        {/* ワールド用枝線＋● */}
+        {/* 水平線 + オレンジの● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
-          const yBase = p.cy
-          const x1 = ((yBase - topY) * slopeX) / slopeY
+          const y = p.cy
+          const x1 = ((y - topY) * slopeX) / slopeY
           const x2 = p.cx - 16
-
           return (
-            <g key={`world-line-${i}`}>
+            <g key={i}>
               <line
                 x1={x1}
-                y1={yBase}
+                y1={y}
                 x2={x2}
-                y2={yBase}
+                y2={y}
                 stroke="#2c9c45"
                 strokeWidth="4"
               />
-              <circle cx={x2} cy={yBase} r="5" fill="#d17d1e" />
+              <circle cx={x2} cy={y} r="5" fill="#d17d1e" />
             </g>
           )
         })}
 
-        {/* 新規：専攻線 */}
+        {/* 専攻線（ワールド展開時） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
           const majors = majorRefs.current[i].filter(
@@ -131,11 +130,10 @@ export default function MajorTree() {
           const boxRect = boxEl.getBoundingClientRect()
           const boxX = boxRect.left - svgOffset.current.left
           const boxCy = boxRect.top + boxRect.height / 2 - svgOffset.current.top
-
-          const lastMajorRect =
-            majors[majors.length - 1]!.getBoundingClientRect()
           const lastY =
-            lastMajorRect.top + lastMajorRect.height / 2 - svgOffset.current.top
+            majors[majors.length - 1]!.getBoundingClientRect().top +
+            majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
+            svgOffset.current.top
 
           const stemX1 = boxX
           const stemX2 = boxX + 10
@@ -190,7 +188,10 @@ export default function MajorTree() {
                   <div
                     key={m}
                     className={styles.majorItem}
-                    style={{ color: group.color }}
+                    style={{
+                      color: group.color,
+                      marginLeft: `${group.indent}px`, // ← ワールドごとに右ずらし
+                    }}
                     ref={(el) => {
                       if (!majorRefs.current[i]) majorRefs.current[i] = []
                       majorRefs.current[i][j] = el
