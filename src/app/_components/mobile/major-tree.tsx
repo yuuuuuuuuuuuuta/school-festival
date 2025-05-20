@@ -134,7 +134,7 @@ export default function MajorTree() {
             lastMajorRect.top + lastMajorRect.height / 2 - svgOffset.current.top
 
           const stemX1 = boxX
-          const stemX2 = boxX + 60
+          const stemX2 = boxX
 
           return (
             <g key={`major-stem-${i}`}>
