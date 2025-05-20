@@ -44,24 +44,27 @@ export default function MajorTree() {
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const majorRefs = useRef<(HTMLDivElement | null)[][]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
+
   const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
+  const svgOffset = useRef({ top: 0, left: 0 })
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
   }
 
   useEffect(() => {
-    const svgTop = svgRef.current?.getBoundingClientRect().top || 0
-    const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
+    if (!svgRef.current) return
+    const svgRect = svgRef.current.getBoundingClientRect()
+    svgOffset.current = { top: svgRect.top, left: svgRect.left }
 
     const positions = boxRefs.current
       .map((el) => {
         if (!el) return null
         const rect = el.getBoundingClientRect()
-        const cy = rect.top + rect.height / 2 - svgTop
-        const cx = rect.left - svgLeft
+        const cy = rect.top + rect.height / 2 - svgOffset.current.top
+        const cx = rect.left - svgOffset.current.left
         return { cy, cx }
       })
       .filter((p): p is { cy: number; cx: number } => p !== null)
@@ -90,7 +93,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 枝線 + オレンジ●（右端に描画） */}
+        {/* 水平枝＋● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -108,17 +111,12 @@ export default function MajorTree() {
                 stroke="#2c9c45"
                 strokeWidth="4"
               />
-              <circle
-                cx={x2} // ← ●を右端（BOX手前）に配置
-                cy={yBase}
-                r="5"
-                fill="#d17d1e"
-              />
+              <circle cx={x2} cy={yBase} r="5" fill="#d17d1e" />
             </g>
           )
         })}
 
-        {/* 専攻線（幹+枝） */}
+        {/* 専攻線 */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
           const majors = majorRefs.current[i].filter(
@@ -126,16 +124,14 @@ export default function MajorTree() {
           )
           if (majors.length === 0) return null
 
-          const svgTop = svgRef.current?.getBoundingClientRect().top || 0
-          const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
-
           const boxRect = boxEl.getBoundingClientRect()
-          const boxX = boxRect.left - svgLeft
-          const boxCy = boxRect.top + boxRect.height / 2 - svgTop
+          const boxX = boxRect.left - svgOffset.current.left
+          const boxCy = boxRect.top + boxRect.height / 2 - svgOffset.current.top
 
           const lastMajor = majors[majors.length - 1]
           const lastMajorRect = lastMajor.getBoundingClientRect()
-          const fixedY = lastMajorRect.top + lastMajorRect.height / 2 - svgTop
+          const fixedY =
+            lastMajorRect.top + lastMajorRect.height / 2 - svgOffset.current.top
           const stemX2 = boxX + 20
 
           return (
@@ -150,8 +146,9 @@ export default function MajorTree() {
               />
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
-                const targetY = rect.top + rect.height / 2 - svgTop
-                const targetX = rect.left - svgLeft - 10
+                const targetY =
+                  rect.top + rect.height / 2 - svgOffset.current.top
+                const targetX = rect.left - svgOffset.current.left - 10
                 return (
                   <line
                     key={`major-branch-${i}-${j}`}
