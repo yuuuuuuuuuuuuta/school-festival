@@ -7,13 +7,13 @@ const majorData = [
   {
     world: '動物ワールド',
     color: '#3B873E',
-    indent: 12,
+    indent: 32,
     majors: ['動物飼育専攻', '動物園マネジメント専攻'],
   },
   {
     world: '海洋ワールド',
     color: '#2F70B7',
-    indent: 16,
+    indent: 32,
     majors: [
       '水族館アクアリスト専攻',
       '水族館プロデュース専攻',
@@ -33,7 +33,7 @@ const majorData = [
   {
     world: 'ペットワールド',
     color: '#9333EA',
-    indent: 36,
+    indent: 32,
     majors: [
       'ドッグトレーナー専攻',
       'ペットワールドトリマー＆ヘルスケア専攻',
@@ -147,6 +147,7 @@ export default function MajorTree() {
                 y2={lastY}
                 stroke={majorData[i].color}
                 strokeWidth="3"
+                strokeLinecap="round"
               />
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
@@ -161,6 +162,7 @@ export default function MajorTree() {
                     y2={y}
                     stroke={majorData[i].color}
                     strokeWidth="3"
+                    strokeLinecap="round"
                   />
                 )
               })}
