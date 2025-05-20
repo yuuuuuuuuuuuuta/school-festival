@@ -96,7 +96,7 @@ export default function MajorTree() {
           const slopeX = 30
           const yBase = p.cy
           const xBase = ((yBase - topY) * slopeX) / slopeY
-          const branchEndX = xBase + 20 // 枝線は短くしても、●の位置はxBaseを保持
+          const branchEndX = p.cx - 16 // ← 長さ調整済み（BOX左端まで到達）
 
           return (
             <g key={i}>
