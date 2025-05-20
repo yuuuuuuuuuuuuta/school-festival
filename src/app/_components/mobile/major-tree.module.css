@@ -21,10 +21,12 @@
 .node {
   margin: 24px 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .box {
-  width: 180px;
+  width: 160px;
   text-align: center;
   padding: 8px 16px;
   border: 2px solid;
@@ -34,10 +36,6 @@
   font-size: 16px;
   position: relative;
   z-index: 1;
-
-  /* 中央寄せのための追加 */
-  display: block;
-  margin: 0 auto;
 }
 
 .majorList {
