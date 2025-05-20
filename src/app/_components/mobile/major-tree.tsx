@@ -77,7 +77,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線（斜線） */}
+        {/* 幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -90,31 +90,32 @@ export default function MajorTree() {
           />
         )}
 
-        {/* ワールド枝線＋●（短縮） */}
+        {/* 既存：枝線 + ● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
           const yBase = p.cy
           const xBase = ((yBase - topY) * slopeX) / slopeY
-          const branchEndX = p.cx - 30
+          const branchEndX = xBase + 20 // 枝線は短くしても、●の位置はxBaseを保持
 
           return (
             <g key={i}>
-              <path
-                d={`M ${xBase} ${yBase} H ${branchEndX}`}
+              <line
+                x1={xBase}
+                y1={yBase}
+                x2={branchEndX}
+                y2={yBase}
                 stroke="#2c9c45"
                 strokeWidth="4"
-                fill="none"
               />
               <circle cx={xBase} cy={yBase} r="5" fill="#d17d1e" />
             </g>
           )
         })}
 
-        {/* 専攻線（box → ↘ → ──→ major） */}
+        {/* 新規：専攻線（幹+枝） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
-
           const majors = majorRefs.current[i].filter(
             (el): el is HTMLDivElement => el !== null,
           )
@@ -130,11 +131,10 @@ export default function MajorTree() {
           const lastMajor = majors[majors.length - 1]
           const lastMajorRect = lastMajor.getBoundingClientRect()
           const fixedY = lastMajorRect.top + lastMajorRect.height / 2 - svgTop
-
           const stemX2 = boxX + 20
 
           return (
-            <g key={`stem-group-${i}`}>
+            <g key={`major-stem-${i}`}>
               <line
                 x1={boxX}
                 y1={boxCy}
@@ -147,7 +147,6 @@ export default function MajorTree() {
                 const rect = el.getBoundingClientRect()
                 const targetY = rect.top + rect.height / 2 - svgTop
                 const targetX = rect.left - svgLeft - 10
-
                 return (
                   <line
                     key={`major-branch-${i}-${j}`}
