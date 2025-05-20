@@ -103,7 +103,7 @@ export default function MajorTree() {
           const slopeX = 30
           const y = p.cy
           const x1 = ((y - topY) * slopeX) / slopeY
-          const x2 = p.cx - 28
+          const x2 = p.cx - 24
           return (
             <g key={i}>
               <line
@@ -184,7 +184,7 @@ export default function MajorTree() {
               style={{
                 color: group.color,
                 borderColor: group.color,
-                marginLeft: '-12px',
+                marginLeft: '-16px',
               }}
             >
               {group.world}
