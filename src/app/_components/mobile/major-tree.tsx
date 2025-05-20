@@ -47,9 +47,6 @@ export default function MajorTree() {
   const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
-  const [majorLinePoints, setMajorLinePoints] = useState<
-    { cy: number; cx: number; color: string }[]
-  >([])
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
@@ -59,7 +56,6 @@ export default function MajorTree() {
     const svgTop = svgRef.current?.getBoundingClientRect().top || 0
     const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
 
-    // ワールドの位置
     const positions = boxRefs.current
       .map((el) => {
         if (!el) return null
@@ -76,20 +72,6 @@ export default function MajorTree() {
     }
 
     setLinePoints(positions)
-
-    // 専攻の位置
-    const majors: { cy: number; cx: number; color: string }[] = []
-    majorRefs.current.forEach((group, i) => {
-      group?.forEach((el) => {
-        if (!el) return
-        const rect = el.getBoundingClientRect()
-        const cy = rect.top + rect.height / 2 - svgTop
-        const cx = rect.left - svgLeft
-        const color = majorData[i].color
-        majors.push({ cy, cx, color })
-      })
-    })
-    setMajorLinePoints(majors)
   }, [openMap])
 
   return (
@@ -108,7 +90,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* ワールド枝線 + ● */}
+        {/* ワールド枝線＋● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -129,22 +111,59 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 新規：専攻用の枝線（斜線幹→直角枝, ●なし） */}
-        {majorLinePoints.map((p, i) => {
-          const slopeY = bottomY - topY
-          const slopeX = 30
-          const yBase = p.cy
-          const xBase = ((yBase - topY) * slopeX) / slopeY
-          const branchEndX = p.cx - 10
+        {/* 新規：専攻用 幹＋枝 */}
+        {boxRefs.current.map((boxEl, i) => {
+          if (!boxEl || !majorRefs.current[i]) return null
+
+          const majors = majorRefs.current[i].filter(
+            (el): el is HTMLDivElement => el !== null,
+          )
+          if (majors.length === 0) return null
+
+          const svgTop = svgRef.current?.getBoundingClientRect().top || 0
+          const svgLeft = svgRef.current?.getBoundingClientRect().left || 0
+
+          const boxRect = boxEl.getBoundingClientRect()
+          const boxX = boxRect.left - svgLeft
+          const boxCy = boxRect.top + boxRect.height / 2 - svgTop
+
+          const lastMajor = majors[majors.length - 1]
+          const lastMajorRect = lastMajor.getBoundingClientRect()
+          const fixedY = lastMajorRect.top + lastMajorRect.height / 2 - svgTop
+
+          const stemX2 = boxX - 20
+          const stemY2 = fixedY
 
           return (
-            <path
-              key={`major-${i}`}
-              d={`M ${xBase} ${yBase} H ${branchEndX}`}
-              stroke={p.color}
-              strokeWidth="3"
-              fill="none"
-            />
+            <g key={`stem-group-${i}`}>
+              {/* 幹線（斜線） */}
+              <line
+                x1={boxX}
+                y1={boxCy}
+                x2={stemX2}
+                y2={stemY2}
+                stroke={majorData[i].color}
+                strokeWidth="3"
+              />
+              {/* 枝線（水平） */}
+              {majors.map((el, j) => {
+                const rect = el.getBoundingClientRect()
+                const targetY = rect.top + rect.height / 2 - svgTop
+                const targetX = rect.left - svgLeft - 10
+
+                return (
+                  <line
+                    key={`major-branch-${i}-${j}`}
+                    x1={stemX2}
+                    y1={targetY}
+                    x2={targetX}
+                    y2={targetY}
+                    stroke={majorData[i].color}
+                    strokeWidth="3"
+                  />
+                )
+              })}
+            </g>
           )
         })}
       </svg>
