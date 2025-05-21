@@ -134,7 +134,7 @@ export default function MajorTree() {
             majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
             svgOffset.current.top
 
-          const stemX1 = 60
+          const stemX1 = 72
           const stemX2 = stemX1 + 10
 
           return (
