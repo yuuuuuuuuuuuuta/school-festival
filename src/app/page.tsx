@@ -4,27 +4,30 @@ import { useEffect, useState } from 'react'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { getBuildings } from '@/lib/data'
+import type { Building } from '@/lib/definitions'
 
 import MobileHomePage from './_components/mobile'
 import PcHomePage from './_components/pc'
 
-function isMobileDevice(): boolean {
-  if (typeof navigator === 'undefined') return false
-  return /iPhone|Android|Mobile|iPad|iPod/i.test(navigator.userAgent)
+function isMobileDevice(userAgent: string): boolean {
+  return /iPhone|Android|Mobile|iPad|iPod/i.test(userAgent)
 }
 
 export default function Home() {
-  const buildings = getBuildings()
-  const [mounted, setMounted] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
+  const [buildings, setBuildings] = useState<Omit<Building, 'floors'>[]>([])
 
   useEffect(() => {
-    setMounted(true)
-    setIsMobile(isMobileDevice())
+    const ua = navigator.userAgent || ''
+    setIsMobile(isMobileDevice(ua))
+
+    // 同期で取得（await 不要）
+    const data = getBuildings()
+    setBuildings(data)
   }, [])
 
-  if (!mounted) {
-    return <div className="h-dvh bg-white" /> // 仮の表示
+  if (isMobile === null) {
+    return <div className="h-dvh bg-white" />
   }
 
   return (
