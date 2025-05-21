@@ -71,9 +71,7 @@ export default function MobileHomePage({
           </SectionWithTitle>
 
           {/* アンケートボックス */}
-          <SectionWithTitle title="アンケート">
-            <MobileSurveyButton />
-          </SectionWithTitle>
+          <MobileSurveyButton />
         </div>
 
         {/* フッター表示 */}
