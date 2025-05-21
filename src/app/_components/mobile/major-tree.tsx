@@ -84,7 +84,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 既存幹線 */}
+        {/* 幹線（既存構造） */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -97,7 +97,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 既存：幹からBOXまでの枝線 */}
+        {/* 幹 → ワールドBOXへの枝線 */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -119,7 +119,7 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 新規幹線＋枝線（専攻） */}
+        {/* 専攻枝線（Yに応じて幹線と接続） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
 
@@ -128,39 +128,22 @@ export default function MajorTree() {
           )
           if (majors.length === 0) return null
 
-          const boxRect = boxEl.getBoundingClientRect()
-          const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
-          const stemX1 =
-            boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
-          const stemX2 = stemX1 + 10
-
-          const lastMajor = majors[majors.length - 1]
-          const lastY =
-            lastMajor.getBoundingClientRect().top +
-            lastMajor.getBoundingClientRect().height / 2 -
-            svgOffset.current.top
+          // 幹線の傾き情報
+          const slopeX = 30
+          const slopeY = bottomY - topY
 
           return (
             <g key={`major-stem-${i}`}>
-              {/* 幹線（斜線） */}
-              <line
-                x1={stemX1}
-                y1={boxCy}
-                x2={stemX2}
-                y2={lastY}
-                stroke={majorData[i].color}
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-              {/* 各専攻に向かう枝線（水平） */}
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
                 const y = rect.top + rect.height / 2 - svgOffset.current.top
+                const x1 = ((y - topY) * slopeX) / slopeY
                 const x2 = rect.left - svgOffset.current.left - 10
+
                 return (
                   <line
                     key={`major-branch-${i}-${j}`}
-                    x1={stemX2}
+                    x1={x1}
                     y1={y}
                     x2={x2}
                     y2={y}
