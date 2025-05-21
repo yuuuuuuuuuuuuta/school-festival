@@ -1,0 +1,45 @@
+.wrapper {
+  position: relative;
+  padding-left: 80px;
+}
+
+.svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.node {
+  margin: 24px 0;
+}
+
+.box {
+  border: 2px solid;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  min-width: 170px;
+  margin: 0 auto;
+}
+
+.majorList {
+  margin-top: 8px;
+}
+
+.majorItem {
+  font-size: 14px;
+  margin-top: 4px;
+  /* 左余白は JSX 側でインライン設定するため不要 */
+}
