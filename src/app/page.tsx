@@ -11,7 +11,7 @@ import PcHomePage from './_components/pc'
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
-  const [buildings, setBuildings] = useState<Omit<Building, 'floors'>[]>([])
+  const [buildings, setBuildings] = useState<Building[]>([])
 
   useEffect(() => {
     // 画面幅で判定（iPadもモバイル扱いにするなら幅で制御）
