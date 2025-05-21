@@ -1,5 +1,4 @@
 'use client'
-
 import { useEffect, useState } from 'react'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -14,12 +13,15 @@ export default function Home() {
   const [buildings, setBuildings] = useState<Building[]>([])
 
   useEffect(() => {
-    // 画面幅で判定（iPadもモバイル扱いにするなら幅で制御）
-    const isMobileScreen = window.innerWidth <= 1024 // ← iPad含めたいなら1024にする
-    setIsMobile(isMobileScreen)
+    setBuildings(getBuildings())
 
-    const data = getBuildings()
-    setBuildings(data)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
   if (isMobile === null) {
