@@ -9,8 +9,15 @@ import type { Building } from '@/lib/definitions'
 import MobileHomePage from './_components/mobile'
 import PcHomePage from './_components/pc'
 
+// iPad やタッチ可能なデバイスも含めてモバイル判定
 function isMobileDevice(userAgent: string): boolean {
-  return /iPhone|Android|Mobile|iPad|iPod/i.test(userAgent)
+  const ua = userAgent.toLowerCase()
+  const isMobile = /iphone|android|mobile|ipad|ipod/.test(ua)
+  const isTouchDevice =
+    typeof window !== 'undefined' &&
+    'ontouchstart' in window &&
+    /macintosh/.test(ua)
+  return isMobile || isTouchDevice
 }
 
 export default function Home() {
@@ -21,13 +28,15 @@ export default function Home() {
     const ua = navigator.userAgent || ''
     setIsMobile(isMobileDevice(ua))
 
-    // 同期で取得（await 不要）
-    const data = getBuildings()
-    setBuildings(data)
+    const fetchData = async () => {
+      const data = await getBuildings()
+      setBuildings(data)
+    }
+    fetchData()
   }, [])
 
   if (isMobile === null) {
-    return <div className="h-dvh bg-white" />
+    return <div className="h-dvh bg-white" /> // 初回ローディング
   }
 
   return (
