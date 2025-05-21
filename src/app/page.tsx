@@ -1,4 +1,5 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -13,19 +14,22 @@ export default function Home() {
   const [buildings, setBuildings] = useState<Building[]>([])
 
   useEffect(() => {
-    setBuildings(getBuildings())
+    // クライアントサイドでのみ動作（SSR対策）
+    const ua = navigator.userAgent.toLowerCase()
+    const screenWidth = window.innerWidth
 
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+    // 推奨: 画面幅で判定（iPad 横向きまで含む）
+    setIsMobile(screenWidth < 1024)
+
+    const fetchData = async () => {
+      const data = await getBuildings()
+      setBuildings(data)
     }
-
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    fetchData()
   }, [])
 
   if (isMobile === null) {
-    return <div className="h-dvh bg-white" />
+    return <div className="h-dvh bg-white" /> // ローディング中の空画面
   }
 
   return (
