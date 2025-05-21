@@ -128,16 +128,14 @@ export default function MajorTree() {
           if (majors.length === 0) return null
 
           const boxRect = boxEl.getBoundingClientRect()
-          const boxX =
-            boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
           const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
           const lastY =
             majors[majors.length - 1]!.getBoundingClientRect().top +
             majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
             svgOffset.current.top
 
-          const stemX1 = boxX
-          const stemX2 = boxX + 10
+          const stemX1 = 72
+          const stemX2 = stemX1 + 10
 
           return (
             <g key={`major-stem-${i}`}>
