@@ -19,23 +19,24 @@ export default function PcHomePage({
   )
 
   const handleSurveyClick = () => {
-    window.open('https://example.com/survey', '_blank') // ← 本番URLに変更してください
+    window.open('https://example.com/survey', '_blank') // 本番URLに変更
   }
 
   return (
     <article className="hidden h-dvh overflow-hidden md:block">
       <main className="flex h-dvh justify-center bg-white">
-        {/* 黄金比カラム構成：左右1fr, 中央1.618fr */}
+        {/* 黄金比：左右1fr、中央1.618fr */}
         <div className="grid w-full max-w-[1440px] grid-cols-[1fr_1.618fr_1fr]">
           {/* 左カラム */}
           <div className="flex flex-col items-center justify-between px-4">
             <Header className="static justify-center" />
-            <div className="flex h-pcContent w-full items-start">
+            <div className="relative flex h-pcContent w-full items-start">
               <Image
                 src="/images/hiro.webp"
                 alt="TCA ECO 学園祭"
-                className="relative max-h-full max-w-full object-contain"
-                fill
+                width={360}
+                height={640}
+                className="h-auto w-full object-contain"
               />
             </div>
             <div className="flex h-32 w-full items-center justify-center bg-theme">
@@ -82,12 +83,13 @@ export default function PcHomePage({
             <div className="flex h-[36px] w-full items-center justify-center bg-theme">
               <p className="font-medium text-white">アクセスマップ</p>
             </div>
-            <div className="flex h-pcContent w-full items-start overflow-hidden px-2.5">
+            <div className="relative flex h-pcContent w-full items-start px-2.5">
               <Image
                 src="/images/map.webp"
                 alt="TCA ECO 学園祭"
-                className="relative max-h-full max-w-full scale-105 object-contain"
-                fill
+                width={360}
+                height={640}
+                className="h-auto w-full object-contain"
               />
             </div>
             <div className="mt-10 flex flex-col gap-5">
