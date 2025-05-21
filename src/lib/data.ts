@@ -342,8 +342,11 @@ const buildings: Building[] = [
 ]
 
 // 全建物の「floors（階層情報）」を除いた概要リストを返す
-export function getBuildings(): Building[] {
-  return buildings
+export function getBuildings(): Omit<Building, 'floors'>[] {
+  return buildings.map((building) => {
+    const { floors, ...rest } = building
+    return rest
+  })
 }
 
 // 指定されたIDに対応する建物の全データ（階層含む）を返す

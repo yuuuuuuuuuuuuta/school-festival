@@ -1,48 +1,27 @@
-'use client'
+// Home ページのメインエントリーポイント
 
-import { useEffect, useState } from 'react'
-
+// UIコンポーネント：スクロール可能なエリアのUIラッパー
 import { ScrollArea } from '@/components/ui/scroll-area'
+// データ取得関数：建物一覧を取得する
 import { getBuildings } from '@/lib/data'
-import type { Building } from '@/lib/definitions'
 
+// モバイル表示用ホームページコンポーネントをインポート
 import MobileHomePage from './_components/mobile'
+// PC表示用ホームページコンポーネントをインポート
 import PcHomePage from './_components/pc'
 
-function detectMobileByUAAndTouch(): boolean {
-  if (typeof window === 'undefined') return false
-  const ua = navigator.userAgent.toLowerCase()
-  const isMobileUA = /iphone|android|mobile|ipod|ipad/.test(ua)
-  const isTouchMac =
-    /macintosh/.test(ua) &&
-    'ontouchend' in document &&
-    navigator.maxTouchPoints > 1
-
-  return isMobileUA || isTouchMac
-}
-
+// Home コンポーネントの定義（このファイルで export されるページ本体）
 export default function Home() {
-  const [isMobile, setIsMobile] = useState<boolean | null>(null)
-  const [buildings, setBuildings] = useState<Building[]>([])
-
-  useEffect(() => {
-    setIsMobile(detectMobileByUAAndTouch())
-
-    const data = getBuildings()
-    setBuildings(data)
-  }, [])
-
-  if (isMobile === null) {
-    return <div className="h-dvh bg-white" />
-  }
+  // 建物情報を取得（例：第一校舎、第二校舎など）
+  const buildings = getBuildings()
 
   return (
+    // 全画面スクロール可能エリアでラップ
     <ScrollArea className="h-dvh">
-      {isMobile ? (
-        <MobileHomePage buildings={buildings} />
-      ) : (
-        <PcHomePage buildings={buildings} />
-      )}
+      {/* モバイル用ホームページを表示（建物一覧を props で渡す） */}
+      <MobileHomePage buildings={buildings} />
+      {/* PC用ホームページを表示（同様に props を渡す） */}
+      <PcHomePage buildings={buildings} />
     </ScrollArea>
   )
 }
