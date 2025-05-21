@@ -1,3 +1,4 @@
+// mobile/major-tree.tsx
 'use client'
 import { useEffect, useRef, useState } from 'react'
 
@@ -84,7 +85,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 既存幹線 */}
+        {/* 幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -97,7 +98,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* ワールドBOXへ伸びる枝線 */}
+        {/* 水平線 + オレンジの● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -105,7 +106,7 @@ export default function MajorTree() {
           const x1 = ((y - topY) * slopeX) / slopeY
           const x2 = p.cx - 16
           return (
-            <g key={`world-branch-${i}`}>
+            <g key={i}>
               <line
                 x1={x1}
                 y1={y}
@@ -119,10 +120,9 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 新規幹線（ワールドBOX左下 → 最後の専攻）＋ 各専攻への枝線 */}
+        {/* 専攻線 */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
-
           const majors = majorRefs.current[i].filter(
             (el): el is HTMLDivElement => el !== null,
           )
@@ -130,39 +130,33 @@ export default function MajorTree() {
 
           const boxRect = boxEl.getBoundingClientRect()
           const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
-          const stemX1 =
-            boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
-          const stemX2 = stemX1 + 10
-
-          const lastMajor = majors[majors.length - 1]
-          const stemY2 =
-            lastMajor.getBoundingClientRect().top +
-            lastMajor.getBoundingClientRect().height / 2 -
+          const lastY =
+            majors[majors.length - 1]!.getBoundingClientRect().top +
+            majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
             svgOffset.current.top
+
+          const stemX1 = 60
+          const stemX2 = stemX1 + 10
 
           return (
             <g key={`major-stem-${i}`}>
-              {/* 幹線（斜線） */}
               <line
                 x1={stemX1}
                 y1={boxCy}
                 x2={stemX2}
-                y2={stemY2}
+                y2={lastY}
                 stroke={majorData[i].color}
                 strokeWidth="3"
                 strokeLinecap="round"
               />
-              {/* 枝線（専攻） */}
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
                 const y = rect.top + rect.height / 2 - svgOffset.current.top
-                const x1 =
-                  stemX1 + ((y - boxCy) * (stemX2 - stemX1)) / (stemY2 - boxCy)
                 const x2 = rect.left - svgOffset.current.left - 10
                 return (
                   <line
                     key={`major-branch-${i}-${j}`}
-                    x1={x1}
+                    x1={stemX2}
                     y1={y}
                     x2={x2}
                     y2={y}
@@ -216,6 +210,23 @@ export default function MajorTree() {
             )}
           </div>
         ))}
+
+        {/* アンケートボタン */}
+        <div style={{ marginTop: '32px', textAlign: 'center' }}>
+          <button
+            onClick={() => window.open('https://example.com/survey', '_blank')}
+            style={{
+              backgroundColor: '#facc15',
+              color: '#92400e',
+              padding: '12px 24px',
+              fontWeight: 'bold',
+              borderRadius: '8px',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+            }}
+          >
+            ぜひアンケートにご協力ください！！
+          </button>
+        </div>
       </div>
     </div>
   )

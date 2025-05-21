@@ -69,7 +69,7 @@ export default function PcHomePage({
                 onClick={handleSurveyClick}
                 className="rounded-lg bg-yellow-300 px-6 py-2 text-base font-semibold text-yellow-900 shadow transition hover:bg-yellow-400"
               >
-                アンケートにご協力ください
+                ぜひアンケートにご協力ください！
               </button>
             </div>
 
