@@ -15,6 +15,8 @@ import ScrollDown from '../../../components/common/scroll-down'
 import FloorLinkList from './floor-link-list'
 // MajorTreeのインポートを追加
 import MajorTree from './major-tree'
+// Mobile-tab-controllerのインポートを追加
+import MobileSurveyButton from './mobile-survey-button'
 
 // props: 建物一覧（floorsなし）
 export default function MobileHomePage({
@@ -66,6 +68,11 @@ export default function MobileHomePage({
           {/* 専攻紹介(系統樹モデル) */}
           <SectionWithTitle title="専攻紹介">
             <MajorTree />
+          </SectionWithTitle>
+
+          {/* アンケートボックス */}
+          <SectionWithTitle title="アンケート">
+            <MobileSurveyButton />
           </SectionWithTitle>
         </div>
 
