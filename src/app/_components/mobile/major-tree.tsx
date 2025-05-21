@@ -97,7 +97,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 幹 → ワールドボックスまでの枝線 */}
+        {/* 水平線 + オレンジの● */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -119,28 +119,29 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 専攻線（幹と同じ構造に統一） */}
-        {linePoints.map((p, i) => {
-          if (!majorRefs.current[i]) return null
+        {/* 専攻線（ワールド展開時） */}
+        {boxRefs.current.map((boxEl, i) => {
+          if (!boxEl || !majorRefs.current[i]) return null
           const majors = majorRefs.current[i].filter(
             (el): el is HTMLDivElement => el !== null,
           )
           if (majors.length === 0) return null
 
-          const stemX1 = ((p.cy - topY) * 30) / (bottomY - topY)
-          const stemX2 = stemX1 + 10
-
-          const lastMajor = majors[majors.length - 1]
+          const boxRect = boxEl.getBoundingClientRect()
+          const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
           const lastY =
-            lastMajor!.getBoundingClientRect().top +
-            lastMajor!.getBoundingClientRect().height / 2 -
+            majors[majors.length - 1]!.getBoundingClientRect().top +
+            majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
             svgOffset.current.top
+
+          const stemX1 = 60
+          const stemX2 = stemX1 + 10
 
           return (
             <g key={`major-stem-${i}`}>
               <line
                 x1={stemX1}
-                y1={p.cy}
+                y1={boxCy}
                 x2={stemX2}
                 y2={lastY}
                 stroke={majorData[i].color}
@@ -194,7 +195,7 @@ export default function MajorTree() {
                     className={styles.majorItem}
                     style={{
                       color: group.color,
-                      marginLeft: `${group.indent}px`,
+                      marginLeft: `${group.indent}px`, // ← ワールドごとに右ずらし
                     }}
                     ref={(el) => {
                       if (!majorRefs.current[i]) majorRefs.current[i] = []
