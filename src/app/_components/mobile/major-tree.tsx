@@ -84,7 +84,7 @@ export default function MajorTree() {
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 幹線 */}
+        {/* 既存幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -97,7 +97,7 @@ export default function MajorTree() {
           />
         )}
 
-        {/* 水平線 + オレンジの● */}
+        {/* 既存：幹からBOXまでの枝線 */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -119,9 +119,10 @@ export default function MajorTree() {
           )
         })}
 
-        {/* 専攻線（ワールド展開時） */}
+        {/* 新規幹線＋枝線（専攻） */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
+
           const majors = majorRefs.current[i].filter(
             (el): el is HTMLDivElement => el !== null,
           )
@@ -129,16 +130,19 @@ export default function MajorTree() {
 
           const boxRect = boxEl.getBoundingClientRect()
           const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
-          const lastY =
-            majors[majors.length - 1]!.getBoundingClientRect().top +
-            majors[majors.length - 1]!.getBoundingClientRect().height / 2 -
-            svgOffset.current.top
-
-          const stemX1 = 72
+          const stemX1 =
+            boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
           const stemX2 = stemX1 + 10
+
+          const lastMajor = majors[majors.length - 1]
+          const lastY =
+            lastMajor.getBoundingClientRect().top +
+            lastMajor.getBoundingClientRect().height / 2 -
+            svgOffset.current.top
 
           return (
             <g key={`major-stem-${i}`}>
+              {/* 幹線（斜線） */}
               <line
                 x1={stemX1}
                 y1={boxCy}
@@ -148,6 +152,7 @@ export default function MajorTree() {
                 strokeWidth="3"
                 strokeLinecap="round"
               />
+              {/* 各専攻に向かう枝線（水平） */}
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
                 const y = rect.top + rect.height / 2 - svgOffset.current.top
@@ -195,7 +200,7 @@ export default function MajorTree() {
                     className={styles.majorItem}
                     style={{
                       color: group.color,
-                      marginLeft: `${group.indent}px`, // ← ワールドごとに右ずらし
+                      marginLeft: `${group.indent}px`,
                     }}
                     ref={(el) => {
                       if (!majorRefs.current[i]) majorRefs.current[i] = []
