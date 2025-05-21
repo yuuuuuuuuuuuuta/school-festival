@@ -9,26 +9,14 @@ import type { Building } from '@/lib/definitions'
 import MobileHomePage from './_components/mobile'
 import PcHomePage from './_components/pc'
 
-function isMobileDevice(userAgent: string): boolean {
-  const ua = userAgent.toLowerCase()
-  const isMobile = /iphone|android|ipod|ipad/.test(ua)
-
-  const isLikelyIPad =
-    /macintosh/.test(ua) &&
-    typeof navigator !== 'undefined' &&
-    'maxTouchPoints' in navigator &&
-    (navigator as any).maxTouchPoints > 1
-
-  return isMobile || isLikelyIPad
-}
-
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
   const [buildings, setBuildings] = useState<Omit<Building, 'floors'>[]>([])
 
   useEffect(() => {
-    const ua = navigator.userAgent || ''
-    setIsMobile(isMobileDevice(ua))
+    // 画面幅で判定（iPadもモバイル扱いにするなら幅で制御）
+    const isMobileScreen = window.innerWidth <= 1024 // ← iPad含めたいなら1024にする
+    setIsMobile(isMobileScreen)
 
     const data = getBuildings()
     setBuildings(data)
