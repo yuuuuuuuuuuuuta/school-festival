@@ -9,27 +9,31 @@ import type { Building } from '@/lib/definitions'
 import MobileHomePage from './_components/mobile'
 import PcHomePage from './_components/pc'
 
+function detectMobileByUAAndTouch(): boolean {
+  if (typeof window === 'undefined') return false
+  const ua = navigator.userAgent.toLowerCase()
+  const isMobileUA = /iphone|android|mobile|ipod|ipad/.test(ua)
+  const isTouchMac =
+    /macintosh/.test(ua) &&
+    'ontouchend' in document &&
+    navigator.maxTouchPoints > 1
+
+  return isMobileUA || isTouchMac
+}
+
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
   const [buildings, setBuildings] = useState<Building[]>([])
 
   useEffect(() => {
-    // クライアントサイドでのみ動作（SSR対策）
-    const ua = navigator.userAgent.toLowerCase()
-    const screenWidth = window.innerWidth
+    setIsMobile(detectMobileByUAAndTouch())
 
-    // 推奨: 画面幅で判定（iPad 横向きまで含む）
-    setIsMobile(screenWidth < 1024)
-
-    const fetchData = async () => {
-      const data = await getBuildings()
-      setBuildings(data)
-    }
-    fetchData()
+    const data = getBuildings()
+    setBuildings(data)
   }, [])
 
   if (isMobile === null) {
-    return <div className="h-dvh bg-white" /> // ローディング中の空画面
+    return <div className="h-dvh bg-white" />
   }
 
   return (
