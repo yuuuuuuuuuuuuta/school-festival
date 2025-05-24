@@ -51,7 +51,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             {/* 背景マップ画像（階の図面） */}
             <div className="relative w-full pb-4 pt-8">
               <img
-                className="mx-auto h-auto w-[320px] sm:w-[400px]"
+                className="mx-auto h-auto w-[320px] translate-y-5 sm:w-[400px] sm:translate-x-5 sm:translate-y-0"
                 src={`/images/floors/${floor.id}.svg`}
                 alt={floor.name}
               />
