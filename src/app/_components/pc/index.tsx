@@ -19,7 +19,7 @@ export default function PcHomePage({
   )
 
   const handleSurveyClick = () => {
-    window.open('https://example.com/survey', '_blank') // ←本番用に置換
+    window.open('https://example.com/survey', '_blank') // ← 本番URLに置き換えてください
   }
 
   return (
@@ -27,7 +27,7 @@ export default function PcHomePage({
       <main className="flex h-dvh justify-center bg-white">
         <div className="flex w-full max-w-[1440px]">
           {/* 左カラム */}
-          <div className="flex w-[400px] flex-col justify-between overflow-hidden">
+          <div className="flex h-pcContent w-[400px] flex-col justify-between overflow-hidden">
             <Header className="static justify-center" />
             <div className="flex w-full gap-3">
               <div className="mx-auto flex h-pcContent items-start">
@@ -45,8 +45,7 @@ export default function PcHomePage({
           </div>
 
           {/* 中央カラム */}
-          <div className="flex h-pcContent flex-grow flex-col overflow-y-auto px-8 pb-6 pt-10">
-            {/* タブボタン */}
+          <div className="h-pcContent flex-grow overflow-y-auto px-8 pb-6 pt-10">
             <div className="mb-6 flex flex-wrap justify-center gap-6">
               {['フロアマップ', '専攻紹介'].map((label) => (
                 <button
@@ -70,7 +69,6 @@ export default function PcHomePage({
               </button>
             </div>
 
-            {/* 中央表示内容 */}
             <div className="w-full">
               {activeTab === 'フロアマップ' && (
                 <PcHomeFloorList buildings={buildings} />
@@ -80,7 +78,7 @@ export default function PcHomePage({
           </div>
 
           {/* 右カラム */}
-          <div className="flex w-[400px] flex-col justify-between overflow-hidden">
+          <div className="flex h-pcContent w-[400px] flex-col justify-between overflow-hidden">
             <div className="flex h-[36px] items-center justify-center bg-theme">
               <p className="font-medium text-white">アクセスマップ</p>
             </div>
