@@ -45,7 +45,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
         .map((floor) => (
           <div
             key={floor.id}
-            className="relative aspect-[16/12] w-full border-b first-of-type:border-t"
+            className="relative w-full border-b py-4 first-of-type:border-t"
             style={{ borderColor: building.accentColor }}
           >
             {/* 背景マップ画像（階の図面） */}
