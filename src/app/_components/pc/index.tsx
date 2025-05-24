@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import SocialIcons from '@/components/common/footer/social-icons'
 import Header from '@/components/common/header'
+import ScrollDown from '@/components/common/scroll-down' // ← 追加
 import type { Building } from '@/lib/definitions'
 
 import PcHomeFloorList from './floor-list'
@@ -19,14 +20,13 @@ export default function PcHomePage({
   )
 
   const handleSurveyClick = () => {
-    window.open('https://example.com/survey', '_blank') // ← 本番URLに差し替え
+    window.open('https://example.com/survey', '_blank') // ← 必要に応じてURL修正
   }
 
   return (
     <article className="hidden h-dvh overflow-hidden md:block">
-      {/* 外枠中央揃え */}
+      <ScrollDown /> {/* ← fixed配置で常時表示 */}
       <main className="flex h-dvh w-full justify-center bg-white">
-        {/* 中央固定幅ラッパー（1440px） */}
         <div className="flex w-full">
           {/* 左カラム */}
           <div className="flex w-[400px] shrink-0 flex-col justify-between">
@@ -48,7 +48,6 @@ export default function PcHomePage({
 
           {/* 中央カラム */}
           <div className="flex flex-grow flex-col items-center overflow-y-scroll px-8 pb-6 pt-10">
-            {/* タブボタン群 */}
             <div className="mb-6 flex flex-wrap justify-center gap-6">
               {['フロアマップ', '専攻紹介'].map((label) => (
                 <button
@@ -64,7 +63,6 @@ export default function PcHomePage({
                 </button>
               ))}
 
-              {/* アンケートボタン */}
               <button
                 onClick={handleSurveyClick}
                 className="rounded-lg bg-yellow-300 px-6 py-2 text-base font-semibold text-yellow-900 shadow transition hover:bg-yellow-400"
@@ -73,7 +71,6 @@ export default function PcHomePage({
               </button>
             </div>
 
-            {/* 中身 */}
             <div className="w-full">
               {activeTab === 'フロアマップ' && (
                 <PcHomeFloorList buildings={buildings} />
