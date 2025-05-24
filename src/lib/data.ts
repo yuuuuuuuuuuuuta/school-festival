@@ -25,20 +25,20 @@ const buildings: Building[] = [
         booths: [
           // 展示ブース一覧
           {
-            id: '1-1_doumanashiku2a',
-            name: '動物園マネジメント＆動物飼育専攻\n2年A',
-            title: 'おいでよ ZOOの森',
-            description: 'クイズ・ふれあい',
-            place: '第一校舎 1階 動物飼育室',
-            position: { top: '30', left: '25' }, // マップ上の位置（%）
+            id: '1-1_animal2',
+            name: '動物園飼育専攻\n2年',
+            title: '動物たちの\n【今】\nに出会える場所',
+            description: 'ふれあい・学び',
+            place: '第1校舎 1階 飼育室',
+            position: { top: '45', left: '65' }, // マップ上の位置（%）
           },
           {
-            id: '1-1_suipro2',
+            id: '1-1_pro2',
             name: '水族館プロデュース専攻\n2年',
-            title: 'バイオワールド',
+            title: 'WOWO\nHOUSE',
             description: 'アクアルーム探検',
-            place: '第一校舎 1階 アクアルーム',
-            position: { top: '55', left: '65' }, // マップ上の位置（%）
+            place: '第1校舎 1階 アクアルーム',
+            position: { top: '10', left: '27' }, // マップ上の位置（%）
           },
         ],
       },
@@ -53,23 +53,13 @@ const buildings: Building[] = [
         name: '3F',
         number: 3,
         booths: [
-          // 展示ブース一覧
           {
-            id: '133_dolphin2b',
-            name: 'ドルフィントレーナー専攻\n2年B',
-            title: 'あなたを海の生き物で例えると？',
-            description: '性格診断',
-            place: '第一校舎 3階 133教室',
-            position: { top: '33', left: '72' }, // マップ上の位置（%）
-          },
-          {
-            id: '131.132_specialevent',
-            name: 'スペシャルイベント',
-            title: 'スペシャルイベント',
-            description: '',
-            place: '第一校舎 3階 131,132教室',
-            image: ['tomokiriki', 'yukaonsafari', 'animalshow'],
-            position: { top: '20', left: '26' }, // マップ上の位置（%）
+            id: '133_pro3',
+            name: '水族館プロデュース専攻\n3年',
+            title: '鮮度抜群！リアル お寿司屋さん',
+            description: 'ハンドメイド・トレーナー体験',
+            place: '第1校舎 3階 133教室',
+            position: { top: '50', left: '50' }, // マップ上の位置（%）
           },
         ],
       },
@@ -78,15 +68,13 @@ const buildings: Building[] = [
         name: '4F',
         number: 4,
         booths: [
-          // 展示ブース一覧
           {
             id: '1-4_maindesk',
-            name: '本部',
-            title: '',
-            description: '',
-            place: '第一校舎 4階 図書室（キャリアセンター）',
-            label: { isHidden: true },
-            position: { top: '53', left: '70' }, // マップ上の位置（%）
+            name: '学園祭本部',
+            title: '学園祭本部',
+            description: 'スタンプラリー',
+            place: '第1校舎 4階 図書室前',
+            position: { top: '10', left: '25' }, // マップ上の位置（%）
           },
         ],
       },
@@ -95,39 +83,21 @@ const buildings: Building[] = [
         name: '5F',
         number: 5,
         booths: [
-          // 展示ブース一覧
           {
             id: '151_dolphin2a',
-            name: 'ドルフィントレーナー専攻\n2年A',
-            title: '深海',
+            name: 'ドルフィントレーナー専攻\n2年Aクラス',
+            title: '呪われた海と海獣の亡霊',
             description: 'お化け屋敷',
-            place: '第一校舎 5階 151教室',
-            position: { top: '20', left: '16' }, // マップ上の位置（%）
+            place: '第1校舎 5階 151教室',
+            position: { top: '50', left: '30' }, // マップ上の位置（%）
           },
           {
-            id: '152_suipro3',
-            name: '水族館プロデュース専攻\n3年',
-            title: '水プロ観魚室\n～Life Gravity 命の重み～',
-            description: '生き物展示',
-            place: '第一校舎 5階 152教室',
-            position: { top: '32', left: '40' }, // マップ上の位置（%）
-          },
-          {
-            id: '153_aqua2a',
-            name: '水族館・アクアリスト専攻\n2年A',
-            title: '麗しくも儚い水の世界',
-            description: '水生生物すくい',
-            place: '第一校舎 5階 153教室',
-            position: { top: '36', left: '76' }, // マップ上の位置（%）
-          },
-          {
-            id: '154_aqua2b',
-            name: '水族館・アクアリスト専攻\n2年B',
-            title: '意外と知らないトーキョーイキモノ',
-            description: 'プチ水族館',
-            place: '第一校舎 5階 154教室',
-            label: { position: 'bottom' },
-            position: { top: '55', left: '65' }, // マップ上の位置（%）
+            id: '152_dolphin2b',
+            name: 'ドルフィントレーナー専攻\n2年Bクラス',
+            title: 'BAN★BAN みらくるエコたまっ🥚',
+            description: 'アクション・学び',
+            place: '第1校舎 5階 152教室',
+            position: { top: '50', left: '60' }, // マップ上の位置（%）
           },
         ],
       },
@@ -136,22 +106,21 @@ const buildings: Building[] = [
         name: '6F',
         number: 6,
         booths: [
-          // 展示ブース一覧
           {
-            id: '161_shiku2b',
-            name: '動物園・動物飼育専攻\n2年B',
-            title: 'アニマルスタディ\n～東京ECO動物総選挙～',
-            description: '動物クイズ・総選挙',
-            place: '第一校舎 6階 161教室',
-            position: { top: '29', left: '42' }, // マップ上の位置（%）
+            id: '162_manage3',
+            name: '動物園マネジメント専攻\n3年',
+            title: '0円工房 ~どうぶつの落としもの',
+            description: 'マスコット・小物づくり',
+            place: '第1校舎 6階 162教室',
+            position: { top: '50', left: '30' }, // マップ上の位置（%）
           },
           {
-            id: '162_doumane3',
-            name: '動物園マネジメント専攻\n3年',
-            title: 'ぼくら探検隊\n～知られざるXを追うぞ！～',
-            description: '動物解説',
-            place: '第一校舎 6階 162教室',
-            position: { top: '40', left: '75' }, // マップ上の位置（%）
+            id: '163_manage2',
+            name: '動物園マネジメント専攻\n2年',
+            title: 'アニマルクイズ！ エコリーグ',
+            description: 'クイズ・学び',
+            place: '第1校舎 6階 163教室',
+            position: { top: '50', left: '60' }, // マップ上の位置（%）
           },
         ],
       },
@@ -159,26 +128,7 @@ const buildings: Building[] = [
         id: 'building-1-floor-7',
         name: '7F',
         number: 7,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '171_ekizo',
-            name: 'エキゾチックアニマル\n＆プランツ専攻\n2年',
-            title: 'ワークショップで苔玉を作ろう\n～植物のある暮らしの提案～',
-            description: '苔玉作り体験',
-            place: '第一校舎 7階 171教室',
-            label: { position: 'bottom' },
-            position: { top: '40', left: '77' }, // マップ上の位置（%）
-          },
-          {
-            id: '171_yasei',
-            name: '野生動物保護専攻\n2年',
-            title: '江口のキャンプ場',
-            description: 'ワークショップ',
-            place: '第一校舎 7階 171教室',
-            position: { top: '32', left: '62' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
     ],
   },
@@ -199,34 +149,13 @@ const buildings: Building[] = [
         id: 'building-2-floor-1',
         name: '1F',
         number: 1,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '211_petbusiness',
-            name: 'ペットビジネス専攻\n3年',
-            title: 'わんわんカフェテリア',
-            description: 'ドリンク提供',
-            place: '第二校舎 1階 211教室（カフェ室）',
-            position: { top: '30', left: '40' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
       {
         id: 'building-2-floor-2',
         name: '2F',
         number: 2,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '221.222_trimmer',
-            name: 'ペットトリマー＆エステティシャン専攻\n2年',
-            title:
-              'ペットのアロマスプレーを作ろう！！\n～ワンちゃんに安らぎを～',
-            description: 'アロマスプレー製作体験',
-            place: '第二校舎 2階 221,222教室（トリミングルーム）',
-            position: { top: '32', left: '32' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
       {
         id: 'building-2-floor-3',
@@ -238,41 +167,13 @@ const buildings: Building[] = [
         id: 'building-2-floor-4',
         name: '4F',
         number: 4,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '241.242_dog',
-            name: 'ドッグトレーナー専攻\n2年',
-            title: 'わんわんカーニバル♬',
-            description: '犬とのアクティビティ',
-            place: '第二校舎 4階 241,242教室（トレーニングルーム）',
-            position: { top: '30', left: '30' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
       {
         id: 'building-2-floor-5',
         name: '5F',
         number: 5,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '251_nursingscience2',
-            name: '愛玩動物看護師＆高度医療専攻\n2年',
-            title: 'ココほれワンワン',
-            description: 'クイズ・宝さがし',
-            place: '第二校舎 5階 251教室（動物看護室）',
-            position: { top: '40', left: '20' }, // マップ上の位置（%）
-          },
-          {
-            id: '252_nursingscience3',
-            name: '動物看護＆福祉理学療法専攻\n3年',
-            title: '動物看護師体験\n～犬の身体について知ろう！！～',
-            description: '薬割り体験など',
-            place: '第二校舎 5階 252教室（動物理学療法室）',
-            position: { top: '30', left: '50' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
       {
         id: 'building-2-floor-6',
@@ -298,14 +199,13 @@ const buildings: Building[] = [
         name: 'BF',
         number: -1,
         booths: [
-          // 展示ブース一覧
           {
-            id: '3-b1_dinosaur',
-            name: '恐竜・自然史博物専攻\n3年',
-            title: 'TCA DINOSAUR MUSEUM ツアー',
-            description: '展示解説、企画展示、ガチャガチャ販売',
-            place: '第三校舎 地下',
-            position: { top: '40', left: '40' }, // マップ上の位置（%）
+            id: '3-0_museum',
+            name: '博物館・恐竜自然史専攻\n2年',
+            title: 'TCA DINOSAUR MUSEUM TOUR',
+            description: '展示解説・企画展示・ガチャガチャ販売',
+            place: '第3校舎 地下1階 展示室・Dinosaur Square',
+            position: { top: '50', left: '50' }, // マップ上の位置（%）
           },
         ],
       },
@@ -313,17 +213,7 @@ const buildings: Building[] = [
         id: 'building-3-floor-1',
         name: '1F',
         number: 1,
-        booths: [
-          // 展示ブース一覧
-          {
-            id: '311_dousuitech',
-            name: '動物園・水族館＆テクノロジー専攻\n2年',
-            title: '動水テクからの挑戦状‼',
-            description: 'クイズラリー',
-            place: '第三校舎 1階 311教室',
-            position: { top: '45', left: '20' }, // マップ上の位置（%）
-          },
-        ],
+        booths: [],
       },
       {
         id: 'building-3-floor-2',
