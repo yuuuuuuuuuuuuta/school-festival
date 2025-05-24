@@ -54,6 +54,7 @@ export default function PcHomeFloorList({
           {/* 最下部スペーサー（背景色とボーダーあり） */}
           <div className="h-[127px] border-y border-theme bg-[#EDF4D9]/80"></div>
         </ScrollArea>
+
         <div className="pointer-events-none absolute bottom-3 left-1/2 z-50 -translate-x-1/2">
           <ScrollDown textHidden={true} />
         </div>
