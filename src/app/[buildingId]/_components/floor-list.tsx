@@ -1,7 +1,3 @@
-// 建物の階ごとのマップ・展示ブース情報を表示するコンポーネント
-
-import Image from 'next/image'
-
 // 建物データ取得（id指定）
 import { getBuilding } from '@/lib/data'
 
@@ -25,7 +21,7 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
         {building.icons?.map((icon) => {
           const isMen = icon.image.includes('men')
           const isWomen = icon.image.includes('women')
-          const isShare = icon.image.includes('share') // ← ※未使用（将来的な分岐用？）
+          const isShare = icon.image.includes('share')
 
           return (
             <div key={icon.id} className="flex items-center gap-1">
