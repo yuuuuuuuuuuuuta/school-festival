@@ -45,13 +45,13 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
         .map((floor) => (
           <div
             key={floor.id}
-            className="relative aspect-[16/12] w-full border-b first-of-type:border-t"
+            className="relative w-full border-b py-4 first-of-type:border-t"
             style={{ borderColor: building.accentColor }}
           >
             {/* 背景マップ画像（階の図面） */}
-            <div className="relative flex justify-center">
-              <Image
-                className="h-auto w-[400px]"
+            <div className="relative w-full pb-4 pt-8">
+              <img
+                className="mx-auto h-auto w-[320px] sm:w-[400px]"
                 src={`/images/floors/${floor.id}.svg`}
                 alt={floor.name}
               />
