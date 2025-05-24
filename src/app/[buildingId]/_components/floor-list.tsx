@@ -49,12 +49,11 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
             style={{ borderColor: building.accentColor }}
           >
             {/* 背景マップ画像（階の図面） */}
-            <div className="absolute right-0 top-1/2 w-full -translate-y-1/2">
+            <div className="relative flex justify-center">
               <Image
-                className="!relative w-full object-contain"
+                className="h-auto w-[400px]"
                 src={`/images/floors/${floor.id}.svg`}
                 alt={floor.name}
-                fill
               />
             </div>
 
