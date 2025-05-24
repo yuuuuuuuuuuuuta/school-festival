@@ -25,11 +25,11 @@ export default function PcHomePage({
   return (
     <article className="hidden h-dvh overflow-hidden md:block">
       {/* 外枠中央揃え */}
-      <main className="flex h-dvh justify-center bg-white">
+      <main className="flex h-dvh w-full justify-center bg-white">
         {/* 中央固定幅ラッパー（1440px） */}
-        <div className="flex w-full max-w-[1440px]">
+        <div className="flex w-full">
           {/* 左カラム */}
-          <div className="flex w-[400px] flex-col justify-between">
+          <div className="flex w-[400px] shrink-0 flex-col justify-between">
             <Header className="static justify-center" />
             <div className="flex w-full gap-3">
               <div className="mx-auto flex h-pcContent items-start">
@@ -83,7 +83,7 @@ export default function PcHomePage({
           </div>
 
           {/* 右カラム */}
-          <div className="flex w-[400px] flex-col justify-between">
+          <div className="flex w-[400px] shrink-0 flex-col justify-between">
             <div className="flex h-[36px] items-center justify-center bg-theme">
               <p className="font-medium text-white">アクセスマップ</p>
             </div>
