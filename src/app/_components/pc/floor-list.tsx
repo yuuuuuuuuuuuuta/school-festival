@@ -17,43 +17,44 @@ export default function PcHomeFloorList({
   buildings: Omit<Building, 'floors'>[]
 }) {
   return (
-    // 中央カラム全体。横幅最小80、伸縮可能
-    <section className="min-w-80 flex-grow">
-      {/* スクロールエリア（高さ: 画面100%） */}
-      <ScrollArea className="relative h-dvh border border-theme">
-        {/* 固定ヘッダー（透明背景、ぼかし） */}
-        <div className="absolute right-0 top-0 z-40 flex h-[36px] w-full items-center justify-center border-b border-theme bg-[#EDF4D9]/80 backdrop-blur">
-          <p className="font-bold text-theme">フロアマップ</p>
-        </div>
-
-        {/* 建物ごとのセクション */}
-        <div>
-          {buildings.map((building) => (
-            <div key={building.id} className="pb-16 pt-8">
-              {/* 建物タイトル：リンクで建物ページに遷移 */}
-              <div className="flex justify-center py-10">
-                <Link href={`/${building.id}`}>
-                  <h2
-                    className="px-10 py-2 font-bold text-white"
-                    style={{ backgroundColor: building.themeColor }}
-                  >
-                    {building.name}
-                  </h2>
-                </Link>
-              </div>
-
-              {/* 階層リスト表示（FloorList を呼び出し） */}
-              <FloorList buildingId={building.id} />
-            </div>
-          ))}
-        </div>
-
-        {/* 最下部スペーサー（背景色とボーダーあり） */}
-        <div className="h-[127px] border-y border-theme bg-[#EDF4D9]/80"></div>
-      </ScrollArea>
-
-      {/* ページ下に下スクロールアイコン（非表示設定） */}
+    <>
+      {/* ページ下にスクロールアイコン（PCでも見えるように外に出す） */}
       <ScrollDown textHidden={true} />
-    </section>
+
+      <section className="min-w-80 flex-grow">
+        {/* スクロールエリア（高さ: 画面100%） */}
+        <ScrollArea className="relative h-dvh border border-theme">
+          {/* 固定ヘッダー（透明背景、ぼかし） */}
+          <div className="absolute right-0 top-0 z-40 flex h-[36px] w-full items-center justify-center border-b border-theme bg-[#EDF4D9]/80 backdrop-blur">
+            <p className="font-bold text-theme">フロアマップ</p>
+          </div>
+
+          {/* 建物ごとのセクション */}
+          <div>
+            {buildings.map((building) => (
+              <div key={building.id} className="pb-16 pt-8">
+                {/* 建物タイトル：リンクで建物ページに遷移 */}
+                <div className="flex justify-center py-10">
+                  <Link href={`/${building.id}`}>
+                    <h2
+                      className="px-10 py-2 font-bold text-white"
+                      style={{ backgroundColor: building.themeColor }}
+                    >
+                      {building.name}
+                    </h2>
+                  </Link>
+                </div>
+
+                {/* 階層リスト表示（FloorList を呼び出し） */}
+                <FloorList buildingId={building.id} />
+              </div>
+            ))}
+          </div>
+
+          {/* 最下部スペーサー（背景色とボーダーあり） */}
+          <div className="h-[127px] border-y border-theme bg-[#EDF4D9]/80"></div>
+        </ScrollArea>
+      </section>
+    </>
   )
 }
