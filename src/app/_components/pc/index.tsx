@@ -27,7 +27,7 @@ export default function PcHomePage({
       {/* 外枠中央揃え */}
       <main className="flex h-dvh w-full justify-center bg-white">
         {/* 中央固定幅ラッパー（1440px） */}
-        <div className="flex w-full">
+        <div className="flex w-full md:h-[125vh] md:origin-top md:scale-[1.25]">
           {/* 左カラム */}
           <div className="flex w-[400px] shrink-0 flex-col justify-between">
             <Header className="static justify-center" />
