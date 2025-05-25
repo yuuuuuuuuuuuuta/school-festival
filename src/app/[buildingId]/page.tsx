@@ -1,6 +1,9 @@
 // [buildingId]ごとのページ（例: /first, /second）を生成するルートページコンポーネント
 
 // 共通UIコンポーネント
+// Link コンポーネント
+import Link from 'next/link'
+
 import Footer from '@/components/common/footer'
 import Header from '@/components/common/header'
 // スクロール可能なラッパーUI
@@ -48,6 +51,16 @@ export default function BuildingPage({
 
           {/* フロアマップ＋展示ブースを表示 */}
           <FloorList buildingId={building.id} />
+
+          {/* ← ホームに戻るボタン（モバイル専用） */}
+          <div className="block w-full max-w-xl px-4 sm:hidden">
+            <Link
+              href="/"
+              className="inline-block rounded-full bg-green-700 px-4 py-2 text-sm font-medium text-white shadow-md transition duration-200 hover:bg-green-800"
+            >
+              ← ホームに戻る
+            </Link>
+          </div>
         </main>
 
         {/* フッターも建物テーマカラーで色付け */}
