@@ -1,8 +1,8 @@
-// ブースアイコンをマップ上に表示し、クリックすると詳細ダイアログを開くUI
+'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 
-// ダイアログ関連コンポーネント
 import {
   Dialog,
   DialogContent,
@@ -10,9 +10,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-// ダイアログ内部で縦スクロール可能にする
 import { ScrollArea } from '@/components/ui/scroll-area'
-// ブースの型
 import type { Booth } from '@/lib/definitions'
 
 export default function BoothDialog({
@@ -24,20 +22,21 @@ export default function BoothDialog({
   themeColor: string
   accentColor: string
 }) {
+  const [showDescription, setShowDescription] = useState(false)
+
   return (
     <Dialog>
-      {/* ==== ブースのアイコン（クリックでモーダルを開く） ==== */}
+      {/* ==== ブースのアイコン ==== */}
       <DialogTrigger>
         <div>
           <div
             className="absolute flex flex-col items-center justify-center gap-1 focus:outline-0"
             style={{
-              top: `${booth.position.top}%`, // 上からの位置 (%)
-              left: `${booth.position.left}%`, // 左からの位置 (%)
+              top: `${booth.position.top}%`,
+              left: `${booth.position.left}%`,
             }}
           >
             <div className="relative">
-              {/* ラベル（タイトルや説明） */}
               {!booth.label?.isHidden && (
                 <div
                   className="absolute right-1/2 w-max whitespace-pre-wrap rounded border-2 bg-white/80 px-3 py-1.5"
@@ -55,8 +54,6 @@ export default function BoothDialog({
                   <p className="text-[10px]">{booth.title}</p>
                 </div>
               )}
-
-              {/* ブースアイコン画像（クリック領域） */}
               <Image
                 className="!relative aspect-square !w-16 object-contain"
                 src={`/images/booths/${booth.id}/icon.webp`}
@@ -74,49 +71,67 @@ export default function BoothDialog({
         style={{ borderColor: themeColor }}
       >
         <DialogDescription className="mx-auto w-full">
-          {/* モーダルのタイトル（場所表示） */}
-          <DialogTitle
-            className="mb-2 w-fit px-3 py-1.5 text-left text-sm text-white"
-            style={{ backgroundColor: themeColor }}
-          >
-            {booth.place}
-          </DialogTitle>
-
-          {/* 展示画像をスクロール表示 */}
-          <ScrollArea
-            className={`${booth.image && 'h-[calc(60dvh+70px)] w-full'}`}
-          >
-            {/* 複数画像対応 */}
-            {booth.image ? (
-              booth.image.map((image, index) => (
-                <Image
-                  key={index}
-                  className="!relative mx-auto mt-4 !min-h-60dvh !w-full border-b-2 object-contain pb-4 last-of-type:border-b-0 last-of-type:pb-0 md:min-w-[350px]"
-                  src={`/images/booths/${booth.id}/${image}.webp`}
-                  placeholder="blur"
-                  blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                  alt={booth.name}
-                  style={{ borderBottomColor: themeColor }}
-                  fill
-                />
-              ))
-            ) : (
-              // 単一画像対応
-              <Image
-                className="!relative mx-auto !min-h-60dvh !w-full object-contain md:min-w-[350px]"
-                src={`/images/booths/${booth.id}/image.webp`}
-                placeholder="blur"
-                blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                alt={booth.name}
-                fill
-              />
+          {/* タイトルと切替ボタンを左に並べる */}
+          <div className="mb-2 flex items-center gap-4">
+            <DialogTitle
+              className="px-3 py-1.5 text-left text-sm text-white"
+              style={{ backgroundColor: themeColor }}
+            >
+              {booth.place}
+            </DialogTitle>
+            {booth.explanation && (
+              <button
+                className="rounded bg-white px-3 py-1 text-xs font-semibold text-zinc-600 shadow"
+                style={{ color: themeColor }}
+                onClick={() => setShowDescription((prev) => !prev)}
+              >
+                {showDescription ? '画像を見る' : '説明を見る'}
+              </button>
             )}
+          </div>
 
-            {/* スクロールのグラデーション効果 */}
-            {booth.image && (
-              <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
-            )}
-          </ScrollArea>
+          {/* 中身の切り替え */}
+          {showDescription ? (
+            <div className="whitespace-pre-wrap p-4 text-sm leading-relaxed text-gray-700">
+              {booth.explanation}
+            </div>
+          ) : (
+            <ScrollArea
+              className={`${booth.image && 'h-[calc(60dvh+70px)] w-full'}`}
+            >
+              {/* 複数画像対応 */}
+              {booth.image ? (
+                booth.image.map((img, i) => (
+                  <div key={i} className="relative h-[80dvh] w-full">
+                    <Image
+                      className="object-contain"
+                      src={`/images/booths/${booth.id}/${img}.webp`}
+                      alt={booth.name}
+                      placeholder="blur"
+                      blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                      fill
+                    />
+                  </div>
+                ))
+              ) : (
+                <div className="relative h-[80dvh] w-full">
+                  <Image
+                    className="object-contain"
+                    src={`/images/booths/${booth.id}/image.webp`}
+                    alt={booth.name}
+                    placeholder="blur"
+                    blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                    fill
+                  />
+                </div>
+              )}
+
+              {/* グラデーション効果 */}
+              {booth.image && (
+                <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
+              )}
+            </ScrollArea>
+          )}
         </DialogDescription>
       </DialogContent>
     </Dialog>

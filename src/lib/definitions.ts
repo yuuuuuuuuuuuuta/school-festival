@@ -25,6 +25,7 @@ export type Booth = {
   description: string // 展示概要（例: '水生生物すくい'）
   place: string // 場所（例: '第一校舎 5階 153教室'）
   image?: string[] // 複数画像がある場合（モーダル内でスライド表示）
+  explanation?: string // 説明文(100文字)
   label?: {
     // ブースラベルのオプション設定
     position?: string // 'bottom' or 'top'（デフォルト: top）
