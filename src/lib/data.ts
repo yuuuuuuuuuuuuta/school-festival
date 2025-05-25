@@ -146,10 +146,10 @@ const buildings: Building[] = [
         number: 7,
         booths: [
           {
-            id: '171_tech',
-            name: '動物園・水族館＆テクノロジー専攻\n2年',
-            title: 'Gather Animals',
-            description: 'カード集め！',
+            id: '311_create',
+            name: 'ECO自然環境クリエーター専攻\n2年',
+            title: '五感で楽しむ野生教室',
+            description: '展示解説・クイズ・コーヒー提供',
             place: '第1校舎 7階 171教室',
             position: { top: '45', left: '13' },
           },
@@ -275,10 +275,10 @@ const buildings: Building[] = [
         number: 1,
         booths: [
           {
-            id: '311_create',
-            name: 'ECO自然環境クリエーター専攻\n2年',
-            title: '五感で楽しむ野生教室',
-            description: '展示解説・クイズ・コーヒー提供',
+            id: '171_tech',
+            name: '動物園・水族館＆テクノロジー専攻\n2年',
+            title: 'Gather Animals',
+            description: 'カード集め！',
             place: '第3校舎 3階 311教室',
             position: { top: '45', left: '11' },
           },
