@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo,useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { getBuilding } from '@/lib/data'
 
@@ -68,7 +68,8 @@ export default function FloorList({ buildingId }: { buildingId: string }) {
 
             {/* ブース表示切り替えボタン */}
             <button
-              className="absolute right-4 top-8 z-50 rounded bg-green-700 px-3 py-1 text-xs text-white hover:bg-green-800 sm:right-6 sm:top-10"
+              className="absolute right-4 top-8 z-50 rounded px-3 py-1 text-xs text-white sm:right-6 sm:top-10"
+              style={{ backgroundColor: building.themeColor }}
               onClick={() =>
                 setVisibleFloors((prev) => ({
                   ...prev,

@@ -56,7 +56,8 @@ export default function BuildingPage({
           <div className="block w-full max-w-xl px-4 sm:hidden">
             <Link
               href="/"
-              className="inline-block rounded-full bg-green-700 px-4 py-2 text-sm font-medium text-white shadow-md transition duration-200 hover:bg-green-800"
+              className="rounded px-4 py-2 text-white"
+              style={{ backgroundColor: building.themeColor }}
             >
               ← ホームに戻る
             </Link>
