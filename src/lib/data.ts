@@ -25,14 +25,24 @@ const buildings: Building[] = [
         booths: [
           // 展示ブース一覧
           {
-            id: '1-1_animal2',
+            id: '1-1_animal_s',
             name: '動物園飼育専攻\n2年',
             title: '動物たちの\n【今】\nに出会える場所',
             description: 'ふれあい・学び',
-            place: '第1校舎 1階 飼育室',
+            place: '第1校舎 1階 飼育ルーム',
             explanation:
-              '学びも驚きもすべてがここに！！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えてく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験しに来てください！',
-            position: { top: '50', left: '63' },
+              '学びも驚きもすべてがここに！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えていく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験してください！',
+            position: { top: '48', left: '63' },
+          },
+          {
+            id: '1-1_animal_j',
+            name: '動物園飼育専攻\n2年',
+            title: '乗馬 記念撮影\n瑠とふれあおう！！',
+            description: 'ふれあい・写真撮影',
+            place: '第1校舎 1階 駐車場',
+            explanation:
+              '学校馬「瑠」との記念撮影！\nお馬さんと触れ合ってみませんか？\nぜひご参加ください！',
+            position: { top: '10', left: '75' },
           },
           {
             id: '1-1_pro2',
@@ -142,6 +152,19 @@ const buildings: Building[] = [
         number: 6,
         booths: [
           {
+            id: '162_animal_k',
+            name: '動物園飼育専攻\n2年',
+            title: '苔玉作り',
+            description: '創作体験・学び',
+            place: '第1校舎 6階 162教室',
+            explanation:
+              '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
+            label: {
+              position: 'bottom',
+            },
+            position: { top: '42', left: '5' },
+          },
+          {
             id: '162_manage3',
             name: '動物園マネジメント専攻\n3年',
             title: '0円工房 ~どうぶつの落としもの',
@@ -149,7 +172,7 @@ const buildings: Building[] = [
             place: '第1校舎 6階 162教室',
             explanation:
               'ふわふわ羊毛クラフト体験、\n世界にひとつだけの作品を作ろう！\nやわらかい羊毛でマスコットや小物づくり。予約なしでもOK！毛刈りから完成まで、物づくりの楽しさ・大切さ、自然の温もりを感じてみてください！',
-            position: { top: '45', left: '13' },
+            position: { top: '37', left: '20' },
           },
           {
             id: '163_manage2',
