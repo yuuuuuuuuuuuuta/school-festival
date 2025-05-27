@@ -29,7 +29,7 @@ const buildings: Building[] = [
             name: '動物園飼育専攻\n2年',
             title: '動物たちの\n【今】\nに出会える場所',
             description: 'ふれあい・学び',
-            place: '第1校舎 1階 飼育ルーム',
+            place: '第1校舎 1階 飼育室',
             explanation:
               '学びも驚きもすべてがここに！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えていく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験してください！',
             position: { top: '48', left: '63' },
@@ -152,6 +152,16 @@ const buildings: Building[] = [
         number: 6,
         booths: [
           {
+            id: '161_animal_g',
+            name: '動物園飼育専攻\n2年',
+            title: '動物ガイド',
+            description: 'ガイド',
+            place: '第1校舎 6階 161教室',
+            explanation:
+              'みなさんようこそ！！\n私達のブースでは飼育室内外のガイドはもちろん、\n動物についてのお話や質問などをお話しさせていただきます。\n内容は当日どのガイドに当たるかによって\n変わってくるのでお楽しみです！',
+            position: { top: '45', left: '45' },
+          },
+          {
             id: '162_animal_k',
             name: '動物園飼育専攻\n2年',
             title: '苔玉作り',
@@ -271,7 +281,7 @@ const buildings: Building[] = [
         booths: [
           {
             id: '251_medic2',
-            name: '動物看護士・高度医療専攻\n2年',
+            name: '愛護動物看護士・高度医療専攻\n2年',
             title: 'こたえてワンダフル',
             description: 'クイズ・学び',
             place: '第2校舎 2階 251教室',
