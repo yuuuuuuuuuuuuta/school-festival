@@ -101,27 +101,52 @@ export default function BoothDialog({
             >
               {/* 複数画像対応 */}
               {booth.image ? (
-                booth.image.map((img, i) => (
-                  <div key={i} className="relative !min-h-60dvh w-full">
+                booth.image.length === 1 ? (
+                  // 🔸 画像が1枚のとき：専用表示
+                  <div className="flex w-full justify-center px-4 pt-4">
                     <Image
-                      className="!relative mx-auto !min-h-60dvh !w-full object-contain"
-                      src={`/images/booths/${booth.id}/${img}.webp`}
+                      className="h-auto w-full max-w-[500px] object-contain"
+                      src={`/images/booths/${booth.id}/${booth.image[0]}.webp`}
                       alt={booth.name}
                       placeholder="blur"
                       blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                      fill
+                      sizes="(max-width: 768px) 90vw, 500px"
+                      width={600}
+                      height={900}
                     />
                   </div>
-                ))
+                ) : (
+                  // 🔹 複数画像のとき：現行の map() を使う
+                  booth.image.map((img, i) => (
+                    <div
+                      key={i}
+                      className="flex w-full justify-center px-4 pt-4"
+                    >
+                      <Image
+                        className="h-auto w-full max-w-[500px] object-contain"
+                        src={`/images/booths/${booth.id}/${img}.webp`}
+                        alt={booth.name}
+                        placeholder="blur"
+                        blurDataURL={`/images/booths/${booth.id}/image.webp`}
+                        sizes="(max-width: 768px) 90vw, 500px"
+                        width={600}
+                        height={900}
+                      />
+                    </div>
+                  ))
+                )
               ) : (
-                <div className="relative h-[80dvh] w-full">
+                // 🔸 booth.image 自体が未定義のとき（フォールバック画像）
+                <div className="flex w-full justify-center px-4 pt-4">
                   <Image
-                    className="object-contain"
+                    className="h-auto w-full max-w-[500px] object-contain"
                     src={`/images/booths/${booth.id}/image.webp`}
                     alt={booth.name}
                     placeholder="blur"
                     blurDataURL={`/images/booths/${booth.id}/image.webp`}
-                    fill
+                    sizes="(max-width: 768px) 90vw, 500px"
+                    width={600}
+                    height={900}
                   />
                 </div>
               )}

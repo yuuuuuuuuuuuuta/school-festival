@@ -172,20 +172,20 @@ const buildings: Building[] = [
             place: '第1校舎 6階 161教室',
             explanation:
               'みなさんようこそ！！\n私達のブースでは\n飼育室内外のガイドはもちろん、\n動物についてのお話や質問などを\nお話しさせていただきます。\n内容は当日どのガイドに当たるかによって\n変わってくるのでお楽しみです！',
-            position: { top: '50', left: '45' },
-          },
-          {
-            id: '162_animal_k',
-            name: '動物園飼育専攻\n2年',
-            title: '苔玉作り',
-            description: '創作体験・学び',
-            place: '第1校舎 6階 162教室',
-            explanation:
-              '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
             label: {
               position: 'bottom',
             },
-            position: { top: '42', left: '5' },
+            position: { top: '50', left: '45' },
+          },
+          {
+            id: '161_animal_k',
+            name: '動物園飼育専攻\n2年',
+            title: '苔玉作り',
+            description: '創作体験・学び',
+            place: '第1校舎 6階 161教室',
+            explanation:
+              '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
+            position: { top: '42', left: '60' },
           },
           {
             id: '162_manage3',
