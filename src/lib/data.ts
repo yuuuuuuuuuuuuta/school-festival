@@ -30,7 +30,7 @@ const buildings: Building[] = [
             title: '動物たちの\n【今】\nに出会える場所',
             description: 'ふれあい・学び',
             place: '第1校舎 1階 飼育室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               '学びも驚きもすべてがここに！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えていく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験してください！',
             position: { top: '48', left: '63' },
@@ -101,7 +101,7 @@ const buildings: Building[] = [
             title: '学園祭本部',
             description: 'スタンプラリー',
             place: '第1校舎 4階 図書室前',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               '学祭限定スタンプラリー開催中！\n校内各所にあるブースを巡って\nスタンプを集めよう。\n全て集めると素敵な景品がもらえるよ',
             position: { top: '20', left: '13' },
@@ -139,7 +139,7 @@ const buildings: Building[] = [
             title: 'アクアの保育園',
             description: '展示解説・学び',
             place: '第1校舎 5階 153教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               'お父さんがお母さんになっちゃう！？\n性別が変わる生き物、面白い子育てや繁殖をする生き物がたくさん！不思議でおもしろい生き物に会いに来ませんか？\n他にもクラゲのタッチプールや\n「海のゆりかご」アマモの展示も？！\nアクアの保育園、開園です！',
             label: {
@@ -193,7 +193,7 @@ const buildings: Building[] = [
             title: '0円工房 ~どうぶつの落としもの',
             description: 'マスコット・小物づくり',
             place: '第1校舎 6階 162教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               'ふわふわ羊毛クラフト体験、\n世界にひとつだけの作品を作ろう！\nやわらかい羊毛でマスコットや小物づくり。予約なしでもOK！毛刈りから完成まで、物づくりの楽しさ・大切さ、自然の温もりを感じてみてください！',
             position: { top: '37', left: '20' },
@@ -204,7 +204,7 @@ const buildings: Building[] = [
             title: 'アニマルクイズ！ エコリーグ',
             description: 'クイズ・学び',
             place: '第1校舎 6階 163教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               '今年のテーマは進化！\n海の生き物、ペット、恐竜など様々なクイズを用意して待っています。\n参加賞や正解数によって異なる景品なども用意していますので、ぜひクイズに答えて景品をゲットしてみてださい！！',
             position: { top: '10', left: '18' },
@@ -260,7 +260,7 @@ const buildings: Building[] = [
             title: 'わんちゃんのリボン作り体験 \n~クイズにも答えてみよう！~',
             description: '創作体験・クイズ',
             place: '第2校舎 2階 221教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               'リボン作り体験では皆さんに、\n最後のデコレーションをして貰います！\nわんちゃん用かストラップ用に作るか選ぶことができます！\n（わんちゃんは２つまで)\n作ったリボンはプレゼントします。\nクイズもあるのでリボン作りと一緒に楽しんでください🎀',
             position: { top: '40', left: '67' },
@@ -284,7 +284,7 @@ const buildings: Building[] = [
             title: 'INU',
             description: 'アジリティ・トレーニング体験',
             place: '第2校舎 2階 241・242教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               'このブースでは、可愛いワンコ達と一緒に楽しく動ける参加型のイベントです！\nアジリティに挑戦　探知犬にも挑戦　トレーニングも参加可能！？\nあなたも探して、飛んで、楽しい思い出を作りましょう！\nここでしか経験出来ない貴重なトレーニング体験も…？？',
             position: { top: '45', left: '55' },
@@ -312,7 +312,7 @@ const buildings: Building[] = [
             title: '犬の体内迷路 ~食べ物はどこへ？~',
             description: '学び・クイズ・景品',
             place: '第2校舎 2階 252教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               '看護3年は第2校舎の252教室で\n「犬の体内迷路〜食べ物はどこへ？〜」\nを開催します。\n食べ物になり犬の体に入ろう！\nその先に光が見えるかも笑\nキーホルダーや缶バッチもあります。\nぜひ252教室へお越しください。',
             position: { top: '42', left: '37' },
@@ -366,7 +366,7 @@ const buildings: Building[] = [
             title: 'Gather Animals',
             description: 'カード集め！',
             place: '第3校舎 3階 311教室',
-            image: ['text'],
+            image: ['image', 'text'],
             explanation:
               '東京eco校内に全25種類のアニマルカードを散りばめました。\n校内をめぐってお気に入りのカードを集めましょう！\n集めたカードを使ってとあるカードゲームに挑戦していただいた方には景品が…⁉\n動物のこと、もっと知ってみませんか？',
             position: { top: '45', left: '11' },

@@ -102,9 +102,9 @@ export default function BoothDialog({
               {/* 複数画像対応 */}
               {booth.image ? (
                 booth.image.map((img, i) => (
-                  <div key={i} className="relative h-[80dvh] w-full">
+                  <div key={i} className="relative !min-h-60dvh w-full">
                     <Image
-                      className="object-contain"
+                      className="!relative mx-auto !min-h-60dvh !w-full object-contain"
                       src={`/images/booths/${booth.id}/${img}.webp`}
                       alt={booth.name}
                       placeholder="blur"
