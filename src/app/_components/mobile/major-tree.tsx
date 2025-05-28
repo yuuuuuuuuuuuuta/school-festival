@@ -32,7 +32,7 @@ const majorData = [
   },
   {
     world: 'ペットワールド',
-    color: '#9333EA',
+    color: '#ff69b4',
     indent: 40,
     majors: [
       'ドッグトレーナー専攻',
