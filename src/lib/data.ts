@@ -179,7 +179,7 @@ const buildings: Building[] = [
             place: '第1校舎 6階 161教室',
             explanation:
               '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
-            position: { top: '42', left: '60' },
+            position: { top: '42', left: '57' },
           },
           {
             id: '162_manage3',
