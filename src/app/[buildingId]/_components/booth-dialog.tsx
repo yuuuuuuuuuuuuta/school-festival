@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import {
@@ -25,22 +25,23 @@ export default function BoothDialog({
 }) {
   const [showDescription, setShowDescription] = useState(false)
 
-  // ✅ モバイル画面判定（768px以下）
+  // ✅ モバイル判定
   const isMobile = useMediaQuery({ maxWidth: 768 })
-
-  // ✅ 座標を条件に応じて切り替え
   const boothPosition = isMobile ? booth.position.mobile : booth.position.pc
+
+  // ✅ 個別のアニメーション遅延を生成（初回のみ）
+  const animationDelay = useMemo(() => `${Math.random() * 2}s`, [])
 
   return (
     <Dialog>
-      {/* ==== ブースのアイコン ==== */}
       <DialogTrigger>
         <div>
           <div
-            className="absolute flex flex-col items-center justify-center gap-1 focus:outline-0"
+            className="absolute flex animate-float flex-col items-center justify-center gap-1 focus:outline-0"
             style={{
               top: boothPosition.top,
               left: boothPosition.left,
+              animationDelay, // ⬅ ここでランダム遅延を適用
             }}
           >
             <div className="relative">

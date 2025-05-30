@@ -1,37 +1,30 @@
 import type { Config } from 'tailwindcss'
 
 const config = {
-  // ダークモード切り替え（class で制御）
   darkMode: ['class'],
 
-  // Tailwind を適用するファイル範囲
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',  // ← 全体を網羅しているため安心
+    './src/**/*.{ts,tsx}',
   ],
 
-  prefix: '', // クラス名の接頭辞なし
+  prefix: '',
 
   theme: {
-    // レスポンシブ用の中央寄せ container 設定
     container: {
       center: true,
       padding: '2rem',
       screens: {
-        '2xl': '1400px',  // 最大幅
+        '2xl': '1400px',
       },
     },
 
     extend: {
-      // ======================
       // 🎨 カスタムカラー定義
-      // ======================
       colors: {
-        theme: 'hsl(68, 75%, 47%)', // 明るめの黄緑（bg-theme など）
-
-        // 各種 UI トークン（背景、前景、アクセントなど）をグローバル変数から参照
+        theme: 'hsl(68, 75%, 47%)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -67,30 +60,24 @@ const config = {
         },
       },
 
-      // ======================
-      // 📏 高さ・最小高さの定義
-      // ======================
+      // 📏 高さ定義
       height: {
         '60dvh': '60dvh',
         '70dvh': '70dvh',
-        pcContent: 'calc(100dvh - 165px)', // PC版の main コンテンツ高さ
+        pcContent: 'calc(100dvh - 165px)',
       },
       minHeight: {
         '60dvh': '60dvh',
       },
 
-      // ======================
-      // 🔳 角丸の定義（ベース変数連動）
-      // ======================
+      // 🔳 角丸
       borderRadius: {
-        lg: 'var(--radius)',              // 0.5rem
-        md: 'calc(var(--radius) - 2px)',  // 小さめ
-        sm: 'calc(var(--radius) - 4px)',  // さらに小さい
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
       },
 
-      // ======================
-      // 🎞 アニメーション定義
-      // ======================
+      // 🎞 アニメーション定義（新規追加）
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -100,15 +87,23 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+
+        // ✅ 追加：ふわふわ上下に浮く
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+
+        // ✅ 追加：animate-float を使用可能に
+        float: 'float 2s ease-in-out infinite',
       },
     },
   },
 
-  // Radix UI や dialog で使うアニメーションプラグイン
   plugins: [require('tailwindcss-animate')],
 } satisfies Config
 
