@@ -19,22 +19,26 @@ export type Floor = {
 
 // === 展示ブース型 ===
 export type Booth = {
-  id: string // 一意のID（例: '153_aqua2a'）
-  name: string // 専攻名＋学年（例: '水族館・アクアリスト専攻 2年A'）
-  title: string // 展示タイトル（例: '麗しくも儚い水の世界'）
-  description: string // 展示概要（例: '水生生物すくい'）
-  place: string // 場所（例: '第一校舎 5階 153教室'）
-  image?: string[] // 複数画像がある場合（モーダル内でスライド表示）
-  explanation?: string // 説明文(100文字)
+  id: string
+  name: string
+  title: string
+  description: string
+  place: string
+  image?: string[]
+  explanation?: string
   label?: {
-    // ブースラベルのオプション設定
-    position?: string // 'bottom' or 'top'（デフォルト: top）
-    isHidden?: boolean // true の場合はラベルを非表示
+    position?: string // 'bottom' | 'top'
+    isHidden?: boolean
   }
   position: {
-    // マップ上の位置（%で指定）
-    top: string
-    left: string
+    pc: {
+      top: string
+      left: string
+    }
+    mobile: {
+      top: string
+      left: string
+    }
   }
 }
 

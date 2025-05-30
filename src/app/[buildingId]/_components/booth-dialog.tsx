@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import {
   Dialog,
@@ -24,6 +25,12 @@ export default function BoothDialog({
 }) {
   const [showDescription, setShowDescription] = useState(false)
 
+  // ✅ モバイル画面判定（768px以下）
+  const isMobile = useMediaQuery({ maxWidth: 768 })
+
+  // ✅ 座標を条件に応じて切り替え
+  const boothPosition = isMobile ? booth.position.mobile : booth.position.pc
+
   return (
     <Dialog>
       {/* ==== ブースのアイコン ==== */}
@@ -32,8 +39,8 @@ export default function BoothDialog({
           <div
             className="absolute flex flex-col items-center justify-center gap-1 focus:outline-0"
             style={{
-              top: `${booth.position.top}%`,
-              left: `${booth.position.left}%`,
+              top: boothPosition.top,
+              left: boothPosition.left,
             }}
           >
             <div className="relative">
@@ -71,7 +78,6 @@ export default function BoothDialog({
         style={{ borderColor: themeColor }}
       >
         <DialogDescription className="mx-auto w-full">
-          {/* タイトルと切替ボタンを左に並べる */}
           <div className="mb-2 flex items-center gap-4">
             <DialogTitle
               className="px-3 py-1.5 text-left text-sm text-white"
@@ -90,7 +96,6 @@ export default function BoothDialog({
             )}
           </div>
 
-          {/* 中身の切り替え */}
           {showDescription ? (
             <div className="whitespace-pre-wrap p-4 text-sm leading-relaxed text-gray-700">
               {booth.explanation}
@@ -99,10 +104,8 @@ export default function BoothDialog({
             <ScrollArea
               className={`${booth.image && 'h-[calc(60dvh+70px)] w-full'}`}
             >
-              {/* 複数画像対応 */}
               {booth.image ? (
                 booth.image.length === 1 ? (
-                  // 🔸 画像が1枚のとき：専用表示
                   <div className="flex w-full justify-center px-4 pt-4">
                     <Image
                       className="h-auto w-full max-w-[500px] object-contain"
@@ -116,7 +119,6 @@ export default function BoothDialog({
                     />
                   </div>
                 ) : (
-                  // 🔹 複数画像のとき：現行の map() を使う
                   booth.image.map((img, i) => (
                     <div
                       key={i}
@@ -136,7 +138,6 @@ export default function BoothDialog({
                   ))
                 )
               ) : (
-                // 🔸 booth.image 自体が未定義のとき（フォールバック画像）
                 <div className="flex w-full justify-center px-4 pt-4">
                   <Image
                     className="h-auto w-full max-w-[500px] object-contain"
@@ -151,7 +152,6 @@ export default function BoothDialog({
                 </div>
               )}
 
-              {/* グラデーション効果 */}
               {booth.image && (
                 <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
               )}

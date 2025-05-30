@@ -31,7 +31,16 @@ const buildings: Building[] = [
             description: 'ふれあい・学び',
             place: '第1校舎 1階 飼育室',
             image: ['image', 'text'],
-            position: { top: '48', left: '63' },
+            position: {
+              pc: {
+                top: '45%',
+                left: '65%',
+              },
+              mobile: {
+                top: '48%',
+                left: '63%',
+              },
+            },
           },
           {
             id: '1-1_animal_j',
@@ -41,7 +50,16 @@ const buildings: Building[] = [
             place: '第1校舎 1階 駐車場',
             explanation:
               '学校馬「瑠」との記念撮影！\nお馬さんと触れ合ってみませんか？\nぜひご参加ください！',
-            position: { top: '10', left: '75' },
+            position: {
+              pc: {
+                top: '10%',
+                left: '75%',
+              },
+              mobile: {
+                top: '10%',
+                left: '75%',
+              },
+            },
           },
           {
             id: '1-1_pro2',
@@ -51,7 +69,16 @@ const buildings: Building[] = [
             place: '第1校舎 1階 アクアルーム',
             explanation:
               'アクアルームで飼育している\n生き物の他に学校付近に潜んでいる\n生き物の展示をします\nどこかで見たことある魚や\n全く知らない生き物など\n新しい発見だらけです！！\n是非見に来てください\n見に行くぞー！！！魚〜（うぉ〜）',
-            position: { top: '18', left: '21' },
+            position: {
+              pc: {
+                top: '11%',
+                left: '31%',
+              },
+              mobile: {
+                top: '18%',
+                left: '21%',
+              },
+            },
           },
         ],
       },
@@ -74,7 +101,16 @@ const buildings: Building[] = [
             place: '第1校舎 3階 131・132教室',
             explanation:
               '本校卒業生のアニマルパフォーマー\nともきりきが来校🐵\nSNSでも大人気で見たことがある方も\nいるのではないでしょうか？\n息のぴったり合ったパフォーマンスは\n盛り上がること間違いなし！\n圧巻のモンキーパフォーマンスを\nぜひご覧ください😊',
-            position: { top: '56', left: '58' },
+            position: {
+              pc: {
+                top: '54%',
+                left: '60%',
+              },
+              mobile: {
+                top: '56%',
+                left: '58%',
+              },
+            },
           },
           {
             id: '133_pro3',
@@ -84,7 +120,16 @@ const buildings: Building[] = [
             place: '第1校舎 3階 133教室',
             explanation:
               '水族館プロデュース専攻3年\n私たちが学校で学んできた魚のことについて、皆さんにとても身近な回転寿司を通して知ってもらいたい！\n回転寿司だけでなく、ハンドメイド体験、トレーナー体験などさまざまな体験ができるブースもあります！！！\nみなさんの思い出になること間違いなし！',
-            position: { top: '43', left: '15' },
+            position: {
+              pc: {
+                top: '36%',
+                left: '24%',
+              },
+              mobile: {
+                top: '43%',
+                left: '15%',
+              },
+            },
           },
         ],
       },
@@ -100,7 +145,16 @@ const buildings: Building[] = [
             description: 'スタンプラリー',
             place: '第1校舎 4階 図書室前',
             image: ['image', 'text'],
-            position: { top: '20', left: '13' },
+            position: {
+              pc: {
+                top: '13%',
+                left: '23%',
+              },
+              mobile: {
+                top: '20%',
+                left: '13%',
+              },
+            },
           },
         ],
       },
@@ -117,7 +171,16 @@ const buildings: Building[] = [
             place: '第1校舎 5階 151教室',
             explanation:
               '2Aの呪われた海へようこそ\nここでは海獣の亡霊にハラハラ、\nドキドキさせられながら\nクイズに挑戦してもらうよ\n謎を解きに151に来る挑戦者は誰かな？\nもちろん亡霊の仲間に入りたい子も募集中\nさぁ、君にこの海の謎が解けるかな…？',
-            position: { top: '58', left: '67' },
+            position: {
+              pc: {
+                top: '56%',
+                left: '68%',
+              },
+              mobile: {
+                top: '58%',
+                left: '67%',
+              },
+            },
           },
           {
             id: '152_dolphin2b',
@@ -127,7 +190,16 @@ const buildings: Building[] = [
             place: '第1校舎 5階 152教室',
             explanation:
               'ドルフィントレーナー専攻2年Bクラスでは、トロッコに乗りながらボールを使ってBAN☆BAN的を当てるゲームです！\n生き物の進化や海のゴミ問題も学べる！？\nぜひ152教室に来てください！！',
-            position: { top: '45', left: '45' },
+            position: {
+              pc: {
+                top: '45%',
+                left: '50%',
+              },
+              mobile: {
+                top: '45%',
+                left: '45%',
+              },
+            },
           },
           {
             id: '153_aqua2a',
@@ -136,10 +208,16 @@ const buildings: Building[] = [
             description: '展示解説・学び',
             place: '第1校舎 5階 153教室',
             image: ['image', 'text'],
-            label: {
-              position: 'bottom',
+            position: {
+              pc: {
+                top: '37%',
+                left: '22%',
+              },
+              mobile: {
+                top: '35%',
+                left: '5%',
+              },
             },
-            position: { top: '35', left: '5' },
           },
           {
             id: '154_aqua2b',
@@ -147,9 +225,17 @@ const buildings: Building[] = [
             title: '進化の記憶 ~鰭から足~',
             description: '学び',
             place: '第1校舎 5階 154教室',
-            explanation:
-              'こんにちは！\n２年B組のテーマは、\n‘‘進化の記憶～ヒレからアシへ～‘‘です！\n魚類、両生類、爬虫類と進化をしていく様子を皆様に体験していただこうと思います！\n5階の１５４教室でお待ちしております！ぜひお越しください♡',
-            position: { top: '22', left: '15' },
+            image: ['image', 'text'],
+            position: {
+              pc: {
+                top: '10%',
+                left: '23%',
+              },
+              mobile: {
+                top: '22%',
+                left: '15%',
+              },
+            },
           },
         ],
       },
@@ -166,10 +252,16 @@ const buildings: Building[] = [
             place: '第1校舎 6階 161教室',
             explanation:
               'みなさんようこそ！！\n私達のブースでは\n飼育室内外のガイドはもちろん、\n動物についてのお話や質問などを\nお話しさせていただきます。\n内容は当日どのガイドに当たるかによって\n変わってくるのでお楽しみです！',
-            label: {
-              position: 'bottom',
+            position: {
+              pc: {
+                top: '48%',
+                left: '45%',
+              },
+              mobile: {
+                top: '50%',
+                left: '45%',
+              },
             },
-            position: { top: '50', left: '45' },
           },
           {
             id: '161_animal_k',
@@ -179,7 +271,16 @@ const buildings: Building[] = [
             place: '第1校舎 6階 161教室',
             explanation:
               '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
-            position: { top: '42', left: '57' },
+            position: {
+              pc: {
+                top: '38%',
+                left: '60%',
+              },
+              mobile: {
+                top: '42%',
+                left: '57%',
+              },
+            },
           },
           {
             id: '162_manage3',
@@ -188,7 +289,16 @@ const buildings: Building[] = [
             description: 'マスコット・小物づくり',
             place: '第1校舎 6階 162教室',
             image: ['image', 'text'],
-            position: { top: '37', left: '20' },
+            position: {
+              pc: {
+                top: '35%',
+                left: '25%',
+              },
+              mobile: {
+                top: '37%',
+                left: '20%',
+              },
+            },
           },
           {
             id: '163_manage2',
@@ -197,7 +307,16 @@ const buildings: Building[] = [
             description: 'クイズ・学び',
             place: '第1校舎 6階 163教室',
             image: ['image', 'text'],
-            position: { top: '10', left: '18' },
+            position: {
+              pc: {
+                top: '14%',
+                left: '23%',
+              },
+              mobile: {
+                top: '10%',
+                left: '18%',
+              },
+            },
           },
         ],
       },
@@ -214,7 +333,16 @@ const buildings: Building[] = [
             place: '第1校舎 7階 171教室',
             explanation:
               '自然の香りに満ちた教室に現れた外来種を銃でひと狩り！\nブラックボックスに入っているのは動物の・・・！？\nクイズや写真の展示、コーヒーの提供もあります！\n新たな住人・カヤネズミと共にお待ちしております！',
-            position: { top: '45', left: '13' },
+            position: {
+              pc: {
+                top: '38%',
+                left: '23%',
+              },
+              mobile: {
+                top: '45%',
+                left: '13%',
+              },
+            },
           },
         ],
       },
@@ -251,7 +379,16 @@ const buildings: Building[] = [
             description: '創作体験・クイズ',
             place: '第2校舎 2階 221教室',
             image: ['image', 'text'],
-            position: { top: '40', left: '67' },
+            position: {
+              pc: {
+                top: '38%',
+                left: '69%',
+              },
+              mobile: {
+                top: '40%',
+                left: '67%',
+              },
+            },
           },
         ],
       },
@@ -273,7 +410,16 @@ const buildings: Building[] = [
             description: 'アジリティ・トレーニング体験',
             place: '第2校舎 2階 241・242教室',
             image: ['image', 'text'],
-            position: { top: '45', left: '55' },
+            position: {
+              pc: {
+                top: '45%',
+                left: '58%',
+              },
+              mobile: {
+                top: '52%',
+                left: '54%',
+              },
+            },
           },
         ],
       },
@@ -284,13 +430,21 @@ const buildings: Building[] = [
         booths: [
           {
             id: '251_medic2',
-            name: '愛護動物看護士・高度医療専攻\n2年',
+            name: '愛玩動物看護士・高度医療専攻\n2年',
             title: 'こたえてワンダフル',
             description: 'クイズ・学び',
             place: '第2校舎 2階 251教室',
-            explanation:
-              '愛護動物看護士＆高度医療専攻2年では、みんな大好きワンちゃんとネコちゃんに関するクイズを出題します！\nお子さまでもチャレンジできるワンダフルで楽しいクイズ！\n君はニャンもん正解できるかな！？',
-            position: { top: '30', left: '70' },
+            image: ['image', 'text'],
+            position: {
+              pc: {
+                top: '28%',
+                left: '68%',
+              },
+              mobile: {
+                top: '30%',
+                left: '70%',
+              },
+            },
           },
           {
             id: '252_madic3',
@@ -299,7 +453,16 @@ const buildings: Building[] = [
             description: '学び・クイズ・景品',
             place: '第2校舎 2階 252教室',
             image: ['image', 'text'],
-            position: { top: '42', left: '37' },
+            position: {
+              pc: {
+                top: '41%',
+                left: '46%',
+              },
+              mobile: {
+                top: '42%',
+                left: '37%',
+              },
+            },
           },
         ],
       },
@@ -335,7 +498,16 @@ const buildings: Building[] = [
             place: '第3校舎 地下1階 展示室・Dinosaur Square',
             explanation:
               '学びも驚きもすべてがここに！！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えてく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験しに来てください！',
-            position: { top: '50', left: '40' },
+            position: {
+              pc: {
+                top: '43%',
+                left: '45%',
+              },
+              mobile: {
+                top: '50%',
+                left: '40%',
+              },
+            },
           },
         ],
       },
@@ -351,7 +523,16 @@ const buildings: Building[] = [
             description: 'カード集め！',
             place: '第3校舎 3階 311教室',
             image: ['image', 'text'],
-            position: { top: '45', left: '11' },
+            position: {
+              pc: {
+                top: '41%',
+                left: '23%',
+              },
+              mobile: {
+                top: '45%',
+                left: '11%',
+              },
+            },
           },
         ],
       },
