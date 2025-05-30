@@ -76,7 +76,7 @@ const buildings: Building[] = [
               },
               mobile: {
                 top: '18%',
-                left: '21%',
+                left: '22%',
               },
             },
           },
@@ -126,8 +126,8 @@ const buildings: Building[] = [
                 left: '24%',
               },
               mobile: {
-                top: '43%',
-                left: '15%',
+                top: '42%',
+                left: '12%',
               },
             },
           },
@@ -151,7 +151,7 @@ const buildings: Building[] = [
                 left: '23%',
               },
               mobile: {
-                top: '20%',
+                top: '22%',
                 left: '13%',
               },
             },
@@ -196,8 +196,8 @@ const buildings: Building[] = [
                 left: '50%',
               },
               mobile: {
-                top: '45%',
-                left: '45%',
+                top: '48%',
+                left: '42%',
               },
             },
           },
@@ -214,8 +214,8 @@ const buildings: Building[] = [
                 left: '22%',
               },
               mobile: {
-                top: '35%',
-                left: '5%',
+                top: '39%',
+                left: '8%',
               },
             },
           },
@@ -232,8 +232,8 @@ const buildings: Building[] = [
                 left: '23%',
               },
               mobile: {
-                top: '22%',
-                left: '15%',
+                top: '17%',
+                left: '17%',
               },
             },
           },
@@ -258,8 +258,8 @@ const buildings: Building[] = [
                 left: '45%',
               },
               mobile: {
-                top: '50%',
-                left: '45%',
+                top: '52%',
+                left: '38%',
               },
             },
           },
@@ -277,8 +277,8 @@ const buildings: Building[] = [
                 left: '60%',
               },
               mobile: {
-                top: '42%',
-                left: '57%',
+                top: '43%',
+                left: '55%',
               },
             },
           },
@@ -295,8 +295,8 @@ const buildings: Building[] = [
                 left: '25%',
               },
               mobile: {
-                top: '37%',
-                left: '20%',
+                top: '40%',
+                left: '14%',
               },
             },
           },
@@ -313,7 +313,7 @@ const buildings: Building[] = [
                 left: '23%',
               },
               mobile: {
-                top: '10%',
+                top: '11%',
                 left: '18%',
               },
             },
