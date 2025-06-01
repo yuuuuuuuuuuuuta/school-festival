@@ -25,7 +25,7 @@ export type Booth = {
   description: string
   place: string
   image?: string[]
-  explanation?: string
+  // explanation?: string
   label?: {
     position?: string // 'bottom' | 'top'
     isHidden?: boolean

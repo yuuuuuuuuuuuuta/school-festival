@@ -20,7 +20,10 @@ export default function PcHomePage({
   )
 
   const handleSurveyClick = () => {
-    window.open('https://example.com/survey', '_blank') // 必要に応じてURL変更
+    window.open(
+      'https://docs.google.com/forms/d/1Fsi_qbcPgAJ4Svq9vHYbR13YcikfQYJsiTiYpLHMu4c/viewform?edit_requested=true',
+      '_blank',
+    ) // 必要に応じてURL変更
   }
 
   return (

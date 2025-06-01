@@ -48,8 +48,7 @@ const buildings: Building[] = [
             title: '乗馬 記念撮影\n瑠とふれあおう！！',
             description: 'ふれあい・写真撮影',
             place: '第1校舎 1階 駐車場',
-            explanation:
-              '学校馬「瑠」との記念撮影！\nお馬さんと触れ合ってみませんか？\nぜひご参加ください！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '10%',
@@ -67,8 +66,7 @@ const buildings: Building[] = [
             title: 'WOWO\nHOUSE',
             description: 'アクアルーム探検',
             place: '第1校舎 1階 アクアルーム',
-            explanation:
-              'アクアルームで飼育している\n生き物の他に学校付近に潜んでいる\n生き物の展示をします\nどこかで見たことある魚や\n全く知らない生き物など\n新しい発見だらけです！！\n是非見に来てください\n見に行くぞー！！！魚〜（うぉ〜）',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '11%',
@@ -99,16 +97,36 @@ const buildings: Building[] = [
             title: '村崎太郎プロデュース\n日光さる軍団\nともきりき来校!!',
             description: 'スペシャルイベント',
             place: '第1校舎 3階 131・132教室',
-            explanation:
-              '本校卒業生のアニマルパフォーマー\nともきりきが来校🐵\nSNSでも大人気で見たことがある方も\nいるのではないでしょうか？\n息のぴったり合ったパフォーマンスは\n盛り上がること間違いなし！\n圧巻のモンキーパフォーマンスを\nぜひご覧ください😊',
+            image: ['image', 'text'],
+            label: {
+              position: 'bottom',
+            },
             position: {
               pc: {
-                top: '54%',
-                left: '60%',
+                top: '53%',
+                left: '48%',
               },
               mobile: {
                 top: '56%',
-                left: '58%',
+                left: '43%',
+              },
+            },
+          },
+          {
+            id: 'sp_event2',
+            name: 'スペシャルイベント',
+            title: 'Lovely Animal Party',
+            description: 'スペシャルイベント',
+            place: '第1校舎 3階 131教室',
+            image: ['image', 'text'],
+            position: {
+              pc: {
+                top: '50%',
+                left: '67%',
+              },
+              mobile: {
+                top: '54%',
+                left: '66%',
               },
             },
           },
@@ -118,8 +136,7 @@ const buildings: Building[] = [
             title: '鮮度抜群！リアル お寿司屋さん',
             description: 'ハンドメイド・トレーナー体験',
             place: '第1校舎 3階 133教室',
-            explanation:
-              '水族館プロデュース専攻3年\n私たちが学校で学んできた魚のことについて、皆さんにとても身近な回転寿司を通して知ってもらいたい！\n回転寿司だけでなく、ハンドメイド体験、トレーナー体験などさまざまな体験ができるブースもあります！！！\nみなさんの思い出になること間違いなし！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '36%',
@@ -169,8 +186,7 @@ const buildings: Building[] = [
             title: '呪われた海と海獣の亡霊',
             description: 'お化け屋敷',
             place: '第1校舎 5階 151教室',
-            explanation:
-              '2Aの呪われた海へようこそ\nここでは海獣の亡霊にハラハラ、\nドキドキさせられながら\nクイズに挑戦してもらうよ\n謎を解きに151に来る挑戦者は誰かな？\nもちろん亡霊の仲間に入りたい子も募集中\nさぁ、君にこの海の謎が解けるかな…？',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '56%',
@@ -188,8 +204,7 @@ const buildings: Building[] = [
             title: 'BAN★BAN みらくるエコたまっ🥚',
             description: 'アクション・学び',
             place: '第1校舎 5階 152教室',
-            explanation:
-              'ドルフィントレーナー専攻2年Bクラスでは、トロッコに乗りながらボールを使ってBAN☆BAN的を当てるゲームです！\n生き物の進化や海のゴミ問題も学べる！？\nぜひ152教室に来てください！！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '45%',
@@ -250,8 +265,7 @@ const buildings: Building[] = [
             title: '動物ガイド',
             description: 'ガイド',
             place: '第1校舎 6階 161教室',
-            explanation:
-              'みなさんようこそ！！\n私達のブースでは\n飼育室内外のガイドはもちろん、\n動物についてのお話や質問などを\nお話しさせていただきます。\n内容は当日どのガイドに当たるかによって\n変わってくるのでお楽しみです！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '48%',
@@ -269,8 +283,7 @@ const buildings: Building[] = [
             title: '苔玉作り',
             description: '創作体験・学び',
             place: '第1校舎 6階 161教室',
-            explanation:
-              '苔玉で小さな森作り！\n昔々、一番初めに生まれた植物は\n「コケ」！\nそんな苔を使って自分だけの森を作ろう！\n作って育てて自然の不思議を\n楽しく学ぼう！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '38%',
@@ -331,8 +344,7 @@ const buildings: Building[] = [
             title: '五感で楽しむ野生教室',
             description: '展示解説・クイズ・コーヒー提供',
             place: '第1校舎 7階 171教室',
-            explanation:
-              '自然の香りに満ちた教室に現れた外来種を銃でひと狩り！\nブラックボックスに入っているのは動物の・・・！？\nクイズや写真の展示、コーヒーの提供もあります！\n新たな住人・カヤネズミと共にお待ちしております！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '38%',
@@ -496,8 +508,7 @@ const buildings: Building[] = [
             title: 'TCA DINOSAUR MUSEUM TOUR',
             description: '展示解説・企画展示・ガチャガチャ販売',
             place: '第3校舎 地下1階 展示室・Dinosaur Square',
-            explanation:
-              '学びも驚きもすべてがここに！！\n見て、触って、体験して！\n今しかないこの瞬間を\n大好きが増えてく出会いに！\nかわいいだけじゃおさまらない！\n特別な時間をぜひ体験しに来てください！',
+            image: ['image', 'text'],
             position: {
               pc: {
                 top: '43%',

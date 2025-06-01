@@ -86,7 +86,7 @@ export default function BoothDialog({
             >
               {booth.place}
             </DialogTitle>
-            {booth.explanation && (
+            {/* {booth.explanation && (
               <button
                 className="rounded bg-white px-3 py-1 text-xs font-semibold text-zinc-600 shadow"
                 style={{ color: themeColor }}
@@ -94,12 +94,12 @@ export default function BoothDialog({
               >
                 {showDescription ? '画像を見る' : '説明を見る'}
               </button>
-            )}
+            )} */}
           </div>
 
           {showDescription ? (
             <div className="whitespace-pre-wrap p-4 text-sm leading-relaxed text-gray-700">
-              {booth.explanation}
+              {/* {booth.explanation} */}
             </div>
           ) : (
             <ScrollArea
