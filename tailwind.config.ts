@@ -2,16 +2,13 @@ import type { Config } from 'tailwindcss'
 
 const config = {
   darkMode: ['class'],
-
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-
   prefix: '',
-
   theme: {
     container: {
       center: true,
@@ -20,9 +17,7 @@ const config = {
         '2xl': '1400px',
       },
     },
-
     extend: {
-      // 🎨 カスタムカラー定義
       colors: {
         theme: 'hsl(68, 75%, 47%)',
         border: 'hsl(var(--border))',
@@ -60,7 +55,6 @@ const config = {
         },
       },
 
-      // 📏 高さ定義
       height: {
         '60dvh': '60dvh',
         '70dvh': '70dvh',
@@ -70,14 +64,12 @@ const config = {
         '60dvh': '60dvh',
       },
 
-      // 🔳 角丸
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
 
-      // 🎞 アニメーション定義（新規追加）
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
@@ -87,23 +79,40 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-
-        // ✅ 追加：ふわふわ上下に浮く
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-8px)' },
         },
+        pulseScale: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.08)' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '20%': { transform: 'translateX(-3px)' },
+          '40%': { transform: 'translateX(3px)' },
+          '60%': { transform: 'translateX(-3px)' },
+          '80%': { transform: 'translateX(3px)' },
+        },
+        twitch: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '20%': { transform: 'translate(1px, -1px)' },
+          '40%': { transform: 'translate(-1px, 1px)' },
+          '60%': { transform: 'translate(1px, 1px)' },
+          '80%': { transform: 'translate(-1px, -1px)' },
+        },
       },
+
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-
-        // ✅ 追加：animate-float を使用可能に
         float: 'float 2s ease-in-out infinite',
+        pulseScale: 'pulseScale 2s ease-in-out infinite',
+        shake: 'shake 0.4s ease-in-out',
+        twitch: 'twitch 0.3s ease-in-out infinite 1s',
       },
     },
   },
-
   plugins: [require('tailwindcss-animate')],
 } satisfies Config
 
