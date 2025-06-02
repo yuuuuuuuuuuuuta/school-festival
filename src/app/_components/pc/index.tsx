@@ -55,7 +55,7 @@ export default function PcHomePage({
               <button
                 key={label}
                 onClick={() => setActiveTab(label as typeof activeTab)}
-                className={`rounded-lg px-6 py-2 text-base font-semibold transition ${
+                className={`animate-pulse-scale rounded-lg px-6 py-2 text-base font-semibold transition hover:animate-shake hover:shadow-lg ${
                   activeTab === label
                     ? 'bg-green-200 text-green-900'
                     : 'bg-gray-200 text-gray-600'
@@ -66,7 +66,7 @@ export default function PcHomePage({
             ))}
             <button
               onClick={handleSurveyClick}
-              className="rounded-lg bg-yellow-300 px-6 py-2 text-base font-semibold text-yellow-900 shadow transition hover:bg-yellow-400"
+              className="animate-pulse-scale animate-twitch rounded-lg bg-yellow-300 px-6 py-2 text-base font-semibold text-yellow-900 shadow transition hover:animate-shake hover:bg-yellow-400 hover:shadow-lg"
             >
               ぜひアンケートにご協力ください！！
             </button>

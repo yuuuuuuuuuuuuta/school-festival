@@ -10,7 +10,7 @@ export default function MobileSurveyButton() {
             '_blank',
           )
         }
-        className="rounded bg-yellow-400 px-6 py-3 font-bold text-yellow-900 shadow-md"
+        className="animate-pulse-scale animate-twitch rounded bg-yellow-400 px-6 py-3 font-bold text-yellow-900 shadow-md transition hover:animate-shake hover:bg-yellow-500 hover:shadow-lg"
       >
         ぜひアンケートにご協力ください！！
       </button>
