@@ -1,7 +1,51 @@
 'use client'
+import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 
 import styles from './major-tree.module.css'
+
+// 専攻名→建物idの対応（必要に応じて追加・編集）
+const majorMap: Record<string, { buildingId: string; major: string }> = {
+  動物飼育専攻: { buildingId: 'first', major: '動物飼育専攻' },
+  動物園マネジメント専攻: {
+    buildingId: 'first',
+    major: '動物園マネジメント専攻',
+  },
+  水族館アクアリスト専攻: {
+    buildingId: 'first',
+    major: '水族館アクアリスト専攻',
+  },
+  水族館プロデュース専攻: {
+    buildingId: 'first',
+    major: '水族館プロデュース専攻',
+  },
+  ドルフィントレーナー専攻: {
+    buildingId: 'first',
+    major: 'ドルフィントレーナー専攻',
+  },
+  '博物館・恐竜自然史専攻': {
+    buildingId: 'third',
+    major: '博物館・恐竜自然史専攻',
+  },
+  ECO自然環境クリエーター専攻: {
+    buildingId: 'third',
+    major: 'ECO自然環境クリエーター専攻',
+  },
+  '動物園・水族館＆テクノロジー専攻': {
+    buildingId: 'third',
+    major: '動物園・水族館＆テクノロジー専攻',
+  },
+  ドッグトレーナー専攻: { buildingId: 'second', major: 'ドッグトレーナー専攻' },
+  'ペットワールドトリマー＆ヘルスケア専攻': {
+    buildingId: 'second',
+    major: 'ペットワールドトリマー＆ヘルスケア専攻',
+  },
+  '愛玩動物看護士・高度医療専攻': {
+    buildingId: 'second',
+    major: '愛玩動物看護士・高度医療専攻',
+  },
+  '理学・高度医療専攻': { buildingId: 'second', major: '理学・高度医療専攻' },
+}
 
 const majorData = [
   {
@@ -48,11 +92,11 @@ export default function MajorTree() {
   const boxRefs = useRef<(HTMLDivElement | null)[]>([])
   const majorRefs = useRef<(HTMLDivElement | null)[][]>([])
   const svgRef = useRef<SVGSVGElement | null>(null)
-
   const [linePoints, setLinePoints] = useState<{ cy: number; cx: number }[]>([])
   const [topY, setTopY] = useState(0)
   const [bottomY, setBottomY] = useState(0)
   const svgOffset = useRef({ top: 0, left: 0 })
+  const router = useRouter()
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
@@ -62,7 +106,6 @@ export default function MajorTree() {
     if (!svgRef.current) return
     const svgRect = svgRef.current.getBoundingClientRect()
     svgOffset.current = { top: svgRect.top, left: svgRect.left }
-
     const positions = boxRefs.current
       .map((el) => {
         if (!el) return null
@@ -72,19 +115,16 @@ export default function MajorTree() {
         return { cy, cx }
       })
       .filter((p): p is { cy: number; cx: number } => p !== null)
-
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
       setBottomY(positions[positions.length - 1].cy)
     }
-
     setLinePoints(positions)
   }, [openMap])
 
   return (
     <div className={styles.wrapper}>
       <svg className={styles.svg} ref={svgRef}>
-        {/* 既存幹線 */}
         {linePoints.length > 0 && (
           <line
             x1={0}
@@ -96,8 +136,6 @@ export default function MajorTree() {
             strokeLinecap="round"
           />
         )}
-
-        {/* ワールドBOXへ伸びる枝線 */}
         {linePoints.map((p, i) => {
           const slopeY = bottomY - topY
           const slopeX = 30
@@ -118,31 +156,24 @@ export default function MajorTree() {
             </g>
           )
         })}
-
-        {/* 新規幹線（ワールドBOX左下 → 最後の専攻）＋ 各専攻への枝線 */}
         {boxRefs.current.map((boxEl, i) => {
           if (!boxEl || !majorRefs.current[i]) return null
-
           const majors = majorRefs.current[i].filter(
             (el): el is HTMLDivElement => el !== null,
           )
           if (majors.length === 0) return null
-
           const boxRect = boxEl.getBoundingClientRect()
           const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
           const stemX1 =
             boxRect.left + boxRect.width * 0.1 - svgOffset.current.left
           const stemX2 = stemX1 + 10
-
           const lastMajor = majors[majors.length - 1]
           const stemY2 =
             lastMajor.getBoundingClientRect().top +
             lastMajor.getBoundingClientRect().height / 2 -
             svgOffset.current.top
-
           return (
             <g key={`major-stem-${i}`}>
-              {/* 幹線（斜線） */}
               <line
                 x1={stemX1}
                 y1={boxCy}
@@ -152,7 +183,6 @@ export default function MajorTree() {
                 strokeWidth="3"
                 strokeLinecap="round"
               />
-              {/* 枝線（専攻） */}
               {majors.map((el, j) => {
                 const rect = el.getBoundingClientRect()
                 const y = rect.top + rect.height / 2 - svgOffset.current.top
@@ -176,7 +206,6 @@ export default function MajorTree() {
           )
         })}
       </svg>
-
       <div className={styles.content}>
         {majorData.map((group, i) => (
           <div key={group.world} className={styles.node}>
@@ -203,10 +232,21 @@ export default function MajorTree() {
                     style={{
                       color: group.color,
                       marginLeft: `${group.indent}px`,
+                      cursor: 'pointer',
+                      textDecoration: 'underline',
                     }}
                     ref={(el) => {
                       if (!majorRefs.current[i]) majorRefs.current[i] = []
                       majorRefs.current[i][j] = el
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      const info = majorMap[m]
+                      if (info) {
+                        router.push(
+                          `/${info.buildingId}?major=${encodeURIComponent(info.major)}`,
+                        )
+                      }
                     }}
                   >
                     {m}

@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
+import { useEffect,useMemo, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 import {
@@ -18,30 +18,35 @@ export default function BoothDialog({
   booth,
   themeColor,
   accentColor,
+  autoOpen = false, // ←ここ必須
 }: {
   booth: Booth
   themeColor: string
   accentColor: string
+  autoOpen?: boolean // ←ここ必須
 }) {
   const [showDescription, setShowDescription] = useState(false)
+  const [open, setOpen] = useState(false)
 
-  // ✅ モバイル判定
   const isMobile = useMediaQuery({ maxWidth: 768 })
   const boothPosition = isMobile ? booth.position.mobile : booth.position.pc
 
-  // ✅ 個別のアニメーション遅延を生成（初回のみ）
   const animationDelay = useMemo(() => `${Math.random() * 2}s`, [])
 
+  useEffect(() => {
+    if (autoOpen) setOpen(true)
+  }, [autoOpen])
+
   return (
-    <Dialog>
-      <DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
         <div>
           <div
             className="absolute flex animate-float flex-col items-center justify-center gap-1 focus:outline-0"
             style={{
               top: boothPosition.top,
               left: boothPosition.left,
-              animationDelay, // ⬅ ここでランダム遅延を適用
+              animationDelay,
             }}
           >
             <div className="relative">
@@ -72,8 +77,6 @@ export default function BoothDialog({
           </div>
         </div>
       </DialogTrigger>
-
-      {/* ==== モーダル本体 ==== */}
       <DialogContent
         className="w-[90vw] rounded-md border-2 md:w-auto md:max-w-lg"
         style={{ borderColor: themeColor }}
@@ -86,17 +89,7 @@ export default function BoothDialog({
             >
               {booth.place}
             </DialogTitle>
-            {/* {booth.explanation && (
-              <button
-                className="rounded bg-white px-3 py-1 text-xs font-semibold text-zinc-600 shadow"
-                style={{ color: themeColor }}
-                onClick={() => setShowDescription((prev) => !prev)}
-              >
-                {showDescription ? '画像を見る' : '説明を見る'}
-              </button>
-            )} */}
           </div>
-
           {showDescription ? (
             <div className="whitespace-pre-wrap p-4 text-sm leading-relaxed text-gray-700">
               {/* {booth.explanation} */}
@@ -152,7 +145,6 @@ export default function BoothDialog({
                   />
                 </div>
               )}
-
               {booth.image && (
                 <div className="pointer-events-none sticky inset-x-0 -bottom-1 h-10 bg-gradient-to-t from-card" />
               )}

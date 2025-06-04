@@ -32,13 +32,22 @@ export default function PcHomePage({
         {/* 左カラム */}
         <div className="mx-auto flex min-w-[400px] flex-col justify-between">
           <Header className="static justify-center" />
-          <div className="flex w-full gap-3">
-            <div className="mx-auto flex h-pcContent items-start">
+          {/* 画像2枚＋縦スクロール */}
+          <div className="mx-auto h-pcContent w-full overflow-y-scroll px-2.5">
+            <div className="flex flex-col gap-6">
               <Image
                 src={'/images/hiro.webp'}
-                alt="TCA ECO 学園祭"
-                className="!relative max-h-full !w-full object-contain"
-                fill
+                alt="サイド画像1"
+                width={350}
+                height={500}
+                className="object-contain"
+              />
+              <Image
+                src={'/images/hiro.webp'}
+                alt="サイド画像2"
+                width={350}
+                height={500}
+                className="object-contain"
               />
             </div>
           </div>
@@ -82,24 +91,29 @@ export default function PcHomePage({
         </div>
 
         {/* 右カラム（アクセスマップ） */}
-        <div className="flex min-w-[400px] flex-col justify-between">
-          <div className="flex h-[36px] items-center justify-center bg-theme">
-            <p className="font-medium text-white">アクセスマップ</p>
-          </div>
-          <div className="mx-auto flex h-pcContent items-start overflow-hidden px-2.5">
-            <Image
-              src={'/images/map.webp'}
-              alt="TCA ECO 学園祭"
-              className="!relative max-h-full !w-full scale-105 object-contain"
-              fill
-            />
+        <div className="mx-auto flex min-w-[400px] flex-col justify-between">
+          <Header className="static justify-center" />
+          {/* 画像2枚＋縦スクロール */}
+          <div className="mx-auto h-pcContent w-full overflow-y-scroll px-2.5">
+            <div className="flex flex-col gap-6">
+              <Image
+                src={'/images/map.webp'}
+                alt="サイド画像3"
+                width={350}
+                height={500}
+                className="object-contain"
+              />
+              <Image
+                src={'/images/map.webp'}
+                alt="サイド画像4"
+                width={350}
+                height={500}
+                className="object-contain"
+              />
+            </div>
           </div>
           <div className="flex h-32 items-center justify-center bg-theme">
-            <p className="text-center text-xs leading-7 text-white">
-              〒134-0088 東京都江戸川区西葛西6-29-9
-              <br />
-              Mail:info@tcaeco.ac.jp フリーダイヤル:0120-545-556
-            </p>
+            <SocialIcons />
           </div>
         </div>
       </main>

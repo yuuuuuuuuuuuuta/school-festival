@@ -1,33 +1,49 @@
-// ブース情報をマップ上に表示するコンポーネント
+'use client'
+import { useEffect, useRef } from 'react'
 
 import type { Booth } from '@/lib/definitions'
 
-// 各ブースをモーダルで開くUIコンポーネント
 import BoothDialog from './booth-dialog'
 
-// props定義とメイン関数
 export default function BoothItems({
-  booths, // 対象の階に存在するブース一覧
-  themeColor, // 校舎テーマカラー（ボタンの色などに使用）
-  accentColor, // アクセントカラー（強調・縁取りなど）
+  booths,
+  themeColor,
+  accentColor,
+  major,
 }: {
-  booths?: Booth[] // boothが省略可なのは、空の階に対応するため
+  booths?: Booth[]
   themeColor: string
   accentColor: string
+  major?: string
 }) {
-  // ブースが存在しない場合は何も表示しない
-  if (!booths || booths.length === 0) {
-    return null
-  }
+  const targetRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (major && booths) {
+      const booth = booths.find((b) => b.name.includes(major))
+      if (booth && targetRef.current) {
+        targetRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+      }
+    }
+  }, [major, booths])
+
+  if (!booths || booths.length === 0) return null
 
   return (
-    <div className="">
+    <div>
       {booths.map((booth) => (
-        <div key={booth.id}>
+        <div
+          key={booth.id}
+          ref={major && booth.name.includes(major) ? targetRef : undefined}
+        >
           <BoothDialog
-            booth={booth} // ブースの詳細情報
-            themeColor={themeColor} // 色指定（テーマ）
-            accentColor={accentColor} // 色指定（アクセント）
+            booth={booth}
+            themeColor={themeColor}
+            accentColor={accentColor}
+            autoOpen={!!major && booth.name.includes(major)}
           />
         </div>
       ))}
