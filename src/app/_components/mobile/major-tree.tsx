@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './major-tree.module.css'
 
 const majorMap: Record<string, { buildingId: string; major: string }> = {
-  動物飼育専攻: { buildingId: 'first', major: '動物飼育専攻' },
+  動物飼育専攻: { buildingId: 'first', major: '動物園飼育専攻' },
   動物園マネジメント専攻: {
     buildingId: 'first',
     major: '動物園マネジメント専攻',
@@ -27,7 +27,7 @@ const majorMap: Record<string, { buildingId: string; major: string }> = {
     major: '博物館・恐竜自然史専攻',
   },
   ECO自然環境クリエーター専攻: {
-    buildingId: 'third',
+    buildingId: 'first',
     major: 'ECO自然環境クリエーター専攻',
   },
   '動物園・水族館＆テクノロジー専攻': {
@@ -99,12 +99,22 @@ export default function MajorTree() {
 
   const toggle = (world: string) => {
     setOpenMap((prev) => ({ ...prev, [world]: !prev[world] }))
+    setTimeout(() => {
+      const idx = majorData.findIndex((g) => g.world === world)
+      if (idx !== -1 && boxRefs.current[idx]) {
+        boxRefs.current[idx]?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        })
+      }
+    }, 120)
   }
 
   useEffect(() => {
     if (!svgRef.current) return
     const svgRect = svgRef.current.getBoundingClientRect()
     svgOffset.current = { top: svgRect.top, left: svgRect.left }
+
     const positions = boxRefs.current
       .map((el) => {
         if (!el) return null
@@ -114,10 +124,12 @@ export default function MajorTree() {
         return { cy, cx }
       })
       .filter((p): p is { cy: number; cx: number } => p !== null)
+
     if (positions.length > 0) {
       setTopY(positions[0].cy - 20)
       setBottomY(positions[positions.length - 1].cy)
     }
+
     setLinePoints(positions)
   }, [openMap])
 
@@ -161,6 +173,7 @@ export default function MajorTree() {
             (el): el is HTMLDivElement => el !== null,
           )
           if (majors.length === 0) return null
+
           const boxRect = boxEl.getBoundingClientRect()
           const boxCy = boxRect.top + boxRect.height - 4 - svgOffset.current.top
           const stemX1 =
@@ -171,6 +184,7 @@ export default function MajorTree() {
             lastMajor.getBoundingClientRect().top +
             lastMajor.getBoundingClientRect().height / 2 -
             svgOffset.current.top
+
           return (
             <g key={`major-stem-${i}`}>
               <line
@@ -205,6 +219,7 @@ export default function MajorTree() {
           )
         })}
       </svg>
+
       <div className={styles.content}>
         {majorData.map((group, i) => (
           <div key={group.world} className={styles.node}>
@@ -243,7 +258,9 @@ export default function MajorTree() {
                       const info = majorMap[m]
                       if (info) {
                         router.push(
-                          `/${info.buildingId}?major=${encodeURIComponent(info.major)}`,
+                          `/${info.buildingId}?major=${encodeURIComponent(
+                            info.major,
+                          )}`,
                         )
                       }
                     }}

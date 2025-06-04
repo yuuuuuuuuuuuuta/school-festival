@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 
 import styles from './major-tree.module.css'
 
-// 専攻名→建物idの対応（必要に応じて追加・編集）
 const majorMap: Record<string, { buildingId: string; major: string }> = {
-  動物飼育専攻: { buildingId: 'first', major: '動物飼育専攻' },
+  動物飼育専攻: { buildingId: 'first', major: '動物園飼育専攻' },
   動物園マネジメント専攻: {
     buildingId: 'first',
     major: '動物園マネジメント専攻',
@@ -28,7 +27,7 @@ const majorMap: Record<string, { buildingId: string; major: string }> = {
     major: '博物館・恐竜自然史専攻',
   },
   ECO自然環境クリエーター専攻: {
-    buildingId: 'third',
+    buildingId: 'first',
     major: 'ECO自然環境クリエーター専攻',
   },
   '動物園・水族館＆テクノロジー専攻': {

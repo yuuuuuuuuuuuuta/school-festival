@@ -16,6 +16,7 @@ export default function FloorList({
   const [visibleFloors, setVisibleFloors] = useState<Record<string, boolean>>(
     {},
   )
+
   useEffect(() => {
     if (building) {
       const initial = Object.fromEntries(
@@ -24,7 +25,9 @@ export default function FloorList({
       setVisibleFloors(initial)
     }
   }, [building])
+
   if (!building) return <div>Building not found</div>
+
   return (
     <div className="mx-auto flex w-full flex-col gap-5 px-4 md:max-w-xl">
       <div className="flex flex-wrap gap-1.5">
@@ -38,6 +41,7 @@ export default function FloorList({
           </div>
         ))}
       </div>
+
       {[...building.floors]
         .sort((a, b) => b.number - a.number)
         .map((floor) => (
@@ -52,25 +56,43 @@ export default function FloorList({
                 src={`/images/floors/${floor.id}.svg`}
                 alt={floor.name}
               />
+
+              <button
+                className="absolute right-4 top-4 z-50 rounded px-3 py-1 text-xs text-white sm:right-6 sm:top-10 md:hidden"
+                style={{ backgroundColor: building.themeColor }}
+                onClick={() =>
+                  setVisibleFloors((prev) => ({
+                    ...prev,
+                    [floor.id]: !prev[floor.id],
+                  }))
+                }
+              >
+                {visibleFloors[floor.id] ? 'ブース非表示' : 'ブース表示'}
+              </button>
             </div>
+
             <h3
               className="absolute left-4 top-6 flex size-11 items-center justify-center rounded-full text-xl font-bold text-white sm:left-6 sm:top-10 sm:size-14"
               style={{ backgroundColor: building.accentColor }}
             >
               {floor.name}
             </h3>
-            <button
-              className="absolute right-4 top-8 z-50 rounded px-3 py-1 text-xs text-white sm:right-6 sm:top-10"
-              style={{ backgroundColor: building.themeColor }}
-              onClick={() =>
-                setVisibleFloors((prev) => ({
-                  ...prev,
-                  [floor.id]: !prev[floor.id],
-                }))
-              }
-            >
-              {visibleFloors[floor.id] ? 'ブース非表示' : 'ブース表示'}
-            </button>
+
+            <div className="hidden justify-center md:mt-4 md:flex">
+              <button
+                className="rounded px-3 py-1 text-xs text-white"
+                style={{ backgroundColor: building.themeColor }}
+                onClick={() =>
+                  setVisibleFloors((prev) => ({
+                    ...prev,
+                    [floor.id]: !prev[floor.id],
+                  }))
+                }
+              >
+                {visibleFloors[floor.id] ? 'ブース非表示' : 'ブース表示'}
+              </button>
+            </div>
+
             {visibleFloors[floor.id] && (
               <BoothItems
                 booths={floor.booths}

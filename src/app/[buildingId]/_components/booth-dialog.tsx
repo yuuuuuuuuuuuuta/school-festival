@@ -18,12 +18,12 @@ export default function BoothDialog({
   booth,
   themeColor,
   accentColor,
-  autoOpen = false, // ←ここ必須
+  autoOpen = false,
 }: {
   booth: Booth
   themeColor: string
   accentColor: string
-  autoOpen?: boolean // ←ここ必須
+  autoOpen?: boolean
 }) {
   const [showDescription, setShowDescription] = useState(false)
   const [open, setOpen] = useState(false)
