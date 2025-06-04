@@ -26,7 +26,7 @@ export default function MobileHomePage({
   // ─── “背景画像だけが見える高さ” を決める heroHeight ───
   // たとえば 260px にすると、画面上部260px分だけ本文が乗らずに背景が見えた状態となり
   // その領域をタップすると背景が切り替わります。
-  const heroHeight = 670
+  const heroHeight = 1000
 
   // ─── 背景切り替えを行うハンドラー ───
   function toggleBackground() {
