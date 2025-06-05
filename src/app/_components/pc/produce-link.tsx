@@ -35,7 +35,6 @@ export default function ProduceLink() {
           height={400}
           className="h-auto w-full object-cover"
           priority
-          unoptimized
         />
       </div>
     </section>
