@@ -119,6 +119,7 @@ export default function MobileHomePage({
               src={'/images/producer.webp'}
               alt="製作者紹介"
               fill
+              unoptimized
             />
           </SectionWithTitle>
         </div>
