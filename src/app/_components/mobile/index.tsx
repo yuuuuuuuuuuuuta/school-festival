@@ -89,13 +89,13 @@ export default function MobileHomePage({
           <SectionWithTitle title="アクセスマップ">
             <Image
               className="!relative !w-full object-contain"
-              src={'/images/map.webp'}
+              src={'/images/ECO_P1z.webp'}
               alt="アクセスマップ"
               fill
             />
             <Image
               className="!relative !w-full object-contain"
-              src={'/images/map.webp'}
+              src={'/images/ECO_P2z.webp'}
               alt="アクセスマップ"
               fill
             />

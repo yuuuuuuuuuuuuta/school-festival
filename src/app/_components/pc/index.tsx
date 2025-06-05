@@ -43,7 +43,7 @@ export default function PcHomePage({
                 className="object-contain"
               />
               <Image
-                src={'/images/hiro.webp'}
+                src={'/images/map.webp'}
                 alt="サイド画像2"
                 width={350}
                 height={500}
@@ -97,14 +97,14 @@ export default function PcHomePage({
           <div className="mx-auto h-pcContent w-full overflow-y-scroll px-2.5">
             <div className="flex flex-col gap-6">
               <Image
-                src={'/images/map.webp'}
+                src={'/images/ECO_P1z.webp'}
                 alt="サイド画像3"
                 width={350}
                 height={500}
                 className="object-contain"
               />
               <Image
-                src={'/images/map.webp'}
+                src={'/images/ECO_P2z.webp'}
                 alt="サイド画像4"
                 width={350}
                 height={500}
