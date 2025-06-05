@@ -3,10 +3,25 @@
 import Image from 'next/image'
 
 export default function ProduceLink() {
+  const onClick = () => {
+    window.open(
+      'https://docs.google.com/forms/d/1Fsi_qbcPgAJ4Svq9vHYbR13YcikfQYJsiTiYpLHMu4c/viewform?edit_requested=true',
+      '_blank',
+    )
+  }
+
   return (
     <section className="mx-auto my-8 w-full max-w-2xl text-center">
       {/* 吹き出しテキスト */}
-      <div className="animate-pulse-scale relative mb-4 inline-block animate-twitch rounded-xl bg-yellow-300 px-6 py-2 text-sm font-bold text-yellow-900 shadow-md">
+      <div
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') onClick()
+        }}
+        className="animate-pulse-scale relative mb-4 inline-block animate-twitch cursor-pointer rounded-xl bg-yellow-300 px-6 py-2 text-sm font-bold text-yellow-900 shadow-md transition hover:animate-shake hover:bg-yellow-400"
+      >
         ここをタッチして
         <br />
         ぜひアンケートにご協力ください！！
