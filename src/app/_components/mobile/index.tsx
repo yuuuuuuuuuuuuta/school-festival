@@ -116,7 +116,7 @@ export default function MobileHomePage({
             <MobileSurveyButton />
             <Image
               className="!relative !w-full object-contain"
-              src={'/images/producer.webp'}
+              src={'/images/producer.webp?v=2'}
               alt="製作者紹介"
               fill
             />
