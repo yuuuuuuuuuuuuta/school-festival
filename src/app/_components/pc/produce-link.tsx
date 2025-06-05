@@ -29,7 +29,7 @@ export default function ProduceLink() {
       {/* 製作者紹介画像 */}
       <div className="mx-auto w-11/12 max-w-md overflow-hidden rounded-lg shadow-lg">
         <Image
-          src="/images/producer.webp?v=2"
+          src="/images/producer.jpg"
           alt="製作者紹介"
           width={600}
           height={400}
