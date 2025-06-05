@@ -39,7 +39,7 @@ export default function MobileHomePage({
         <div
           className="fixed left-0 w-screen"
           style={{
-            top: -60,
+            top: -50,
             zIndex: -10,
             height: '100vh',
             pointerEvents: 'none',
@@ -64,7 +64,7 @@ export default function MobileHomePage({
             className="fixed left-1/2 -translate-x-1/2 transform rounded-lg bg-theme/80 px-4 py-2 font-semibold text-white drop-shadow-lg"
             style={{
               bottom: 200,
-              zIndex: 10,
+              zIndex: -10,
             }}
           >
             ここをタップして画像を切り替え
@@ -111,8 +111,16 @@ export default function MobileHomePage({
             <MajorTree />
           </SectionWithTitle>
 
-          {/* アンケートボタン */}
-          <MobileSurveyButton />
+          {/* 製作者紹介 */}
+          <SectionWithTitle title="製作者紹介">
+            <MobileSurveyButton />
+            <Image
+              className="!relative !w-full object-contain"
+              src={'/images/producer.webp'}
+              alt="製作者紹介"
+              fill
+            />
+          </SectionWithTitle>
         </div>
 
         <Footer />
